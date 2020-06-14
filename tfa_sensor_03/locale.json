@@ -1,0 +1,42 @@
+
+{
+    "translations": {
+        "de": {
+			"cloud":"Cloud",
+			"cloud aktivate":"Cloud Aktiviren",
+			"cloud settings":"Cloud Einstellungen",
+            "wait for resonse(in ms)":"Warten auf Antwort (in ms)",
+            "cloud host address":"Cloud Host Address",
+            "url parameter":"URL Parameter",
+			"sensors": "Sensor",
+			"debug": "Fehlersuche",
+			"parent":"Elternteil",
+			"battery": "Batterie",
+			"heartbeat": "Lebenszeichen",
+			"counter": "Zähler",
+			"update": "Update",
+			"overflow":"Überlauf",
+			"error" : "Fehler",
+			"temperature current": "Aktuelle Temperatur",
+			"up 05 current":"Aktuelle Temperatur über 0,5 C",
+			"down 05 current":"Aktuelle Temperatur unter 0,5 C",
+			"overflow current":"Aktueller Überlauf Temperatur",
+			"error current":"Aktueller Fehler Temperatur",
+			"humidity current": "Aktuelle Feuchtigkeit",
+			"humidity up 05 current":"Aktuelle Feuchtigkeit über 0,5 %",
+			"humidity down 05 current":"Aktuelle Feuchtigkeit unter 0,5 %",
+			"humidity id current":"Aktueller ID ",
+			"humidity calculated current":"Aktuelle Feuchtigkeit calibriert",
+			"temperature previous": "Vorherige Temperatur",
+			"up 05 previous":"Vorherige Temperatur über 0,5 C",
+			"down 05 previous":"Vorherige Temperatur unter 0,5 C",
+			"overflow previous":"Vorherige Überlauf Temperatur",
+			"error previous":"Vorherige Fehler Temperatur",
+			"humidity previous": "Vorherige Feuchtigkeit",
+			"humidity up 05 previous":"Vorherige Feuchtigkeit über 0,5 %",
+			"humidity down 05 previous":"Vorherige Feuchtigkeit unter 0,5 %",
+			"humidity id previous":"Vorherige ID ",
+			"humidity calculated previous":"Vorherige Feuchtigkeit calibriert"
+        }
+    }
+}

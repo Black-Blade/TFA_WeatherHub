@@ -1,0 +1,37 @@
+
+{
+    "translations": {
+        "de": {
+            "debug":"Fehlersuche",
+            "gateway address":"Gateway Adresse",
+            "read (x) seconds":"Alle (x) Sekunden ablesen",
+            "gateway raw":"RAW Daten vom Gateway lesen",
+            "gateway data":"Daten von Gateway lesen",
+            "software":"Software",
+            "compilation date":"Erstellungs Datum",
+            "compilation time":"Erstellungs Uhrzeit",
+            "serial no. (hex.)":"Seriennr. (hex.)",
+            "serial no. (dec.)":"Seriennr. (dec.)",
+            "name":"Name",
+            "registration state":"Registrierungszustand",
+            "use dhcp":"Benutze DHCP",
+            "fixed ip":"Fixe IP",
+            "fixed netmask":"Fixe Netmask",
+            "fixed gateway":"Fixes Gateway",
+            "fixed dns ip":"Fixe DNS IP",
+            "dhcp valid":"DHCP gültig",
+            "dhcp ip":"DHCP IP",
+            "dhcp netmask":"DHCP Netmask",
+            "dhcp gateway":"DHCP Gateway",
+            "dhcp dns":"DHCP DNS",
+            "dns states":"DNS Status",
+            "data server name":"Datenserver Name",
+            "use proxy":"Benutze Proxy",
+            "proxy server name":"Proxy Server Name",
+            "proxy port":"Proxy Port",
+            "proxy server ip":"Proxy Server IP",
+            "last contact":"letzter Kontakt",
+            "rf channel":"rf Kanal"
+        }
+    }
+}

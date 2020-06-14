@@ -1,0 +1,12 @@
+{
+    "id": "{7DB8A999-5613-D13C-BBC1-5FDE326A47C1}",
+    "author": "Back-Blade and helhau",
+    "name": "TFA WeatherHub",
+    "url": "https://github.com/Black-Blade/ips_gateway_v2.git",
+    "compatibility": {
+        "version": "5.1"
+    },
+    "version": "1.0",
+    "build": 0,
+    "date": 18032020
+}

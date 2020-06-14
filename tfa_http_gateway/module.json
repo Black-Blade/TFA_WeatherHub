@@ -1,0 +1,12 @@
+{
+    "id": "{D80678BC-367D-DD49-C367-EC89D3E54F31}",
+    "name": "TFASENSORHTTPGATEWAY",
+    "type": 3,
+    "vendor": "TFA WeatherHub",
+    "aliases": [],
+    "parentRequirements": [],
+    "childRequirements": [],
+    "implemented": [],
+    "prefix": "TFASENSORHTTPGATEWAY",
+    "url": "https://github.com/Black-Blade/ips_gateway_v2.git/tfa_http_gateway"
+}

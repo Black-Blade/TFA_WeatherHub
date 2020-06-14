@@ -1,0 +1,36 @@
+
+{
+    "translations": {
+        "de": {
+			"cloud":"Cloud",
+			"cloud aktivate":"Cloud Aktivieren",
+			"cloud settings":"Cloud Einstellungen",
+            "wait for resonse(in ms)":"Warten auf Antwort (in ms)",
+            "cloud host address":"Cloud Host Address",
+            "url parameter":"URL Parameter",
+			"sensors":"Sensor",
+			"debug":"Fehlersuche",
+			"parent":"Elternteil",
+			"battery":"Batterie",
+			"heartbeat":"Lebenszeichen",
+			"counter":"Zähler",
+			"update":"Update",
+			"overflow":"Überlauf",
+			"error":"Fehler",
+			"doorwindows current":"Aktueller Tür/Fensterschalter",
+			"switch current":"Aktueller Schalter Status",
+			"lasttime current":"Aktueller letze Zeit",
+			"doorwindows previous":"Vorheriger Tür/Fensterschalter",
+			"switch previous":"Vorheriger Schalter Status",
+			"lasttime previous":"Vorherige letze Zeit",
+			"doorwindows previous 1":"1 Vorheriger Tür/Fensterschalter",
+			"switch previous 1":"1 Vorheriger Schalter Status",
+			"lasttime previous 1":"1 Vorherige letze Zeit",
+			"doorwindows previous 2":"2 Vorheriger Tür/Fensterschalter",
+			"switch previous 2":"2 Vorheriger Schalter Status",
+			"lasttime previous 2":"2 Vorherige letze Zeit",
+			"doorwindows previous 3":"3 Vorheriger Tür/Fensterschalter",
+			"switch previous 3":"3 Vorheriger Schalter Status"
+        }
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "id": "{39306106-5EBB-46E6-420D-063E9E05AB25}",
+    "name": "TFAGATEWAY",
+    "type": 2,
+    "vendor": "TFA WeatherHub",
+    "aliases": [],
+    "parentRequirements": ["{C8792760-65CF-4C53-B5C7-A30FCC84FEFE}"],
+    "childRequirements": ["{7E53E668-20E9-7CDB-459C-B22E3B16D24F}"],
+    "implemented": ["{7A1272A4-CBDB-46EF-BFC6-DCF4A53D2FC7}","{E1738F13-0E82-7B77-A13C-7C0D814C8D51}"],
+    "prefix": "TFAGATEWAY",
+    "url": "https://github.com/Black-Blade/ips_gateway_v2.git/tfa_gateway"
+}

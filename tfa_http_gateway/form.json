@@ -1,0 +1,41 @@
+{
+  "elements": [
+    {
+      "type": "Image",
+      "image": "data:image/png;base64, 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"
+    },
+    {
+      "type": "ValidationTextBox",
+      "name": "var_gateway_address",
+      "caption": "gateway address"
+    },
+    {
+      "type": "NumberSpinner",
+      "name": "var_counter_ip_time",
+      "caption": "read (x) seconds"  
+    },
+	  {
+      "type": "PopupButton",
+      "caption": "debug",
+      "popup": {
+        "caption": "debug",
+        "items": [
+          {
+            "type": "CheckBox",
+            "name": "var_debugger_row",
+            "caption": "gateway raw"
+          },
+          {
+            "type": "CheckBox",
+            "name": "var_debugger_data",
+            "caption": "gateway data"
+          }
+        ]
+      }
+    }
+  ],
+  "actions": [
+  ],
+  "status": [
+  ]
+}

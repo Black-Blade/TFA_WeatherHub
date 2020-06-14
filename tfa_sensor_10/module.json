@@ -1,0 +1,12 @@
+{
+    "id": "{5267D1CA-7285-4963-5B8C-7A49CED14C9B}",
+    "name": "TFASENSOR10",
+    "type": 3,
+    "vendor": "TFA WeatherHub",
+    "aliases": [],
+    "parentRequirements": ["{E1738F13-0E82-7B77-A13C-7C0D814C8D51}"],
+    "childRequirements": [],
+    "implemented": ["{7E53E668-20E9-7CDB-459C-B22E3B16D24F}"],
+    "prefix": "TFASENSOR10",
+    "url": "https://github.com/Black-Blade/ips_gateway_v2.git/tfa_sensor_10"
+}

@@ -1,0 +1,37 @@
+
+
+{
+    "translations": {
+        "de": {
+			"cloud":"Cloud",
+			"cloud aktivate":"Cloud Aktivieren",
+			"cloud settings":"Cloud Einstellungen",
+            "wait for resonse(in ms)":"Warten auf Antwort (in ms)",
+            "cloud host address":"Cloud Host Address",
+            "url parameter":"URL Parameter",
+			"sensors": "Sensor",
+			"debug": "Fehlersuche",
+			"parent":"Elternteil",
+			"battery": "Batterie",
+			"heartbeat": "Lebenszeichen",
+			"counter": "Zähler",
+			"update": "Update",
+			"rain counter":"Regen Zähler (hier immer beide aktivieren)",
+			"rainfall":"Regen Menge (hier immer beide aktivieren)",
+			"temperatur":"Temperatur",
+			"overflow":"Überlauf",
+			"error" : "Fehler",	
+			"position":"Position",
+			"uint" :"Einheit",
+			"current time":"Aktuelle Zeit",
+			"previous time":"Vorherige Zeit",
+			"previous time 1":"1 Vorherige Zeit",
+			"previous time 2":"2 Vorherige Zeit",
+			"previous time 3":"3 Vorherige Zeit",
+			"previous time 4":"4 Vorherige Zeit",
+			"previous time 5":"5 Vorherige Zeit",
+			"previous time 6":"6 Vorherige Zeit",
+			"previous time 7":"7 Vorherige Zeit"
+		  }
+	}
+}

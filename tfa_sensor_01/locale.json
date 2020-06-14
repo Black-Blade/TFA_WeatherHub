@@ -1,0 +1,42 @@
+
+{
+    "translations": {
+        "de": {
+			"cloud":"Cloud",
+			"cloud aktivate":"Cloud Aktiveren",
+			"cloud settings":"Cloud Einstellungen",
+            "wait for resonse(in ms)":"Warten auf Antwort (in ms)",
+            "cloud host address":"Cloud Host Address",
+            "url parameter":"URL Parameter",
+			"sensors": "Sensor",
+			"debug": "Fehlersuche",
+			"parent":"Elternteil",
+			"battery": "Batterie",
+			"heartbeat": "Lebenszeichen",
+			"counter": "Zähler",
+			"update": "Update",
+			"overflow":"Überlauf",
+			"error" : "Fehler",
+			"temperature current": "Aktuelle Temperatur",
+			"up 05 current":"Aktuelle Temperatur über 0,5 C",
+			"down 05 current":"Aktuelle Temperatur unter 0,5 C",
+			"overflow current":"Aktueller Überlauf Temperatur",
+			"error current":"Aktueller Fehler Temperatur",
+			"temperature current cabel": "Aktuelle Kabel Temperatur",
+			"up 05 current cabel":"Aktuelle Kabel Temperatur über 0,5 C",
+			"down 05 current cabel":"Aktuelle Kabel Temperatur unter 0,5 C",
+			"overflow current cabel":"Aktueller Kabel Überlauf Temperatur",
+			"error current cabel":"Aktueller Kabel Fehler Temperatur",
+			"temperature previous": "Vorherige Temperatur",
+			"up 05 previous":"Vorherige Temperatur über 0,5 C",
+			"down 05 previous":"Vorherige Temperatur unter 0,5 C",
+			"overflow previous":"Vorherige Überlauf Temperatur",
+			"error previous":"Vorherige Fehler Temperatur",
+			"temperature previous cabel": "Vorherige Kabel Temperatur",
+			"up 05 previous cabel":"Vorherige Kabel Temperatur über 0,5 C",
+			"down 05 previous cabel":"Vorherige Kabel Temperatur unter 0,5 C",
+			"overflow previous cabel":"Vorherige Kabel Überlauf Temperatur",
+			"error previous cabel":"Vorherige Kabel Fehler Temperatur"
+        }
+    }
+}
