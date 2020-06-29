@@ -13,6 +13,7 @@ Mit diesem Modul könnt ihr relativ günstig Diverse Wetterinformationen in euer
 7. [GUIDs und Datenaustausch](#7-GUIDs-und-Datenaustausch)
 8. [Geholfen hat uns folgendes Projekt](#8-geholfen-hat-uns-folgendes-Projekt)
 9. [Garantie](#9-garantie)
+10. [Changelog](#10-changelog)
 
 
 ## 1. Voraussetzungen:
@@ -31,7 +32,7 @@ Mit diesem Modul könnt ihr relativ günstig Diverse Wetterinformationen in euer
 |30.3303.02	  |Thermo-Hygro-Sender	                                    |getestet       |ID03    |09.05.2020
 |30.3304.02	  |Thermo-Hygro-Sender mit wasserfestem	Kablelfühler        |	            |ID03    |
 |30.3305.02	  |Thermo-Hygro-Sender mit Wassermelder                     |getestet       |ID04    |09.05.2020
-|30.3310.02	  |Thermo-Hygro-Sender mit Poolsensor                       |               |ID06    |
+|30.3310.02	  |Thermo-Hygro-Sender mit Poolsensor                       |               |ID06    |27.06.2029
 |30.3306.02	  |Regensensor                                              |getestet       |ID08    |09.05.2020
 |30.3302.02	  |Thermo-Hygro-Sender mit Profi-Temperatur-Kabelfühler     |               |ID09    |
 |30.3307.02	  |Windsensor                                               |getestet	    |ID0B    |09.05.2020
@@ -103,6 +104,13 @@ https://github.com/sarnau/MMMMobileAlerts
 
 ## 9. Garantie
 Wir können natürlich trotz aller Sorgfalt keine Garantie für dieses Modul und dessen mögliche Fehlfunktionen übernehmen. Wenn ihr ein Problem feststellt, teilt uns dies bitte mit, wir versuchen dem dann nachzugehen. Da wir selbst nicht alle Sensoren von TFA haben, konnten wir nicht alles testen. Wenn ihr also einen solchen Sensor (siehe obere Liste) habt, teilt uns das gerne mit wenn es Probleme gibt. Aktiviert das Debugging und sendet uns möglichst viele Daten zum Sensor. Also vielen Dank schon mal für eure Mithilfe.
+
+## 10. Changelog
+|Datum        |Version       |Beschreibung                                      |
+|:-----------:|:------------:|:------------------------------------------------:|
+|09.05.2020 | 1.0 |erste Veröffentlichung des Moduls|
+|26.06.2020 | 1.1 |- Sensor 06 hinzugefügt (nicht getestet) <br>- diverse Rechtschreibfehler und Übersetzungen korrigiert|
+
 
 Dieses Modul ist nicht von der Firma TFA offiziell erstellt worden. Es ist ein rein Privates Projekt, wobei die Verwendung des Logos und die Veröffentlichung dieses Moduls mit TFA abgestimmt wurde.
 
