@@ -24,7 +24,7 @@ class TFASENSOR06  extends IPSModule
 	
 	private $sensortyp= array(
 		"id"=>"06",
-		"packageheader"=>0x1a,
+		"packageheader"=>0xd6,
 		"packagelength"=>14,	
 	);
 
