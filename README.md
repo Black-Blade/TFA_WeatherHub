@@ -38,7 +38,7 @@ Mit diesem Modul könnt ihr relativ günstig Diverse Wetterinformationen in euer
 |30.3307.02	  |Windsensor                                               |getestet	    |ID0B    |09.05.2020
 |30.3311.02	  |Türen- und Fensterkontakt-Sensor                         |getestet       |ID10    |09.05.2020
 |30.3060.01   |KLIMA@HOME                                               |               |ID11    |
-|             |Gateway(HTTP)                                            |getestet       |        |09.05.2020
+|             |Gateway(HTTP)                                            |fixet       |        |16.08.2021
 
 
 
@@ -110,6 +110,7 @@ Wir können natürlich trotz aller Sorgfalt keine Garantie für dieses Modul und
 |:-----------:|:------------:|:------------------------------------------------:|
 |09.05.2020 | 1.0 |erste Veröffentlichung des Moduls|
 |26.06.2020 | 1.1 |- Sensor 06 hinzugefügt (nicht getestet) <br>- diverse Rechtschreibfehler und Übersetzungen korrigiert|
+|16.08.2021 | 1.3 |-Gateway(HTTP) kann nicht über CURL die WEBSETEITE auslesen<br>Wurde durch ein Socket aufruf ersetzt|
 
 
 Dieses Modul ist nicht von der Firma TFA offiziell erstellt worden. Es ist ein rein Privates Projekt, wobei die Verwendung des Logos und die Veröffentlichung dieses Moduls mit TFA abgestimmt wurde.
