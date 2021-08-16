@@ -95,22 +95,27 @@ public function Create()
 /*******************************************************************************
 @author					ips and Back-Blade and helhau
 @brief					holt sich daten von gateway
-@date    				18.03.2020
+@see					fixt curl not work
+@date    				16.08.2021
 *******************************************************************************/	
 
 private function url_get_contents () {
-    if (!function_exists('curl_init')){ 
-        die('CURL is not installed!');
-    }
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL,"http://". $this->ReadPropertyString("var_gateway_address"));
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    $output = curl_exec($ch);
-	curl_close($ch);
-	if (strlen($output)==0)
-	{
-		die('no data form gateway');
+	$address = gethostbyname($this->ReadPropertyString("var_gateway_address"));
+	$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+	if ($socket === false) die ("socket_create() fehlgeschlagen: Grund: " . socket_strerror(socket_last_error()) . "\n");
+	$result = socket_connect($socket, $address, 80);
+	if ($result === false)  die ("socket_connect() fehlgeschlagen.\nGrund: ($result) " . socket_strerror(socket_last_error($socket)) . "\n");
+	$in = "HEAD / HTTP/1.1\r\n";
+	$in .= "Host: ".$this->ReadPropertyString("var_gateway_address")."\r\n";
+	$in .= "Connection: Close\r\n\r\n";
+	$out = '';
+	$output ='';
+	socket_write($socket, $in, strlen($in));
+	while ($out = socket_read($socket, 2048)) {
+		$output =$output.$out;
 	}
+	socket_close($socket);
+
     return $output;
 }
 /*******************************************************************************
