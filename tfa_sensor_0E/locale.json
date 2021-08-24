@@ -1,0 +1,40 @@
+
+{
+    "translations": {
+        "de": {
+			"cloud":"Cloud",
+			"cloud aktivate":"Cloud Aktiviren",
+			"cloud settings":"Cloud Einstellungen",
+            "wait for resonse(in ms)":"Warten auf Antwort (in ms)",
+            "cloud host address":"Cloud Host Address",
+            "url parameter":"URL Parameter",
+			"sensors": "Sensor",
+			"debug": "Fehlersuche",
+			"parent":"Elternteil",
+			"battery": "Batterie",
+			"heartbeat": "Lebenszeichen",
+			"counter": "Zähler",
+			"update": "Update",
+			"overflow":"Überlauf",
+			"error" : "Fehler",
+			"temperature current": "Aktuelle Temperatur",
+			"up 05 current":"Aktuelle Temperatur über 0,5 C",
+			"down 05 current":"Aktuelle Temperatur unter 0,5 C",
+			"overflow current":"Aktueller Überlauf Temperatur",
+			"error current":"Aktueller Fehler Temperatur",
+			"humidity current": "Aktuelle Feuchtigkeit",
+			"temperature previous": "Vorherige Temperatur",
+			"up 05 previous":"Vorherige Temperatur über 0,5 C",
+			"down 05 previous":"Vorherige Temperatur unter 0,5 C",
+			"overflow previous":"Vorherige Überlauf Temperatur",
+			"error previous":"Vorherige Fehler Temperatur",
+			"temperature previous 1": "1 Vorherige Temperatur",
+			"up 05 previous 1":"1 Vorherige Temperatur über 0,5 C",
+			"down 05 previous 1":"1 Vorherige Temperatur unter 0,5 C",
+			"overflow previous 1":"1 Vorherige Überlauf Temperatur",
+			"error previous 1":"1 Vorherige Fehler Temperatur",
+			"humidity previous": "Vorherige Feuchtigkeit",
+			"humidity previous 1": "1 Vorherige Feuchtigkeit"
+		}
+    }
+}

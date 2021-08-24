@@ -36,6 +36,7 @@ Mit diesem Modul könnt ihr relativ günstig Diverse Wetterinformationen in euer
 |30.3306.02	  |Regensensor                                              |getestet       |ID08    |09.05.2020
 |30.3302.02	  |Thermo-Hygro-Sender mit Profi-Temperatur-Kabelfühler     |               |ID09    |
 |30.3307.02	  |Windsensor                                               |getestet	    |ID0B    |09.05.2020
+|30.3312.02	  |Profi Thermo-Hygro-Sender WEATHERHUB                     |neu(ungestetet |ID0E    |24.08.2021
 |30.3311.02	  |Türen- und Fensterkontakt-Sensor                         |getestet       |ID10    |09.05.2020
 |30.3060.01   |KLIMA@HOME                                               |               |ID11    |
 |             |Gateway(HTTP)                                            |fixet       |        |16.08.2021
