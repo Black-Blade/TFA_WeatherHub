@@ -16,7 +16,10 @@
             "cloud settings":"Cloud Einstellungen",
             "wait for response (in ms)":"Warten auf Antwort (in ms)",
             "cloud host address":"Cloud Host Address",
-            "url parameter":"URL Parameter"
+            "url parameter":"URL Parameter",
+            "testing":"Testen",
+            "testcode (SDATA)":"Code testen(SDATA)",
+            "test (x) seconds":"Alle (x) Sekunden testen"
         }
     }
 }

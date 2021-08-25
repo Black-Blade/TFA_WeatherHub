@@ -59,6 +59,11 @@ public function Create()
 	
 	$this->RegisterPropertyBoolean("var_reset_script",FALSE);
 
+	$this->RegisterPropertyString("var_testcode","");
+	$this->RegisterPropertyInteger("var_testcode_time",0);
+
+	$this->RegisterTimer('TFA_testcode_Timer', 0 ,$this->name."_testdata(".$this->InstanceID.");");
+
 }
 
 /*******************************************************************************
@@ -70,6 +75,11 @@ public function Create()
 	{
 		parent::ApplyChanges();
 		$this->ForceParent('{8062CF2B-600E-41D6-AD4B-1BA66C32D6ED}');
+
+		
+		$interval =$this->ReadPropertyInteger("var_testcode_time")*1000;
+		$this->SetTimerInterval("TFA_testcode_Timer", $interval);
+
 	}
     
 /*******************************************************************************
@@ -628,5 +638,21 @@ public function Send_Rest_to_Gateway(String $mac,String $ip)
 		}
 		return true;
 	}
-}
 
+	/*******************************************************************************
+	@author					ips and Back-Blade and helhau
+	@brief					Teststring testen
+	@date    				25.08.2021
+	*******************************************************************************/	
+	public function testdata()
+	{
+		if($this->ReadPropertyBoolean("var_debug_sensors")  ==true)
+			{
+				$this->SendDebug("testet", $this->ReadPropertyString("var_testcode"),0);
+			}
+		$data = hexstr2byeARRAY($this->ReadPropertyString("var_testcode"));
+		$data = bytearray2String($data);
+		$this->senddatatosensor($data,"testcode");
+
+	}
+}

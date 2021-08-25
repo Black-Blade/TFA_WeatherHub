@@ -149,6 +149,8 @@ protected function MyReceiveData($JSONString)
             if ($i==3)
             {
                 $i=4;
+
+
                 if ($tfa_function=="dec_sensor_data")                   $tfa_sensor_data =dec_sensor_data(substr($adata["data"],$tfa_pos,$tfa_max),$timestamp);
                 else if ($tfa_function=="dec_sensor_data_wind")         $tfa_sensor_data =dec_sensor_data_wind(substr($adata["data"],$tfa_pos,$tfa_max),$timestamp);
                 else if ($tfa_function=="dec_sensor_data_dir")          
@@ -158,7 +160,7 @@ protected function MyReceiveData($JSONString)
                 }
                 else if ($tfa_function=="dec_temperature")              $tfa_sensor_data =dec_temperature(substr($adata["data"],$tfa_pos,$tfa_max));
                 else if ($tfa_function=="dec_humidity")                 $tfa_sensor_data =dec_humidity(substr($adata["data"],$tfa_pos,$tfa_max));
-                else if ($tfa_function=="dec_humidity_decimalplace")    $tfa_sensor_data =dec_humidity_decimalplace(substr($adata["data"],$tfa_pos,$tfa_max));
+                else if ($tfa_function=="dec_humidity_decimalplace")    $tfa_sensor_data = dec_humidity_decimalplace(substr($adata["data"],$tfa_pos,$tfa_max));
                 else if ($tfa_function=="dec_airQuality")               $tfa_sensor_data =dec_airQuality(substr($adata["data"],$tfa_pos,$tfa_max));
                 else if ($tfa_function=="dec_wetness")                  $tfa_sensor_data =dec_wetness(substr($adata["data"],$tfa_pos,$tfa_max));
                 else if ($tfa_function=="dec_doorwindows")
@@ -537,9 +539,15 @@ return $data;
         {
             $this->SendDebug( "parent", "packageheader found",0);
         }	
-        $this->SendDebug( "parent", "Package Length :".$packagelength."\r\n",0);
         
-        if (((int) $packagelength) != ($this->sensortyp["packagelength"])) return false;
+        if (((int) $packagelength) != ($this->sensortyp["packagelength"]))
+        {
+            $this->SendDebug( "parent", "Package Length :".$packagelength."\r\n",0);
+            $this->SendDebug( "parent", "Package Length :".$this->sensortyp["packagelength"]."\r\n",0);
+    
+            return false;
+
+        } 
         if($this->ReadPropertyBoolean("var_debug_parent")  ==true)
         {
             $this->SendDebug( "parent", "packagelength found :".$packagelength,0);
@@ -577,6 +585,7 @@ return $data;
 		$dataarray = json_decode($JSONString);
 		$id=			utf8_decode($dataarray->IDENTIFY);
         $sdata=			utf8_decode($dataarray->SDATA);
+        if ($id=="testcode") return false;
         if (array_key_exists('windoffset',$this->sensortyp)) 
         {
            $cdata = byteStr2byteArray($sdata);

@@ -95,7 +95,7 @@
         ]
       }
       },
-	  {
+	    {
       "type": "PopupButton",
       "caption": "reset",
       "popup": {
@@ -108,7 +108,26 @@
           }
         ]
       }
+    },
+    {
+    "type": "PopupButton",
+    "caption": "testing",
+    "popup": {
+      "caption": "testing",
+      "items": [
+        {
+          "type": "ValidationTextBox",
+          "name": "var_testcode",
+          "caption": "testcode (SDATA)"
+        },
+        {
+          "type": "NumberSpinner",
+          "name": "var_testcode_time",
+          "caption": "test (x) seconds"  
+        }
+      ]
     }
+  }
   ],
   "actions": [
   ],

@@ -172,7 +172,7 @@ function dec_humidity_decimalplace($data)
     $data= substr($data,0,2);
     $cdata = byteStr2byteArray($data);
 
-    $hum = (float) (($cdata[0]& 0x03) <<8) + ($cdata[1]);
+    $hum = (($cdata[0]& 0x03) <<8) + ($cdata[1]);
     $hum =($hum/10);
 
     $array = array(
@@ -182,7 +182,7 @@ function dec_humidity_decimalplace($data)
         //"unknownbit13" =>  (($cdata[0]& 0x10)>>4),
         //"unknownbit12 " =>   (($cdata[0]& 0x08)>>3),
         //"unknownbit11" =>  (($cdata[0]& 0x04)>>2),
-       "humidity "=> $hum,
+       "humidity"=> $hum,
     );
     return $array;
 }
