@@ -32,7 +32,8 @@ Mit diesem Modul könnt ihr relativ günstig Diverse Wetterinformationen in euer
 |30.3303.02	  |Thermo-Hygro-Sender	                                    |getestet       |ID03    |09.05.2020
 |30.3304.02	  |Thermo-Hygro-Sender mit wasserfestem	Kablelfühler        |	            |ID03    |
 |30.3305.02	  |Thermo-Hygro-Sender mit Wassermelder                     |getestet       |ID04    |09.05.2020
-|30.3310.02	  |Thermo-Hygro-Sender mit Poolsensor                       |               |ID06    |27.06.2029
+|30.3310.02	  |Thermo-Hygro-Sender mit Poolsensor                       |               |ID06    |27.06.2020
+|MA 10410	  |Wetterstation MA10410                                    |beta           |ID07    |30.03.2025
 |30.3306.02	  |Regensensor                                              |getestet       |ID08    |09.05.2020
 |30.3302.02	  |Thermo-Hygro-Sender mit Profi-Temperatur-Kabelfühler     |               |ID09    |
 |30.3307.02	  |Windsensor                                               |getestet	    |ID0B    |09.05.2020
@@ -112,6 +113,7 @@ Wir können natürlich trotz aller Sorgfalt keine Garantie für dieses Modul und
 |09.05.2020 | 1.0 |erste Veröffentlichung des Moduls|
 |26.06.2020 | 1.1 |- Sensor 06 hinzugefügt (nicht getestet) <br>- diverse Rechtschreibfehler und Übersetzungen korrigiert|
 |16.08.2021 | 1.3 |-Gateway(HTTP) kann nicht über CURL die WEBSETEITE auslesen<br>Wurde durch ein Socket aufruf ersetzt|
+|30.03.2025 | 1.6 | Sensor ID-07 hinzugefügt|
 
 
 Dieses Modul ist nicht von der Firma TFA offiziell erstellt worden. Es ist ein rein Privates Projekt, wobei die Verwendung des Logos und die Veröffentlichung dieses Moduls mit TFA abgestimmt wurde.
