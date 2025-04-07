@@ -230,7 +230,7 @@ class TFASENSOR07  extends IPSModule
 				"profile"=>"",
 				"pos"=>4,
 				"tfa_data"=>"up05",
-				"name"=>"up 05 curren in"
+				"name"=>"up 05 current in"
 				),
 			"down_05_previous_in" => array(
 				"typ"=>0,
@@ -244,7 +244,7 @@ class TFASENSOR07  extends IPSModule
 				"profile"=>"",
 				"pos"=>6,
 				"tfa_data"=>"overflow",
-				"name"=>"overflow previous in "
+				"name"=>"overflow previous in"
 				),
 			"error_previous_in" => array(
 				"typ"=>0,
@@ -287,7 +287,7 @@ class TFASENSOR07  extends IPSModule
 				"name"=>"humidity id previous in"
 				),
 			"humidity_calculated_previous_in" => array(
-				"typ"=>14,
+				"typ"=>3,
 				"profile"=>"",
 				"pos"=>12,
 				"tfa_data"=>"average",
@@ -310,7 +310,7 @@ class TFASENSOR07  extends IPSModule
 				"profile"=>"",
 				"pos"=>4,
 				"tfa_data"=>"up05",
-				"name"=>"up 05 curren out"
+				"name"=>"up 05 previous out"
 				),
 			"down_05_previous_out" => array(
 				"typ"=>0,

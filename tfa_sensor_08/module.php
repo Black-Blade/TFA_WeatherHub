@@ -89,7 +89,7 @@ class TFASENSOR08  extends IPSModule
 				"profile"=>"",
 				"pos"=>6,
 				"tfa_data"=>"temp",
-				"name"=>"temperatur"
+				"name"=>"temperature"
 				),
 			"overflow" => array(
 				"typ"=>0,

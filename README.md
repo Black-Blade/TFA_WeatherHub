@@ -39,7 +39,7 @@ Mit diesem Modul könnt ihr relativ günstig Diverse Wetterinformationen in euer
 |30.3307.02	  |Windsensor                                               |getestet	    |ID0B    |09.05.2020
 |30.3312.02	  |Profi Thermo-Hygro-Sender WEATHERHUB                     |neu(ungestetet |ID0E    |24.08.2021
 |30.3311.02	  |Türen- und Fensterkontakt-Sensor                         |getestet       |ID10    |09.05.2020
-|30.3060.01   |KLIMA@HOME                                               |               |ID11    |
+|30.3060.01   |KLIMA@HOME                                               |beta           |ID11    |06.04.2025
 |             |Gateway(HTTP)                                            |fixet       |        |16.08.2021
 
 
@@ -114,6 +114,7 @@ Wir können natürlich trotz aller Sorgfalt keine Garantie für dieses Modul und
 |26.06.2020 | 1.1 |- Sensor 06 hinzugefügt (nicht getestet) <br>- diverse Rechtschreibfehler und Übersetzungen korrigiert|
 |16.08.2021 | 1.3 |-Gateway(HTTP) kann nicht über CURL die WEBSETEITE auslesen<br>Wurde durch ein Socket aufruf ersetzt|
 |30.03.2025 | 1.6 | Sensor ID-07 hinzugefügt|
+|06.04.2025 | 1.7 | Sensor ID-11 hinzugefügt|
 
 
 Dieses Modul ist nicht von der Firma TFA offiziell erstellt worden. Es ist ein rein Privates Projekt, wobei die Verwendung des Logos und die Veröffentlichung dieses Moduls mit TFA abgestimmt wurde.
