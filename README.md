@@ -40,7 +40,7 @@ Mit diesem Modul könnt ihr relativ günstig Diverse Wetterinformationen in euer
 |30.3312.02	  |Profi Thermo-Hygro-Sender WEATHERHUB                     |neu(ungestetet |ID0E    |24.08.2021
 |30.3311.02	  |Türen- und Fensterkontakt-Sensor                         |getestet       |ID10    |09.05.2020
 |30.3060.01   |KLIMA@HOME                                               |beta           |ID11    |06.04.2025
-|             |Gateway(HTTP)                                            |fixet       |        |16.08.2021
+|             |Gateway(HTTP)                                            |gefixt       |        |07.07.2026
 
 
 
@@ -89,7 +89,7 @@ Der Regensensor enthält die Variable "Regen Zähler" also die Anzahl der Kippvo
 
 ***- HTTPGATEWAY***
 
-Das könnt ihr mal zum testen installieren. Dann werden Daten vom Gateway abgerufen und in Variablen gespeichert. Diese werden aber nicht unbedingt benötigt. Die gleichen Informationen erhaltet ihr auch wenn ich im Browser die Weboberfläche des Gateways mit dessen IP-Adresse aufruft. Angeben in der Konfiguration müsst ihr die IP-Adresse des Gateways. 
+Das könnt ihr mal zum testen installieren. Dann werden Daten vom Gateway abgerufen und in Variablen gespeichert. Diese werden aber nicht unbedingt benötigt. Die gleichen Informationen erhaltet ihr auch wenn ich im Browser die Weboberfläche des Gateways mit dessen IP-Adresse aufruft. Angeben in der Konfiguration müsst ihr die IP-Adresse des Gateways. Wenn das Gateway nicht erreichbar ist, bricht die Abfrage nach einem Timeout ab, damit IPS nicht hängen bleibt.
 
 
 ## 7. GUIDs und Datenaustausch
@@ -115,6 +115,7 @@ Wir können natürlich trotz aller Sorgfalt keine Garantie für dieses Modul und
 |16.08.2021 | 1.3 |-Gateway(HTTP) kann nicht über CURL die WEBSETEITE auslesen<br>Wurde durch ein Socket aufruf ersetzt|
 |30.03.2025 | 1.6 | Sensor ID-07 hinzugefügt|
 |06.04.2025 | 1.7 | Sensor ID-11 hinzugefügt|
+|07.07.2026 | 1.8 | HTTP-Gateway gegen haengende Socket-Verbindungen abgesichert|
 
 
 Dieses Modul ist nicht von der Firma TFA offiziell erstellt worden. Es ist ein rein Privates Projekt, wobei die Verwendung des Logos und die Veröffentlichung dieses Moduls mit TFA abgestimmt wurde.

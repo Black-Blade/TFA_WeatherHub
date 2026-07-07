@@ -4,7 +4,7 @@
 	
 	@author					Back-Blade and helhau 
 	@brief					TFA Modul 
-	@date    				18.03.2020
+	@date    				07.07.2026
 	
 	@see https://github.com/sarnau/MMMMobileAlerts/blob/master/MobileAlertsGatewayBinaryUpload.markdown
 	@see https://github.com/sarnau/MMMMobileAlerts/blob/master/MobileAlertsGatewayWebInterface.markdown
@@ -94,25 +94,84 @@ public function Create()
 	
 /*******************************************************************************
 @author					ips and Back-Blade and helhau
-@brief					holt sich daten von gateway
-@see					fixt curl not work
-@date    				16.08.2021
+@brief					holt sich Daten vom Gateway mit Socket-Timeouts
+@see					Verhindert haengende Socket-Verbindungen
+@date    				07.07.2026
 *******************************************************************************/	
 
 private function url_get_contents () {
-	$address = gethostbyname($this->ReadPropertyString("var_gateway_address"));
+	$gatewayAddress = trim($this->ReadPropertyString("var_gateway_address"));
+	if ($gatewayAddress == "") {
+		$this->SendDebug("gateway error", "gateway address is empty", 0);
+		return "";
+	}
+
+	$address = gethostbyname($gatewayAddress);
+	if ($address == $gatewayAddress && !filter_var($gatewayAddress, FILTER_VALIDATE_IP)) {
+		$this->SendDebug("gateway error", "could not resolve gateway address: ".$gatewayAddress, 0);
+		return "";
+	}
+
 	$socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
-	if ($socket === false) die ("socket_create() fehlgeschlagen: Grund: " . socket_strerror(socket_last_error()) . "\n");
-	$result = socket_connect($socket, $address, 80);
-	if ($result === false)  die ("socket_connect() fehlgeschlagen.\nGrund: ($result) " . socket_strerror(socket_last_error($socket)) . "\n");
+	if ($socket === false) {
+		$this->SendDebug("gateway error", "socket_create failed: ".socket_strerror(socket_last_error()), 0);
+		return "";
+	}
+
+	socket_set_option($socket, SOL_SOCKET, SO_RCVTIMEO, array('sec' => 3, 'usec' => 0));
+	socket_set_option($socket, SOL_SOCKET, SO_SNDTIMEO, array('sec' => 3, 'usec' => 0));
+	socket_set_nonblock($socket);
+
+	$result = @socket_connect($socket, $address, 80);
+	if ($result === false) {
+		$error = socket_last_error($socket);
+		$connectPendingErrors = array();
+		if (defined('SOCKET_EINPROGRESS')) $connectPendingErrors[] = SOCKET_EINPROGRESS;
+		if (defined('SOCKET_EALREADY')) $connectPendingErrors[] = SOCKET_EALREADY;
+		if (defined('SOCKET_EWOULDBLOCK')) $connectPendingErrors[] = SOCKET_EWOULDBLOCK;
+		if (!in_array($error, $connectPendingErrors)) {
+			$this->SendDebug("gateway error", "socket_connect failed: ".socket_strerror($error), 0);
+			socket_close($socket);
+			return "";
+		}
+
+		$read = array();
+		$write = array($socket);
+		$except = array($socket);
+		$selected = @socket_select($read, $write, $except, 3);
+		if ($selected === false || $selected < 1 || count($write) == 0) {
+			$this->SendDebug("gateway error", "socket_connect timeout", 0);
+			socket_close($socket);
+			return "";
+		}
+
+		$error = socket_get_option($socket, SOL_SOCKET, SO_ERROR);
+		if ($error != 0) {
+			$this->SendDebug("gateway error", "socket_connect failed: ".socket_strerror($error), 0);
+			socket_close($socket);
+			return "";
+		}
+	}
+
+	socket_set_block($socket);
 	$in = "HEAD / HTTP/1.1\r\n";
-	$in .= "Host: ".$this->ReadPropertyString("var_gateway_address")."\r\n";
+	$in .= "Host: ".$gatewayAddress."\r\n";
 	$in .= "Connection: Close\r\n\r\n";
-	$out = '';
-	$output ='';
-	socket_write($socket, $in, strlen($in));
-	while ($out = socket_read($socket, 2048)) {
-		$output =$output.$out;
+	$output = "";
+
+	$written = @socket_write($socket, $in, strlen($in));
+	if ($written === false) {
+		$this->SendDebug("gateway error", "socket_write failed: ".socket_strerror(socket_last_error($socket)), 0);
+		socket_close($socket);
+		return "";
+	}
+
+	while (true) {
+		$out = @socket_read($socket, 2048);
+		if ($out === false || $out === "") {
+			break;
+		}
+		$output = $output.$out;
 	}
 	socket_close($socket);
 
@@ -136,10 +195,12 @@ private function explode_td($data)
 *******************************************************************************/	
 private function makearray($data)
 {
+	if ($data == "") return array();
+
 	// http tabel to array
 	$stuecke = explode ("<TD>", $data);
 	$array= array();
-	for ($i=1; $i<count($stuecke);$i=$i+2)
+	for ($i=1; $i+1<count($stuecke);$i=$i+2)
 		{
 		
 			$key = $this->explode_td($stuecke[$i]);
