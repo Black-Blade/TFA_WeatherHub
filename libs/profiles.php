@@ -128,15 +128,24 @@ function tfa_create_profiles($module)
         TFA_COLOR_WARN
     );
 
+    /*
+        Jedes Profil einzeln absichern. Scheitert eines - etwa an einem
+        Symbolnamen, den diese IPS-Fassung nicht kennt -, sollen die
+        uebrigen trotzdem angelegt werden und der Aufrufer weiterlaufen.
+     */
     foreach (tfa_value_profiles() as $name => $p) {
-        if (!IPS_VariableProfileExists($name)) {
-            IPS_CreateVariableProfile($name, $p['typ']);
-        }
+        try {
+            if (!IPS_VariableProfileExists($name)) {
+                IPS_CreateVariableProfile($name, $p['typ']);
+            }
 
-        IPS_SetVariableProfileIcon($name, $p['icon']);
-        IPS_SetVariableProfileText($name, '', $p['suffix']);
-        IPS_SetVariableProfileValues($name, $p['min'], $p['max'], 0);
-        IPS_SetVariableProfileDigits($name, $p['digits']);
+            IPS_SetVariableProfileText($name, '', $p['suffix']);
+            IPS_SetVariableProfileValues($name, $p['min'], $p['max'], 0);
+            IPS_SetVariableProfileDigits($name, $p['digits']);
+            IPS_SetVariableProfileIcon($name, $p['icon']);
+        } catch (Exception $e) {
+            $module->LogMessage('Profil ' . $name . ' konnte nicht angelegt werden: ' . $e->getMessage(), KL_WARNING);
+        }
     }
 
     /*
@@ -154,3 +163,46 @@ function tfa_create_profiles($module)
     }
 }
 
+/*
+@author					Back-Blade and helhau
+@brief					Die Systemprofile, die frueher benutzt wurden
+
+@see					Nur diese duerfen beim Umzug ersetzt werden. Alles
+                        andere hat der Anwender selbst gewaehlt und bleibt
+                        unangetastet.
+@date					01.09.2026
+ */
+function tfa_legacy_profiles()
+{
+    return ['~Temperature', '~Humidity.F', '~Humidity', '~Rainfall', '~WindSpeed.ms', '~WindDirection.Text', '~Battery'];
+}
+
+/*
+@author					Back-Blade and helhau
+@brief					Zieht eine bestehende Variable auf das eigene Profil um
+
+@param[$variableID]		die Variable
+@param[$soll]			gewuenschtes Profil
+
+@return					true wenn umgezogen wurde
+
+@see					IPS setzt das Profil nur beim Anlegen einer Variablen.
+                        Bestandsvariablen behalten sonst fuer immer das alte.
+                        Umgezogen wird ausschliesslich, wenn dort noch eines
+                        unserer frueheren Systemprofile steht.
+@date					01.09.2026
+ */
+function tfa_fix_variable_profile($variableID, $soll)
+{
+    if ($soll === '' || !IPS_VariableExists($variableID)) return false;
+
+    $v = IPS_GetVariable($variableID);
+    $aktuell = $v['VariableCustomProfile'] !== '' ? $v['VariableCustomProfile'] : $v['VariableProfile'];
+
+    if ($aktuell === $soll) return false;
+    if (!in_array($aktuell, tfa_legacy_profiles(), true)) return false;
+
+    IPS_SetVariableCustomProfile($variableID, $soll);
+
+    return true;
+}

@@ -331,6 +331,17 @@ class TFASENSOR_V2 extends IPSModule
                 if ($v['type'] == 'integer') $this->RegisterVariableInteger($v['ident'], $name, $profile, $pos);
                 if ($v['type'] == 'float')   $this->RegisterVariableFloat($v['ident'], $name, $profile, $pos);
                 if ($v['type'] == 'string')  $this->RegisterVariableString($v['ident'], $name, $profile, $pos);
+
+                /*
+                    IPS setzt das Profil nur beim Anlegen der Variablen.
+                    Bestandsvariablen wuerden sonst fuer immer am alten
+                    Systemprofil haengen.
+                 */
+                $vid = $this->GetIDForIdent($v['ident']);
+
+                if ($vid !== false && tfa_fix_variable_profile($vid, $profile)) {
+                    $this->SendDebug('profil', $v['ident'] . ' auf ' . $profile . ' umgezogen', 0);
+                }
             }
         }
     }
