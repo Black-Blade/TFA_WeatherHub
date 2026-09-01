@@ -11,6 +11,8 @@
 			"sensors": "Sensor",
 			"debug": "Fehlersuche",
 			"parent":"Elternteil",
+			"battery ok": "Batterie in Ordnung",
+			"battery low": "Batterie schwach",
 			"battery": "Batterie",
 			"heartbeat": "Lebenszeichen",
 			"counter": "Zähler",
