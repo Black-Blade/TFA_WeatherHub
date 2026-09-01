@@ -1,25 +1,24 @@
-
 {
     "translations": {
         "de": {
             "firewall": "Firewall",
-			"firewall whitelist": "Liste der freigegebenen IP Adressen mit Komma getrennt",
+            "firewall whitelist": "Liste der freigegebenen IP Adressen mit Komma getrennt",
             "debug": "Fehlersuche",
             "gateway": "Gateway",
             "http request": "HTTP Anfrage",
             "http response": "HTTP Antwort",
             "sensors": "Sensor",
-            "reset":"Reset",
+            "reset": "Reset",
             "reset script": "Reset Skript",
-            "cloud":"Cloud",
-            "cloud aktivate":"Cloud Aktivieren",
-            "cloud settings":"Cloud Einstellungen",
-            "wait for response (in ms)":"Warten auf Antwort (in ms)",
-            "cloud host address":"Cloud Host Address",
-            "url parameter":"URL Parameter",
-            "testing":"Testen",
-            "testcode (SDATA)":"Code testen(SDATA)",
-            "test (x) seconds":"Alle (x) Sekunden testen"
+            "cloud": "Cloud",
+            "cloud aktivate": "Cloud Aktivieren",
+            "cloud settings": "Cloud Einstellungen",
+            "wait for response (in ms)": "Warten auf Antwort (in ms)",
+            "cloud host address": "Cloud Host Address",
+            "url parameter": "URL Parameter",
+            "testing": "Testen",
+            "testcode (SDATA)": "Code testen(SDATA)",
+            "test (x) seconds": "Alle (x) Sekunden testen"
         }
     }
 }

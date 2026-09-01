@@ -4,9 +4,13 @@
     "type": 4,
     "vendor": "TFA WeatherHub",
     "aliases": [],
-    "parentRequirements": ["{BA01C4BB-8696-4A6C-9B28-87BD068426A2}"],
+    "parentRequirements": [
+        "{BA01C4BB-8696-4A6C-9B28-87BD068426A2}"
+    ],
     "childRequirements": [],
-    "implemented": ["{99C7FBD6-D83A-4E3C-B395-CB508547A2FC}"],
+    "implemented": [
+        "{99C7FBD6-D83A-4E3C-B395-CB508547A2FC}"
+    ],
     "prefix": "TFACONFIGURATOR",
     "url": "https://github.com/Black-Blade/TFA_WeatherHub/tree/master/tfa_configurator"
 }
