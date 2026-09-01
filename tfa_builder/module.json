@@ -1,0 +1,12 @@
+{
+    "id": "{0845C706-40CC-4E8D-B589-35A8267906D1}",
+    "name": "TFASENSORBUILDER",
+    "type": 3,
+    "vendor": "TFA WeatherHub",
+    "aliases": [],
+    "parentRequirements": [],
+    "childRequirements": [],
+    "implemented": [],
+    "prefix": "TFASENSORBUILDER",
+    "url": "https://github.com/Black-Blade/TFA_WeatherHub/tree/master/tfa_builder"
+}

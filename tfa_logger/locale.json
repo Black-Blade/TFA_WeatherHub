@@ -1,0 +1,27 @@
+{
+    "translations": {
+        "de": {
+            "recording active": "Mitschnitt aktiv",
+            "keep entries": "Einträge aufheben",
+            "only unknown sensors": "nur unbekannte Sensoren",
+            "only this device id (optional)": "nur diese Geräte-ID (optional)",
+            "also write to the message log": "zusätzlich ins Meldungsprotokoll schreiben",
+            "recording": "Mitschnitt",
+            "time": "Zeit",
+            "device id": "Geräte ID",
+            "type": "Typ",
+            "known": "bekannt",
+            "unknown": "unbekannt",
+            "header": "Kopf",
+            "length": "Länge",
+            "crc": "CRC",
+            "packet": "Paket",
+            "wrong": "falsch",
+            "copy as text": "Als Text herauskopieren",
+            "create": "Erzeugen",
+            "clear recording": "Mitschnitt leeren",
+            "active": "aktiv",
+            "no gateway connected": "kein Gateway verbunden"
+        }
+    }
+}

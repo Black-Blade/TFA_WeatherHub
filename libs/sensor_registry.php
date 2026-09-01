@@ -43,14 +43,60 @@ if (!defined('TFA_FRAME_ID_LEN'))   define('TFA_FRAME_ID_LEN',   6);
 						"state"   getestet | beta | ungetestet | kein modul
 @date					01.09.2026
 *******************************************************************************/
-function tfa_sensor_registry()
+/*******************************************************************************
+@author					Back-Blade and helhau
+@brief					Liste der Ordner, in denen Bausteine liegen
+
+@return					array der Pfade
+
+@see					Mitgelieferte Bausteine liegen im Modulordner und werden
+						bei einem Update ersetzt. Selbst gebaute liegen daneben
+						im Kernelverzeichnis und ueberleben das Update. Bei
+						gleicher Typ-ID gewinnt der selbst gebaute.
+@date					01.09.2026
+*******************************************************************************/
+function tfa_sensor_paths()
+{
+	$paths = array(__ROOT__ . '/sensors');
+
+	if (function_exists('IPS_GetKernelDir'))
+	{
+		$paths[] = IPS_GetKernelDir() . 'tfa_sensors';
+	}
+	else if (array_key_exists('TFA_USER_SENSOR_DIR', $GLOBALS))
+	{
+		$paths[] = $GLOBALS['TFA_USER_SENSOR_DIR'];
+	}
+
+	return $paths;
+}
+
+/*******************************************************************************
+@author					Back-Blade and helhau
+@brief					Verwirft den Zwischenspeicher der Registry
+
+@see					Noetig, nachdem ein Baustein geschrieben wurde.
+@date					01.09.2026
+*******************************************************************************/
+function tfa_sensor_registry_reset()
+{
+	tfa_sensor_registry(true);
+}
+
+function tfa_sensor_registry($reset = false)
 {
 	static $registry = null;
+	if ($reset) $registry = null;
 	if ($registry !== null) return $registry;
 
 	$registry = array();
-	$files    = glob(__ROOT__ . '/sensors/*.json');
-	if ($files === false) $files = array();
+	$files    = array();
+
+	foreach (tfa_sensor_paths() as $dir)
+	{
+		$found = glob($dir . '/*.json');
+		if ($found !== false) $files = array_merge($files, $found);
+	}
 
 	foreach ($files as $file)
 	{
@@ -219,10 +265,11 @@ function tfa_frames_split($body, &$rest = 0)
 						auftaucht.
 @date					01.09.2026
 *******************************************************************************/
-function tfa_sensor_validate($doc, $decoders)
+function tfa_sensor_validate($doc, $decoders = null)
 {
 	$errors = array();
 	$types  = array("boolean", "integer", "float", "string");
+	if ($decoders === null) $decoders = array_keys(tfa_decoders());
 
 	foreach (array("typ", "name", "frame", "groups") as $key)
 	{
@@ -274,4 +321,77 @@ function tfa_sensor_validate($doc, $decoders)
 	}
 
 	return $errors;
+}
+
+/*******************************************************************************
+@author					Back-Blade and helhau
+@brief					Die bekannten Dekoder und wie viele Bytes sie lesen
+
+@return					array Dekodername => Anzahl Bytes
+
+@see					Gemeinsame Quelle fuer Baukasten und Pruefung. Wer
+						hier einen Dekoder ergaenzt, muss ihn auch in
+						tfa_help.php schreiben und in die Auswertung
+						eintragen.
+@date					01.09.2026
+*******************************************************************************/
+function tfa_decoders()
+{
+	return array(
+		"dec_sensor_data"           => 2,
+		"dec_sensor_data_wind"      => 2,
+		"dec_sensor_data_dir"       => 2,
+		"dec_temperature"           => 2,
+		"dec_humidity"              => 2,
+		"dec_humidity_decimalplace" => 2,
+		"dec_airQuality"            => 2,
+		"dec_wetness"               => 1,
+		"dec_doorwindows"           => 1,
+		"dec_temperature_pos_rain"  => 2,
+		"dec_counter_rain"          => 2,
+		"dec_event_rain"            => 2,
+	);
+}
+
+/*******************************************************************************
+@author					Back-Blade and helhau
+@brief					Schreibt einen Baustein in den Benutzerordner
+
+@param[$doc]			der Baustein
+@param[&$error]			Klartext-Fehlermeldung
+
+@return					Pfad der geschriebenen Datei oder "" im Fehlerfall
+
+@date					01.09.2026
+*******************************************************************************/
+function tfa_sensor_write($doc, &$error = "")
+{
+	$error  = "";
+	$paths  = tfa_sensor_paths();
+	$target = end($paths);
+
+	if (count($paths) < 2)
+	{
+		$error = "kein Ordner fuer eigene Bausteine vorhanden";
+		return "";
+	}
+
+	if (!is_dir($target) && !mkdir($target, 0777, true))
+	{
+		$error = "Ordner laesst sich nicht anlegen: ".$target;
+		return "";
+	}
+
+	$file = $target . '/' . strtolower($doc["typ"]) . '.json';
+	$json = json_encode($doc, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+
+	if (file_put_contents($file, $json . "\n") === false)
+	{
+		$error = "Datei laesst sich nicht schreiben: ".$file;
+		return "";
+	}
+
+	tfa_sensor_registry_reset();
+
+	return $file;
 }
