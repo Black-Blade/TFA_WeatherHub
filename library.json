@@ -1,12 +1,12 @@
 {
-    "id": "{7DB8A999-5613-D13C-BBC1-5FDE326A47C1}",
+    "id": "{9D1CB407-F472-4A75-B079-B337607CC0FA}",
     "author": "Back-Blade and helhau",
-    "name": "TFA WeatherHub",
-    "url": "https://github.com/Black-Blade/TFA_WeatherHub/blob/master/README.md",
+    "name": "TFA WeatherHub 2",
+    "url": "https://github.com/Black-Blade/TFA_WeatherHub/blob/develop/README.md",
     "compatibility": {
-        "version": "5.1"
+        "version": "6.0"
     },
-    "version": "1.8",
+    "version": "2.0",
     "build": 0,
     "date": 1783445198
 }

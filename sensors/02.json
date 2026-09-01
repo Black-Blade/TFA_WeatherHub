@@ -3,7 +3,7 @@
     "article": "30.3300.02",
     "name": "Temperatur-Sender",
     "state": "getestet",
-    "guid": "{FFF6CF6E-004F-0650-3CFE-750A569F4870}",
+    "guid": "",
     "frame": {
         "header": 206,
         "length": 6
