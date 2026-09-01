@@ -17,8 +17,9 @@ declare(strict_types=1);
 if (!defined('__ROOT__'))  define('__ROOT__', dirname(dirname(__FILE__)));
 
 /*
-    Bit 7 im ersten Sensorbyte ist die Flagge "Batterie schwach":
-    0 = Batterie in Ordnung, 1 = Batterie schwach.
+    Die Variable haelt "Batterie in Ordnung": wahr = in Ordnung (gruen),
+    falsch = schwach (rot). Sie kommt aus dem Dekoderfeld batteryok, das
+    Bit 7 des ersten Sensorbytes umgedreht liefert.
 
     Das System-Profil ~Battery stellt das nicht so dar, wie wir es brauchen
     (gemeldet: "ok" erscheint rot). Deshalb ein eigenes Profil mit
@@ -60,14 +61,14 @@ function tfa_create_profiles($module)
      */
     IPS_SetVariableProfileAssociation(
         TFA_PROFILE_BATTERY,
-        0,
+        1,
         $module->Translate('battery ok'),
         '',
         TFA_COLOR_OK
     );
     IPS_SetVariableProfileAssociation(
         TFA_PROFILE_BATTERY,
-        1,
+        0,
         $module->Translate('battery low'),
         '',
         TFA_COLOR_WARN

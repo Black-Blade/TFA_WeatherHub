@@ -60,8 +60,8 @@ an- und abwählt.
 
 | Dekoder | Bytes | Liefert die Felder |
 |---|:---:|---|
-| `dec_sensor_data` | 2 | `battery`, `heartbeat`, `counter`, `update` |
-| `dec_sensor_data_wind` | 2 | `battery`, `heartbeat`, `counter`, `update` |
+| `dec_sensor_data` | 2 | `batteryok`, `battery`, `heartbeat`, `counter`, `update` |
+| `dec_sensor_data_wind` | 2 | `batteryok`, `battery`, `heartbeat`, `counter`, `update` |
 | `dec_sensor_data_dir` | 2 | `winddirection`, `windspeed`, `gustspeed`, `lasttransmit` |
 | `dec_temperature` | 2 | `temperature`, `up05`, `down05`, `overflow`, `error` |
 | `dec_humidity` | 2 | `humidity`, `average`, `id`, `up05`, `down05` |
@@ -72,6 +72,8 @@ an- und abwählt.
 | `dec_temperature_pos_rain` | 2 | `pos`, `temp`, `overflow`, `error`, `uint` |
 | `dec_counter_rain` | 2 | `counter`, `rainnew` |
 | `dec_event_rain` | 2 | `time`, `uint` |
+
+**Zur Batterie:** `battery` ist Bit 7 so, wie es auf der Leitung steht. `batteryok` ist dasselbe Bit umgedreht, also *wahr = Batterie in Ordnung*. Für die Anzeige gehört `batteryok` in den Baustein — zusammen mit dem Profil `TFA.Battery`, das wahr grün und falsch rot darstellt.
 
 Alle Dekoder liefern zusätzlich diverse `unknownbitXX`-Felder — die sind zum
 Erforschen unbekannter Sensoren gedacht und gehören nicht in ein fertiges Modul.

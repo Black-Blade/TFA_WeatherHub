@@ -23,7 +23,10 @@ function dec_sensor_data($data, $timestamp)
     $cdata = byteStr2byteArray($data);
 
     $array = [
+        // Bit 7 wie es auf der Leitung steht
         'battery'   => (($cdata[0] & 0x80) >> 7),
+        // dasselbe Bit umgedreht: wahr heisst "Batterie in Ordnung"
+        'batteryok' => ((($cdata[0] & 0x80) >> 7) ? 0 : 1),
         'heartbeat' => (($cdata[0] & 0x40) >> 6),
         'counter'   => (($cdata[0] & 0x3f) << 8) + ($cdata[1]),
         'update'    => $timestamp,
@@ -47,7 +50,10 @@ function dec_sensor_data_wind($data, $timestamp)
     $cdata = byteStr2byteArray($data);
 
     $array = [
+        // Bit 7 wie es auf der Leitung steht
         'battery'   => (($cdata[0] & 0x80) >> 7),
+        // dasselbe Bit umgedreht: wahr heisst "Batterie in Ordnung"
+        'batteryok' => ((($cdata[0] & 0x80) >> 7) ? 0 : 1),
         'heartbeat' => (($cdata[0] & 0x40) >> 6),
         'counter'   => (($cdata[0] & 0x3f) << 16) + (($cdata[1]) << 8) + ($cdata[2]),
         'update'    => $timestamp,

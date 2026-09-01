@@ -24,7 +24,7 @@
                     "type": "boolean",
                     "profile": "TFA.Battery",
                     "position": 0,
-                    "field": "battery"
+                    "field": "batteryok"
                 },
                 {
                     "ident": "heartbeat",
