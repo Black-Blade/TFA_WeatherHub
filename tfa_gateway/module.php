@@ -18,6 +18,7 @@ if (!defined('__ROOT__'))  define('__ROOT__', dirname(dirname(__FILE__)));
 
 //load helper functionen
 require_once __ROOT__ . '/libs/help.php';
+require_once __ROOT__ . '/libs/frame_tools.php';
 
 class TFAGATEWAY_V2 extends IPSModule
 {
@@ -121,7 +122,7 @@ class TFAGATEWAY_V2 extends IPSModule
             }
         }
 
-        $request = $this->GetBuffer('DataBuffer' . $ClientIP . $ClientPort) . utf8_decode($data);
+        $request = $this->GetBuffer('DataBuffer' . $ClientIP . $ClientPort) . tfa_from_transport($data);
 
         // HEADER AUSWERTUNG
         if ($this->GetBuffer('DataBuffer' . $ClientIP . $ClientPort) == '') {
@@ -288,7 +289,7 @@ class TFAGATEWAY_V2 extends IPSModule
 
         $Server['DataID'] = '{C8792760-65CF-4C53-B5C7-A30FCC84FEFE}';
         $Server['Type'] = 0; // DATEN SENDEN
-        $Server['Buffer'] = utf8_encode($response);
+        $Server['Buffer'] = tfa_to_transport($response);
         $Server['ClientIP'] = $ClientIP;
         $Server['ClientPort'] = $ClientPort;
         @$ServerJSON = json_encode($Server);
@@ -318,7 +319,7 @@ class TFAGATEWAY_V2 extends IPSModule
         $Server['Type'] = 2; // VERBINDUNG TRENNEN
         $Server['ClientIP'] = $ClientIP;
         $Server['ClientPort'] = $ClientPort;
-        $Server['Buffer'] = utf8_encode('');
+        $Server['Buffer'] = tfa_to_transport('');
         @$ServerJSON = json_encode($Server);
         @$this->SendDataToParent($ServerJSON);
 
@@ -557,14 +558,14 @@ class TFAGATEWAY_V2 extends IPSModule
         $json = json_encode([
             'DataID'       => '{99C7FBD6-D83A-4E3C-B395-CB508547A2FC}',
             'InstanceID'   => (int) $this->InstanceID,
-            'Data'         => utf8_encode($data),
-            'PackageHeader'=> utf8_encode($packageheader),
-            'Timestamp'    => utf8_encode($timestamp),
-            'PackageLengt' => utf8_encode($packagelength),
-            'DeviceID'     => utf8_encode($deviceid),
-            'CRC'          => utf8_encode($crc),
-            'IDENTIFY'     => utf8_encode($id),
-            'SDATA'        => utf8_encode($sdata),
+            'Data'         => tfa_to_transport($data),
+            'PackageHeader'=> tfa_to_transport($packageheader),
+            'Timestamp'    => tfa_to_transport((string) $timestamp),
+            'PackageLengt' => tfa_to_transport((string) $packagelength),
+            'DeviceID'     => tfa_to_transport($deviceid),
+            'CRC'          => tfa_to_transport($crc),
+            'IDENTIFY'     => tfa_to_transport($id),
+            'SDATA'        => tfa_to_transport($sdata),
 
         ]);
         $this->SendDataToChildren($json);
