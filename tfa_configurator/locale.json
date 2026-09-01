@@ -1,0 +1,42 @@
+{
+    "translations": {
+        "de": {
+            "found sensors": "Gefundene Sensoren",
+            "device id": "Geräte ID",
+            "type": "Typ",
+            "sensor": "Sensor",
+            "article": "Artikelnummer",
+            "state": "Status",
+            "packets": "Pakete",
+            "unknown sensor": "Unbekannter Sensor",
+            "unknown": "unbekannt",
+            "no module available": "kein Modul vorhanden",
+            "does not match the building block": "passt nicht zum Baustein",
+            "no unknown sensor seen": "kein unbekannter Sensor empfangen",
+            "device not found": "Gerät nicht gefunden",
+            "show code": "Code anzeigen",
+            "code": "Code",
+            "Please send us the code below together with the sensor type.": "Bitte schickt uns den Code unten zusammen mit der Sensorbezeichnung.",
+            "enter bytes manually": "Bytes von Hand eingeben",
+            "Paste the 64 byte packet a user sent you, as hex. Separators do not matter.": "Hier das 64 Byte lange Paket einfügen, das euch ein Anwender geschickt hat, als Hex. Trennzeichen sind egal.",
+            "packet (hex)": "Paket (Hex)",
+            "analyse": "Auswerten",
+            "clear list": "Liste leeren",
+            "error": "Fehler",
+            "length": "Länge",
+            "time": "Zeit",
+            "payload": "Nutzdaten",
+            "matches the building block": "passt zum Baustein",
+            "active": "aktiv",
+            "no gateway connected": "kein Gateway verbunden",
+            "getestet": "getestet",
+            "beta": "beta",
+            "ungetestet": "ungetestet",
+            "kein modul": "kein Modul",
+            "Regensensor": "Regensensor",
+            "Windsensor": "Windsensor",
+            "Temperatur-Sender": "Temperatur-Sender",
+            "KLIMA@HOME": "KLIMA@HOME"
+        }
+    }
+}
