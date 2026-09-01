@@ -58,7 +58,7 @@ if (!defined('TFA_GENERIC_SENSOR')) define('TFA_GENERIC_SENSOR', '{904322F3-ED27
 
 @return					array der Pfade
 
-@see					Mitgelieferte Bausteine liegen im Modulordner und werden
+@see					Mitgelieferte Bausteine liegen unter libs/sensors und werden
                         bei einem Update ersetzt. Selbst gebaute liegen daneben
                         im Kernelverzeichnis und ueberleben das Update. Bei
                         gleicher Typ-ID gewinnt der selbst gebaute.
@@ -66,7 +66,7 @@ if (!defined('TFA_GENERIC_SENSOR')) define('TFA_GENERIC_SENSOR', '{904322F3-ED27
  */
 function tfa_sensor_paths()
 {
-    $paths = [__ROOT__ . '/sensors'];
+    $paths = [__ROOT__ . '/libs/sensors'];
 
     if (function_exists('IPS_GetKernelDir')) {
         $paths[] = IPS_GetKernelDir() . 'tfa_sensors';

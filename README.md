@@ -25,7 +25,7 @@ Mit diesem Modul könnt ihr relativ günstig diverse Wetterinformationen in euer
 
 **Ihr müsst keine Sensor-IDs mehr abtippen.** Der neue Konfigurator zeigt alle Sensoren, die euer Gateway empfängt, und legt sie auf Knopfdruck an — mit vorbelegter ID.
 
-**Ein Sensormodul statt zwölf.** Früher gab es für jeden Sensortyp ein eigenes Modul. Jetzt gibt es ein Modul „TFA Sensor", dem der Typ mitgegeben wird. Wie die Bytes eines Sensors auszuwerten sind, steht in einer Beschreibungsdatei im Ordner `sensors/`.
+**Ein Sensormodul statt zwölf.** Früher gab es für jeden Sensortyp ein eigenes Modul. Jetzt gibt es ein Modul „TFA Sensor", dem der Typ mitgegeben wird. Wie die Bytes eines Sensors auszuwerten sind, steht in einer Beschreibungsdatei im Ordner `libs/sensors/`.
 
 **Neue Sensoren ohne Programmierung.** Weil diese Beschreibung nur eine Datei ist, könnt ihr einen neuen Sensortyp mit dem mitgelieferten Baukasten selbst zusammenbauen. Er taucht dann sofort im Konfigurator auf. Wir freuen uns, wenn ihr uns solche Dateien schickt.
 
@@ -132,7 +132,7 @@ Das könnt ihr zusätzlich installieren. Es ruft die Weboberfläche eures Gatewa
 
 ## 9. Einen neuen Sensor selbst bauen
 
-Jeder Sensortyp wird durch **eine Datei** im Ordner `sensors/` beschrieben: welche Bytes mit welcher Rechenvorschrift ausgewertet werden und in welche Variablen das Ergebnis wandert. Mehr braucht es nicht — kein PHP, keine neue Modulkennung.
+Jeder Sensortyp wird durch **eine Datei** im Ordner `libs/sensors/` beschrieben: welche Bytes mit welcher Rechenvorschrift ausgewertet werden und in welche Variablen das Ergebnis wandert. Mehr braucht es nicht — kein PHP, keine neue Modulkennung.
 
 Legt dazu eine Instanz **TFASENSORBUILDER_V2** an. Darin:
 
@@ -143,7 +143,7 @@ Legt dazu eine Instanz **TFASENSORBUILDER_V2** an. Darin:
 
 Selbst gebaute Bausteine werden im Kernelverzeichnis abgelegt, nicht im Modulordner. Ein Update der Bibliothek löscht sie also nicht.
 
-Das genaue Format, alle verfügbaren Rechenvorschriften und was sie liefern, steht in [sensors/README.md](sensors/README.md).
+Das genaue Format, alle verfügbaren Rechenvorschriften und was sie liefern, steht in [libs/sensors/README.md](libs/sensors/README.md).
 
 **Bitte schickt uns eure Bausteine.** Dann nehmen wir sie in die Bibliothek auf und alle haben etwas davon.
 
@@ -192,7 +192,7 @@ Wir können natürlich trotz aller Sorgfalt keine Garantie für dieses Modul und
 
 |Datum        |Version |Beschreibung|
 |:-----------:|:------:|:-----------|
-|01.09.2026 | 2.0 |Eigenständige Bibliothek neben Version 1.<br>Konfigurator, der Sensoren findet und anlegt.<br>Ein Sensormodul für alle Typen, beschrieben durch Dateien in `sensors/`.<br>Baukasten für eigene Sensortypen.<br>Mitschnitt-Modul.<br>Batterieanzeige korrigiert: „ok" ist jetzt grün.|
+|01.09.2026 | 2.0 |Eigenständige Bibliothek neben Version 1.<br>Konfigurator, der Sensoren findet und anlegt.<br>Ein Sensormodul für alle Typen, beschrieben durch Dateien in `libs/sensors/`.<br>Baukasten für eigene Sensortypen.<br>Mitschnitt-Modul.<br>Batterieanzeige korrigiert: „ok" ist jetzt grün.|
 |07.07.2026 | 1.8 |HTTP-Gateway gegen hängende Socket-Verbindungen abgesichert|
 |06.04.2025 | 1.7 |Sensor ID-11 hinzugefügt|
 |30.03.2025 | 1.6 |Sensor ID-07 hinzugefügt|
