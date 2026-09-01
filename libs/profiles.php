@@ -43,23 +43,34 @@ if (!defined('TFA_COLOR_WARN')) define('TFA_COLOR_WARN', 0xDC3545);   // rot
  */
 function tfa_create_profiles($module)
 {
-    if (IPS_VariableProfileExists(TFA_PROFILE_BATTERY)) return;
+    if (!IPS_VariableProfileExists(TFA_PROFILE_BATTERY)) {
+        IPS_CreateVariableProfile(TFA_PROFILE_BATTERY, VARIABLETYPE_BOOLEAN);
+    }
 
-    IPS_CreateVariableProfile(TFA_PROFILE_BATTERY, VARIABLETYPE_BOOLEAN);
     IPS_SetVariableProfileIcon(TFA_PROFILE_BATTERY, 'Battery');
 
+    /*
+        Die Zuordnungen werden bei jedem Aufruf neu gesetzt, nicht nur beim
+        Anlegen. Sonst bleibt ein Profil, das ein frueherer Stand mit
+        falschen Farben erzeugt hat, fuer immer falsch.
+
+        Der Wert ist eine Zahl, kein Wahrheitswert: die IPS-Schnittstelle
+        erwartet an dieser Stelle einen Zahlenwert, und mit
+        declare(strict_types=1) ist der Unterschied nicht mehr egal.
+     */
     IPS_SetVariableProfileAssociation(
         TFA_PROFILE_BATTERY,
-        false,
+        0,
         $module->Translate('battery ok'),
         '',
         TFA_COLOR_OK
     );
     IPS_SetVariableProfileAssociation(
         TFA_PROFILE_BATTERY,
-        true,
+        1,
         $module->Translate('battery low'),
         '',
         TFA_COLOR_WARN
     );
 }
+
