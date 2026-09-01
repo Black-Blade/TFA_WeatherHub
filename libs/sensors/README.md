@@ -48,11 +48,30 @@ an- und abwählt.
     "ident": "temperature",      // technischer Name, vom Nutzer NICHT änderbar — nie doppelt vergeben
     "name": "temperature",       // Anzeigename, englisch, Übersetzung in locale.json
     "type": "float",             // boolean | integer | float | string
-    "profile": "~Temperature",   // IPS-Variablenprofil, leer = keines
     "position": 2,               // Sortierung im Objektbaum
-    "field": "temperature"       // welches Feld aus dem Dekoder-Ergebnis
+    "field": "temperature",      // welches Feld aus dem Dekoder-Ergebnis
+    "presentation": {            // wie der Wert angezeigt wird, siehe unten
+        "PRESENTATION": "VALUE",
+        "SUFFIX": " °C",
+        "DIGITS": 1,
+        "USAGE_TYPE": 1
+    }
 }
 ```
+
+### Darstellung
+
+Ab Symcon 8 bestimmt nicht mehr ein zentrales Profil die Anzeige, sondern eine **Darstellung** je Variable. Fehlt der Abschnitt `presentation`, wird der Wert unformatiert angezeigt.
+
+`PRESENTATION` ist eines von drei Kurzwörtern; die übrigen Schlüssel sind genau die aus der [Symcon-Dokumentation](https://www.symcon.de/de/service/dokumentation/entwicklerbereich/sdk-tools/sdk-php/darstellungen/).
+
+| Kurzwort | wofür | wichtige Schlüssel |
+|---|---|---|
+| `VALUE` | Messwerte | `SUFFIX`, `DIGITS`, `ICON`, `MIN`, `MAX`, `USAGE_TYPE` (1 = Temperatur) |
+| `ENUMERATION` | feste Zustände, etwa Batterie oder Himmelsrichtung | `OPTIONS` mit `Value`, `Caption`, `Color`; `DISPLAY` (0 Text, 1 Icon, 2 beides) |
+| `DATETIME` | Zeitstempel | `TEMPLATE`: `DATE`, `TIME` oder `DATE_TIME` |
+
+`Caption` wird über die `locale.json` übersetzt, `Color` ist eine RGB-Zahl (`0x28A745` = grün).
 
 `field` muss eines der Felder sein, die der gewählte Dekoder zurückgibt.
 

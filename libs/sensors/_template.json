@@ -22,7 +22,23 @@
                     "ident": "battery",
                     "name": "battery",
                     "type": "boolean",
-                    "profile": "TFA.Battery",
+                    "presentation": {
+                        "PRESENTATION": "ENUMERATION",
+                        "ICON": "battery-full",
+                        "DISPLAY": 0,
+                        "OPTIONS": [
+                            {
+                                "Value": true,
+                                "Caption": "battery ok",
+                                "Color": 2664261
+                            },
+                            {
+                                "Value": false,
+                                "Caption": "battery low",
+                                "Color": 14431557
+                            }
+                        ]
+                    },
                     "position": 0,
                     "field": "batteryok"
                 },
@@ -30,7 +46,6 @@
                     "ident": "heartbeat",
                     "name": "heartbeat",
                     "type": "boolean",
-                    "profile": "",
                     "position": 1,
                     "field": "heartbeat"
                 }
@@ -46,7 +61,13 @@
                     "ident": "temperature",
                     "name": "temperature",
                     "type": "float",
-                    "profile": "TFA.Temperature",
+                    "presentation": {
+                        "PRESENTATION": "VALUE",
+                        "SUFFIX": " °C",
+                        "DIGITS": 1,
+                        "USAGE_TYPE": 1,
+                        "ICON": "temperature-half"
+                    },
                     "position": 2,
                     "field": "temperature"
                 }

@@ -22,7 +22,23 @@
                     "ident": "battery",
                     "name": "battery",
                     "type": "boolean",
-                    "profile": "TFA.Battery",
+                    "presentation": {
+                        "PRESENTATION": "ENUMERATION",
+                        "ICON": "battery-full",
+                        "DISPLAY": 0,
+                        "OPTIONS": [
+                            {
+                                "Value": true,
+                                "Caption": "battery ok",
+                                "Color": 2664261
+                            },
+                            {
+                                "Value": false,
+                                "Caption": "battery low",
+                                "Color": 14431557
+                            }
+                        ]
+                    },
                     "position": 0,
                     "field": "batteryok"
                 },
@@ -30,7 +46,6 @@
                     "ident": "heartbeat",
                     "name": "heartbeat",
                     "type": "boolean",
-                    "profile": "",
                     "position": 1,
                     "field": "heartbeat"
                 },
@@ -38,7 +53,6 @@
                     "ident": "counter",
                     "name": "counter",
                     "type": "integer",
-                    "profile": "",
                     "position": 2,
                     "field": "counter"
                 },
@@ -46,7 +60,10 @@
                     "ident": "update",
                     "name": "update",
                     "type": "integer",
-                    "profile": "~UnixTimestamp",
+                    "presentation": {
+                        "PRESENTATION": "DATETIME",
+                        "TEMPLATE": "DATE_TIME"
+                    },
                     "position": 3,
                     "field": "update"
                 }
@@ -62,7 +79,6 @@
                     "ident": "up_05_current",
                     "name": "up 05 current",
                     "type": "boolean",
-                    "profile": "",
                     "position": 4,
                     "field": "up05"
                 },
@@ -70,7 +86,6 @@
                     "ident": "down_05_current",
                     "name": "down 05 current",
                     "type": "boolean",
-                    "profile": "",
                     "position": 5,
                     "field": "down05"
                 },
@@ -78,7 +93,6 @@
                     "ident": "overflow_current",
                     "name": "overflow current",
                     "type": "boolean",
-                    "profile": "",
                     "position": 6,
                     "field": "overflow"
                 },
@@ -86,7 +100,6 @@
                     "ident": "error_current",
                     "name": "error current",
                     "type": "boolean",
-                    "profile": "",
                     "position": 7,
                     "field": "error"
                 },
@@ -94,7 +107,13 @@
                     "ident": "temperature_current",
                     "name": "temperature current",
                     "type": "float",
-                    "profile": "TFA.Temperature",
+                    "presentation": {
+                        "PRESENTATION": "VALUE",
+                        "SUFFIX": " °C",
+                        "DIGITS": 1,
+                        "USAGE_TYPE": 1,
+                        "ICON": "temperature-half"
+                    },
                     "position": 7,
                     "field": "temperature"
                 }
@@ -110,7 +129,6 @@
                     "ident": "up_05_previous",
                     "name": "up 05 previous",
                     "type": "boolean",
-                    "profile": "",
                     "position": 8,
                     "field": "up05"
                 },
@@ -118,7 +136,6 @@
                     "ident": "down_05_previous",
                     "name": "down 05 previous",
                     "type": "boolean",
-                    "profile": "",
                     "position": 9,
                     "field": "down05"
                 },
@@ -126,7 +143,6 @@
                     "ident": "overflow_previous",
                     "name": "overflow previous",
                     "type": "boolean",
-                    "profile": "",
                     "position": 10,
                     "field": "overflow"
                 },
@@ -134,7 +150,6 @@
                     "ident": "error_previous",
                     "name": "error previous",
                     "type": "boolean",
-                    "profile": "",
                     "position": 11,
                     "field": "error"
                 },
@@ -142,7 +157,13 @@
                     "ident": "temperature_previous",
                     "name": "temperature previous",
                     "type": "float",
-                    "profile": "TFA.Temperature",
+                    "presentation": {
+                        "PRESENTATION": "VALUE",
+                        "SUFFIX": " °C",
+                        "DIGITS": 1,
+                        "USAGE_TYPE": 1,
+                        "ICON": "temperature-half"
+                    },
                     "position": 12,
                     "field": "temperature"
                 }

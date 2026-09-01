@@ -37,7 +37,7 @@ Mit diesem Modul könnt ihr relativ günstig diverse Wetterinformationen in euer
 
 - Das TFA WeatherHub Gateway
 - mindestens ein passender TFA Sensor (für die Erstanschaffung empfiehlt sich ein Starterset)
-- IPS ab 6.0
+- IPS ab 8.0 (die neuen Variablen-Darstellungen gibt es erst ab dieser Fassung)
 
 ## 3. Kompatible Sensoren
 

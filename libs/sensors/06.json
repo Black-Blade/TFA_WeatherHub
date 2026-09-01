@@ -22,7 +22,23 @@
                     "ident": "battery",
                     "name": "battery",
                     "type": "boolean",
-                    "profile": "TFA.Battery",
+                    "presentation": {
+                        "PRESENTATION": "ENUMERATION",
+                        "ICON": "battery-full",
+                        "DISPLAY": 0,
+                        "OPTIONS": [
+                            {
+                                "Value": true,
+                                "Caption": "battery ok",
+                                "Color": 2664261
+                            },
+                            {
+                                "Value": false,
+                                "Caption": "battery low",
+                                "Color": 14431557
+                            }
+                        ]
+                    },
                     "position": 0,
                     "field": "batteryok"
                 },
@@ -30,7 +46,6 @@
                     "ident": "heartbeat",
                     "name": "heartbeat",
                     "type": "boolean",
-                    "profile": "",
                     "position": 1,
                     "field": "heartbeat"
                 },
@@ -38,7 +53,6 @@
                     "ident": "counter",
                     "name": "counter",
                     "type": "integer",
-                    "profile": "",
                     "position": 2,
                     "field": "counter"
                 },
@@ -46,7 +60,10 @@
                     "ident": "update",
                     "name": "update",
                     "type": "integer",
-                    "profile": "~UnixTimestamp",
+                    "presentation": {
+                        "PRESENTATION": "DATETIME",
+                        "TEMPLATE": "DATE_TIME"
+                    },
                     "position": 3,
                     "field": "update"
                 }
@@ -62,7 +79,6 @@
                     "ident": "up_05_current",
                     "name": "up 05 current",
                     "type": "boolean",
-                    "profile": "",
                     "position": 4,
                     "field": "up05"
                 },
@@ -70,7 +86,6 @@
                     "ident": "down_05_current",
                     "name": "down 05 current",
                     "type": "boolean",
-                    "profile": "",
                     "position": 5,
                     "field": "down05"
                 },
@@ -78,7 +93,6 @@
                     "ident": "overflow_current",
                     "name": "overflow current",
                     "type": "boolean",
-                    "profile": "",
                     "position": 6,
                     "field": "overflow"
                 },
@@ -86,7 +100,6 @@
                     "ident": "error_current",
                     "name": "error current",
                     "type": "boolean",
-                    "profile": "",
                     "position": 7,
                     "field": "error"
                 },
@@ -94,7 +107,13 @@
                     "ident": "temperature_current",
                     "name": "temperature current",
                     "type": "float",
-                    "profile": "TFA.Temperature",
+                    "presentation": {
+                        "PRESENTATION": "VALUE",
+                        "SUFFIX": " °C",
+                        "DIGITS": 1,
+                        "USAGE_TYPE": 1,
+                        "ICON": "temperature-half"
+                    },
                     "position": 8,
                     "field": "temperature"
                 }
@@ -110,7 +129,6 @@
                     "ident": "pool_up_05_current",
                     "name": "pool up 05 current",
                     "type": "boolean",
-                    "profile": "",
                     "position": 5,
                     "field": "up05"
                 },
@@ -118,7 +136,6 @@
                     "ident": "pool_down_05_current",
                     "name": "pool down 05 current",
                     "type": "boolean",
-                    "profile": "",
                     "position": 6,
                     "field": "down05"
                 },
@@ -126,7 +143,6 @@
                     "ident": "pool_overflow_current",
                     "name": "pool overflow current",
                     "type": "boolean",
-                    "profile": "",
                     "position": 7,
                     "field": "overflow"
                 },
@@ -134,7 +150,6 @@
                     "ident": "pool_error_current",
                     "name": "pool error current",
                     "type": "boolean",
-                    "profile": "",
                     "position": 8,
                     "field": "error"
                 },
@@ -142,7 +157,13 @@
                     "ident": "pool_temperature_current",
                     "name": "pool temperature current",
                     "type": "float",
-                    "profile": "TFA.Temperature",
+                    "presentation": {
+                        "PRESENTATION": "VALUE",
+                        "SUFFIX": " °C",
+                        "DIGITS": 1,
+                        "USAGE_TYPE": 1,
+                        "ICON": "temperature-half"
+                    },
                     "position": 9,
                     "field": "temperature"
                 }
@@ -158,7 +179,6 @@
                     "ident": "humidity_up_05_current",
                     "name": "humidity up 05 current",
                     "type": "boolean",
-                    "profile": "",
                     "position": 10,
                     "field": "up05"
                 },
@@ -166,7 +186,6 @@
                     "ident": "humidity_down_05_current",
                     "name": "humidity down 05 current",
                     "type": "boolean",
-                    "profile": "",
                     "position": 11,
                     "field": "down05"
                 },
@@ -174,7 +193,6 @@
                     "ident": "humidity_id_current",
                     "name": "humidity id current",
                     "type": "integer",
-                    "profile": "",
                     "position": 12,
                     "field": "id"
                 },
@@ -182,7 +200,6 @@
                     "ident": "humidity_calculated_current",
                     "name": "humidity calculated current",
                     "type": "string",
-                    "profile": "",
                     "position": 13,
                     "field": "average"
                 },
@@ -190,7 +207,12 @@
                     "ident": "humidity_current",
                     "name": "humidity current",
                     "type": "float",
-                    "profile": "TFA.Humidity",
+                    "presentation": {
+                        "PRESENTATION": "VALUE",
+                        "SUFFIX": " %",
+                        "DIGITS": 1,
+                        "ICON": "droplet"
+                    },
                     "position": 14,
                     "field": "humidity"
                 }
@@ -206,7 +228,6 @@
                     "ident": "up_05_previous",
                     "name": "up 05 previous",
                     "type": "boolean",
-                    "profile": "",
                     "position": 15,
                     "field": "up05"
                 },
@@ -214,7 +235,6 @@
                     "ident": "down_05_previous",
                     "name": "down 05 previous",
                     "type": "boolean",
-                    "profile": "",
                     "position": 16,
                     "field": "down05"
                 },
@@ -222,7 +242,6 @@
                     "ident": "overflow_previous",
                     "name": "overflow previous",
                     "type": "boolean",
-                    "profile": "",
                     "position": 17,
                     "field": "overflow"
                 },
@@ -230,7 +249,6 @@
                     "ident": "error_previous",
                     "name": "error previous",
                     "type": "boolean",
-                    "profile": "",
                     "position": 18,
                     "field": "error"
                 },
@@ -238,7 +256,13 @@
                     "ident": "temperature_previous",
                     "name": "temperature previous",
                     "type": "float",
-                    "profile": "TFA.Temperature",
+                    "presentation": {
+                        "PRESENTATION": "VALUE",
+                        "SUFFIX": " °C",
+                        "DIGITS": 1,
+                        "USAGE_TYPE": 1,
+                        "ICON": "temperature-half"
+                    },
                     "position": 19,
                     "field": "temperature"
                 }
@@ -254,7 +278,6 @@
                     "ident": "pool_up_05_previous",
                     "name": "pool up 05 previous",
                     "type": "boolean",
-                    "profile": "",
                     "position": 20,
                     "field": "up05"
                 },
@@ -262,7 +285,6 @@
                     "ident": "pool_down_05_previous",
                     "name": "pool down 05 previous",
                     "type": "boolean",
-                    "profile": "",
                     "position": 21,
                     "field": "down05"
                 },
@@ -270,7 +292,6 @@
                     "ident": "pool_overflow_previous",
                     "name": "pool overflow previous",
                     "type": "boolean",
-                    "profile": "",
                     "position": 22,
                     "field": "overflow"
                 },
@@ -278,7 +299,6 @@
                     "ident": "pool_error_previous",
                     "name": "pool error previous",
                     "type": "boolean",
-                    "profile": "",
                     "position": 23,
                     "field": "error"
                 },
@@ -286,7 +306,13 @@
                     "ident": "pool_temperature_previous",
                     "name": "pool temperature previous",
                     "type": "float",
-                    "profile": "TFA.Temperature",
+                    "presentation": {
+                        "PRESENTATION": "VALUE",
+                        "SUFFIX": " °C",
+                        "DIGITS": 1,
+                        "USAGE_TYPE": 1,
+                        "ICON": "temperature-half"
+                    },
                     "position": 24,
                     "field": "temperature"
                 }
@@ -302,7 +328,6 @@
                     "ident": "humidity_up_05_previous",
                     "name": "humidity up 05 previous",
                     "type": "boolean",
-                    "profile": "",
                     "position": 25,
                     "field": "up05"
                 },
@@ -310,7 +335,6 @@
                     "ident": "humidity_down_05_previous",
                     "name": "humidity down 05 previous",
                     "type": "boolean",
-                    "profile": "",
                     "position": 26,
                     "field": "down05"
                 },
@@ -318,7 +342,6 @@
                     "ident": "humidity_id_previous",
                     "name": "humidity id previous",
                     "type": "integer",
-                    "profile": "",
                     "position": 27,
                     "field": "id"
                 },
@@ -326,7 +349,6 @@
                     "ident": "humidity_calculated_previous",
                     "name": "humidity calculated previous",
                     "type": "string",
-                    "profile": "",
                     "position": 28,
                     "field": "average"
                 },
@@ -334,7 +356,12 @@
                     "ident": "humidity_previous",
                     "name": "humidity previous",
                     "type": "float",
-                    "profile": "TFA.Humidity",
+                    "presentation": {
+                        "PRESENTATION": "VALUE",
+                        "SUFFIX": " %",
+                        "DIGITS": 1,
+                        "ICON": "droplet"
+                    },
                     "position": 29,
                     "field": "humidity"
                 }

@@ -19,7 +19,7 @@ if (!defined('__ROOT__'))  define('__ROOT__', dirname(dirname(__FILE__)));
 
 //load helper functionen
 require_once __ROOT__ . '/libs/sensor_decode.php';
-require_once __ROOT__ . '/libs/profiles.php';
+require_once __ROOT__ . '/libs/presentations.php';
 require_once __ROOT__ . '/libs/frame_tools.php';
 
 class TFASENSOR_V2 extends IPSModule
@@ -96,7 +96,6 @@ class TFASENSOR_V2 extends IPSModule
 
         if (!$this->CheckStatus()) return;
 
-        tfa_create_profiles($this);
         $this->CreateVariables();
     }
 
@@ -324,23 +323,30 @@ class TFASENSOR_V2 extends IPSModule
                 if (!$this->ReadPropertyBoolean('var_' . $v['ident'])) continue;
 
                 $name = $this->Translate($v['name']);
-                $profile = $v['profile'];
                 $pos = $v['position'];
 
-                if ($v['type'] == 'boolean') $this->RegisterVariableBoolean($v['ident'], $name, $profile, $pos);
-                if ($v['type'] == 'integer') $this->RegisterVariableInteger($v['ident'], $name, $profile, $pos);
-                if ($v['type'] == 'float')   $this->RegisterVariableFloat($v['ident'], $name, $profile, $pos);
-                if ($v['type'] == 'string')  $this->RegisterVariableString($v['ident'], $name, $profile, $pos);
+                /*
+                    Seit Symcon 8 bekommt die Variable eine Darstellung statt
+                    eines Profils. Fehlt die Angabe im Baustein, bleibt es bei
+                    der Standardanzeige.
+                 */
+                $darstellung = tfa_build_presentation($v['presentation'] ?? null, $this);
+
+                if ($v['type'] == 'boolean') $this->RegisterVariableBoolean($v['ident'], $name, $darstellung, $pos);
+                if ($v['type'] == 'integer') $this->RegisterVariableInteger($v['ident'], $name, $darstellung, $pos);
+                if ($v['type'] == 'float')   $this->RegisterVariableFloat($v['ident'], $name, $darstellung, $pos);
+                if ($v['type'] == 'string')  $this->RegisterVariableString($v['ident'], $name, $darstellung, $pos);
 
                 /*
-                    IPS setzt das Profil nur beim Anlegen der Variablen.
-                    Bestandsvariablen wuerden sonst fuer immer am alten
-                    Systemprofil haengen.
+                    Wer von einer aelteren Fassung kommt, hat an der Variablen
+                    noch eines unserer Legacy-Profile haengen. Das wuerde die
+                    Darstellung ueberdecken, also raeumen wir es weg - aber nur
+                    unsere eigenen, nichts vom Anwender Gewaehltes.
                  */
                 $vid = $this->GetIDForIdent($v['ident']);
 
-                if ($vid !== false && tfa_fix_variable_profile($vid, $profile)) {
-                    $this->SendDebug('profil', $v['ident'] . ' auf ' . $profile . ' umgezogen', 0);
+                if ($vid !== false && tfa_clear_legacy_profile($vid)) {
+                    $this->SendDebug('darstellung', $v['ident'] . ': altes Profil entfernt', 0);
                 }
             }
         }

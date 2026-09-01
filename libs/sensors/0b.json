@@ -22,7 +22,23 @@
                     "ident": "battery",
                     "name": "battery",
                     "type": "boolean",
-                    "profile": "TFA.Battery",
+                    "presentation": {
+                        "PRESENTATION": "ENUMERATION",
+                        "ICON": "battery-full",
+                        "DISPLAY": 0,
+                        "OPTIONS": [
+                            {
+                                "Value": true,
+                                "Caption": "battery ok",
+                                "Color": 2664261
+                            },
+                            {
+                                "Value": false,
+                                "Caption": "battery low",
+                                "Color": 14431557
+                            }
+                        ]
+                    },
                     "position": 0,
                     "field": "batteryok"
                 },
@@ -30,7 +46,6 @@
                     "ident": "heartbeat",
                     "name": "heartbeat",
                     "type": "boolean",
-                    "profile": "",
                     "position": 1,
                     "field": "heartbeat"
                 },
@@ -38,7 +53,6 @@
                     "ident": "counter",
                     "name": "counter",
                     "type": "integer",
-                    "profile": "",
                     "position": 2,
                     "field": "counter"
                 },
@@ -46,7 +60,10 @@
                     "ident": "update",
                     "name": "update",
                     "type": "integer",
-                    "profile": "~UnixTimestamp",
+                    "presentation": {
+                        "PRESENTATION": "DATETIME",
+                        "TEMPLATE": "DATE_TIME"
+                    },
                     "position": 3,
                     "field": "update"
                 }
@@ -62,7 +79,77 @@
                     "ident": "winddirection",
                     "name": "winddirection",
                     "type": "float",
-                    "profile": "TFA.WindDirection",
+                    "presentation": {
+                        "PRESENTATION": "ENUMERATION",
+                        "ICON": "compass",
+                        "DISPLAY": 0,
+                        "OPTIONS": [
+                            {
+                                "Value": 0.0,
+                                "Caption": "N"
+                            },
+                            {
+                                "Value": 22.5,
+                                "Caption": "NNE"
+                            },
+                            {
+                                "Value": 45.0,
+                                "Caption": "NE"
+                            },
+                            {
+                                "Value": 67.5,
+                                "Caption": "ENE"
+                            },
+                            {
+                                "Value": 90.0,
+                                "Caption": "E"
+                            },
+                            {
+                                "Value": 112.5,
+                                "Caption": "ESE"
+                            },
+                            {
+                                "Value": 135.0,
+                                "Caption": "SE"
+                            },
+                            {
+                                "Value": 157.5,
+                                "Caption": "SSE"
+                            },
+                            {
+                                "Value": 180.0,
+                                "Caption": "S"
+                            },
+                            {
+                                "Value": 202.5,
+                                "Caption": "SSW"
+                            },
+                            {
+                                "Value": 225.0,
+                                "Caption": "SW"
+                            },
+                            {
+                                "Value": 247.5,
+                                "Caption": "WSW"
+                            },
+                            {
+                                "Value": 270.0,
+                                "Caption": "W"
+                            },
+                            {
+                                "Value": 292.5,
+                                "Caption": "WNW"
+                            },
+                            {
+                                "Value": 315.0,
+                                "Caption": "NW"
+                            },
+                            {
+                                "Value": 337.5,
+                                "Caption": "NNW"
+                            }
+                        ]
+                    },
                     "position": 4,
                     "field": "winddirection"
                 },
@@ -70,7 +157,12 @@
                     "ident": "windspeed",
                     "name": "windspeed",
                     "type": "float",
-                    "profile": "TFA.WindSpeed",
+                    "presentation": {
+                        "PRESENTATION": "VALUE",
+                        "SUFFIX": " m/s",
+                        "DIGITS": 1,
+                        "ICON": "wind"
+                    },
                     "position": 5,
                     "field": "windspeed"
                 },
@@ -78,7 +170,12 @@
                     "ident": "gustspeed",
                     "name": "gustspeed",
                     "type": "float",
-                    "profile": "TFA.WindSpeed",
+                    "presentation": {
+                        "PRESENTATION": "VALUE",
+                        "SUFFIX": " m/s",
+                        "DIGITS": 1,
+                        "ICON": "wind"
+                    },
                     "position": 6,
                     "field": "gustspeed"
                 },
@@ -86,7 +183,10 @@
                     "ident": "lasttransmit",
                     "name": "lasttransmit",
                     "type": "integer",
-                    "profile": "~UnixTimestampTime",
+                    "presentation": {
+                        "PRESENTATION": "DATETIME",
+                        "TEMPLATE": "TIME"
+                    },
                     "position": 7,
                     "field": "lasttransmit"
                 }
@@ -102,7 +202,77 @@
                     "ident": "winddirection_previous",
                     "name": "winddirection previous",
                     "type": "float",
-                    "profile": "TFA.WindDirection",
+                    "presentation": {
+                        "PRESENTATION": "ENUMERATION",
+                        "ICON": "compass",
+                        "DISPLAY": 0,
+                        "OPTIONS": [
+                            {
+                                "Value": 0.0,
+                                "Caption": "N"
+                            },
+                            {
+                                "Value": 22.5,
+                                "Caption": "NNE"
+                            },
+                            {
+                                "Value": 45.0,
+                                "Caption": "NE"
+                            },
+                            {
+                                "Value": 67.5,
+                                "Caption": "ENE"
+                            },
+                            {
+                                "Value": 90.0,
+                                "Caption": "E"
+                            },
+                            {
+                                "Value": 112.5,
+                                "Caption": "ESE"
+                            },
+                            {
+                                "Value": 135.0,
+                                "Caption": "SE"
+                            },
+                            {
+                                "Value": 157.5,
+                                "Caption": "SSE"
+                            },
+                            {
+                                "Value": 180.0,
+                                "Caption": "S"
+                            },
+                            {
+                                "Value": 202.5,
+                                "Caption": "SSW"
+                            },
+                            {
+                                "Value": 225.0,
+                                "Caption": "SW"
+                            },
+                            {
+                                "Value": 247.5,
+                                "Caption": "WSW"
+                            },
+                            {
+                                "Value": 270.0,
+                                "Caption": "W"
+                            },
+                            {
+                                "Value": 292.5,
+                                "Caption": "WNW"
+                            },
+                            {
+                                "Value": 315.0,
+                                "Caption": "NW"
+                            },
+                            {
+                                "Value": 337.5,
+                                "Caption": "NNW"
+                            }
+                        ]
+                    },
                     "position": 8,
                     "field": "winddirection"
                 },
@@ -110,7 +280,12 @@
                     "ident": "windspeed_previous",
                     "name": "windspeed",
                     "type": "float",
-                    "profile": "TFA.WindSpeed",
+                    "presentation": {
+                        "PRESENTATION": "VALUE",
+                        "SUFFIX": " m/s",
+                        "DIGITS": 1,
+                        "ICON": "wind"
+                    },
                     "position": 9,
                     "field": "windspeed"
                 },
@@ -118,7 +293,12 @@
                     "ident": "gustspeed_previous",
                     "name": "gustspeed previous",
                     "type": "float",
-                    "profile": "TFA.WindSpeed",
+                    "presentation": {
+                        "PRESENTATION": "VALUE",
+                        "SUFFIX": " m/s",
+                        "DIGITS": 1,
+                        "ICON": "wind"
+                    },
                     "position": 10,
                     "field": "gustspeed"
                 },
@@ -126,7 +306,10 @@
                     "ident": "lasttransmit_previous",
                     "name": "lasttransmit previous",
                     "type": "integer",
-                    "profile": "~UnixTimestampTime",
+                    "presentation": {
+                        "PRESENTATION": "DATETIME",
+                        "TEMPLATE": "TIME"
+                    },
                     "position": 11,
                     "field": "lasttransmit"
                 }
@@ -142,7 +325,77 @@
                     "ident": "winddirection_previous_1",
                     "name": "winddirection",
                     "type": "float",
-                    "profile": "TFA.WindDirection",
+                    "presentation": {
+                        "PRESENTATION": "ENUMERATION",
+                        "ICON": "compass",
+                        "DISPLAY": 0,
+                        "OPTIONS": [
+                            {
+                                "Value": 0.0,
+                                "Caption": "N"
+                            },
+                            {
+                                "Value": 22.5,
+                                "Caption": "NNE"
+                            },
+                            {
+                                "Value": 45.0,
+                                "Caption": "NE"
+                            },
+                            {
+                                "Value": 67.5,
+                                "Caption": "ENE"
+                            },
+                            {
+                                "Value": 90.0,
+                                "Caption": "E"
+                            },
+                            {
+                                "Value": 112.5,
+                                "Caption": "ESE"
+                            },
+                            {
+                                "Value": 135.0,
+                                "Caption": "SE"
+                            },
+                            {
+                                "Value": 157.5,
+                                "Caption": "SSE"
+                            },
+                            {
+                                "Value": 180.0,
+                                "Caption": "S"
+                            },
+                            {
+                                "Value": 202.5,
+                                "Caption": "SSW"
+                            },
+                            {
+                                "Value": 225.0,
+                                "Caption": "SW"
+                            },
+                            {
+                                "Value": 247.5,
+                                "Caption": "WSW"
+                            },
+                            {
+                                "Value": 270.0,
+                                "Caption": "W"
+                            },
+                            {
+                                "Value": 292.5,
+                                "Caption": "WNW"
+                            },
+                            {
+                                "Value": 315.0,
+                                "Caption": "NW"
+                            },
+                            {
+                                "Value": 337.5,
+                                "Caption": "NNW"
+                            }
+                        ]
+                    },
                     "position": 12,
                     "field": "winddirection"
                 },
@@ -150,7 +403,12 @@
                     "ident": "windspeed_previous_1",
                     "name": "windspeed previous 1",
                     "type": "float",
-                    "profile": "TFA.WindSpeed",
+                    "presentation": {
+                        "PRESENTATION": "VALUE",
+                        "SUFFIX": " m/s",
+                        "DIGITS": 1,
+                        "ICON": "wind"
+                    },
                     "position": 13,
                     "field": "windspeed"
                 },
@@ -158,7 +416,12 @@
                     "ident": "gustspeed_previous_1",
                     "name": "gustspeed previous 1",
                     "type": "float",
-                    "profile": "TFA.WindSpeed",
+                    "presentation": {
+                        "PRESENTATION": "VALUE",
+                        "SUFFIX": " m/s",
+                        "DIGITS": 1,
+                        "ICON": "wind"
+                    },
                     "position": 14,
                     "field": "gustspeed"
                 },
@@ -166,7 +429,10 @@
                     "ident": "lasttransmit_previous_1",
                     "name": "lasttransmit previous 1",
                     "type": "integer",
-                    "profile": "~UnixTimestampTime",
+                    "presentation": {
+                        "PRESENTATION": "DATETIME",
+                        "TEMPLATE": "TIME"
+                    },
                     "position": 15,
                     "field": "lasttransmit"
                 }
@@ -182,7 +448,77 @@
                     "ident": "winddirection_previous_2",
                     "name": "winddirection previous 2",
                     "type": "float",
-                    "profile": "TFA.WindDirection",
+                    "presentation": {
+                        "PRESENTATION": "ENUMERATION",
+                        "ICON": "compass",
+                        "DISPLAY": 0,
+                        "OPTIONS": [
+                            {
+                                "Value": 0.0,
+                                "Caption": "N"
+                            },
+                            {
+                                "Value": 22.5,
+                                "Caption": "NNE"
+                            },
+                            {
+                                "Value": 45.0,
+                                "Caption": "NE"
+                            },
+                            {
+                                "Value": 67.5,
+                                "Caption": "ENE"
+                            },
+                            {
+                                "Value": 90.0,
+                                "Caption": "E"
+                            },
+                            {
+                                "Value": 112.5,
+                                "Caption": "ESE"
+                            },
+                            {
+                                "Value": 135.0,
+                                "Caption": "SE"
+                            },
+                            {
+                                "Value": 157.5,
+                                "Caption": "SSE"
+                            },
+                            {
+                                "Value": 180.0,
+                                "Caption": "S"
+                            },
+                            {
+                                "Value": 202.5,
+                                "Caption": "SSW"
+                            },
+                            {
+                                "Value": 225.0,
+                                "Caption": "SW"
+                            },
+                            {
+                                "Value": 247.5,
+                                "Caption": "WSW"
+                            },
+                            {
+                                "Value": 270.0,
+                                "Caption": "W"
+                            },
+                            {
+                                "Value": 292.5,
+                                "Caption": "WNW"
+                            },
+                            {
+                                "Value": 315.0,
+                                "Caption": "NW"
+                            },
+                            {
+                                "Value": 337.5,
+                                "Caption": "NNW"
+                            }
+                        ]
+                    },
                     "position": 16,
                     "field": "winddirection"
                 },
@@ -190,7 +526,12 @@
                     "ident": "windspeed_previous_2",
                     "name": "windspeed previous 2",
                     "type": "float",
-                    "profile": "TFA.WindSpeed",
+                    "presentation": {
+                        "PRESENTATION": "VALUE",
+                        "SUFFIX": " m/s",
+                        "DIGITS": 1,
+                        "ICON": "wind"
+                    },
                     "position": 17,
                     "field": "windspeed"
                 },
@@ -198,7 +539,12 @@
                     "ident": "gustspeed_previous_2",
                     "name": "gustspeed previous 2",
                     "type": "float",
-                    "profile": "TFA.WindSpeed",
+                    "presentation": {
+                        "PRESENTATION": "VALUE",
+                        "SUFFIX": " m/s",
+                        "DIGITS": 1,
+                        "ICON": "wind"
+                    },
                     "position": 18,
                     "field": "gustspeed"
                 },
@@ -206,7 +552,10 @@
                     "ident": "lasttransmit_previous_2",
                     "name": "lasttransmit previous 2",
                     "type": "integer",
-                    "profile": "~UnixTimestampTime",
+                    "presentation": {
+                        "PRESENTATION": "DATETIME",
+                        "TEMPLATE": "TIME"
+                    },
                     "position": 19,
                     "field": "lasttransmit"
                 }
@@ -222,7 +571,77 @@
                     "ident": "winddirection_previous_3",
                     "name": "winddirection previous 3",
                     "type": "float",
-                    "profile": "TFA.WindDirection",
+                    "presentation": {
+                        "PRESENTATION": "ENUMERATION",
+                        "ICON": "compass",
+                        "DISPLAY": 0,
+                        "OPTIONS": [
+                            {
+                                "Value": 0.0,
+                                "Caption": "N"
+                            },
+                            {
+                                "Value": 22.5,
+                                "Caption": "NNE"
+                            },
+                            {
+                                "Value": 45.0,
+                                "Caption": "NE"
+                            },
+                            {
+                                "Value": 67.5,
+                                "Caption": "ENE"
+                            },
+                            {
+                                "Value": 90.0,
+                                "Caption": "E"
+                            },
+                            {
+                                "Value": 112.5,
+                                "Caption": "ESE"
+                            },
+                            {
+                                "Value": 135.0,
+                                "Caption": "SE"
+                            },
+                            {
+                                "Value": 157.5,
+                                "Caption": "SSE"
+                            },
+                            {
+                                "Value": 180.0,
+                                "Caption": "S"
+                            },
+                            {
+                                "Value": 202.5,
+                                "Caption": "SSW"
+                            },
+                            {
+                                "Value": 225.0,
+                                "Caption": "SW"
+                            },
+                            {
+                                "Value": 247.5,
+                                "Caption": "WSW"
+                            },
+                            {
+                                "Value": 270.0,
+                                "Caption": "W"
+                            },
+                            {
+                                "Value": 292.5,
+                                "Caption": "WNW"
+                            },
+                            {
+                                "Value": 315.0,
+                                "Caption": "NW"
+                            },
+                            {
+                                "Value": 337.5,
+                                "Caption": "NNW"
+                            }
+                        ]
+                    },
                     "position": 20,
                     "field": "winddirection"
                 },
@@ -230,7 +649,12 @@
                     "ident": "windspeed_previous_3",
                     "name": "windspeed previous 3",
                     "type": "float",
-                    "profile": "TFA.WindSpeed",
+                    "presentation": {
+                        "PRESENTATION": "VALUE",
+                        "SUFFIX": " m/s",
+                        "DIGITS": 1,
+                        "ICON": "wind"
+                    },
                     "position": 21,
                     "field": "windspeed"
                 },
@@ -238,7 +662,12 @@
                     "ident": "gustspeed_previous_3",
                     "name": "gustspeed previous 3",
                     "type": "float",
-                    "profile": "TFA.WindSpeed",
+                    "presentation": {
+                        "PRESENTATION": "VALUE",
+                        "SUFFIX": " m/s",
+                        "DIGITS": 1,
+                        "ICON": "wind"
+                    },
                     "position": 22,
                     "field": "gustspeed"
                 },
@@ -246,7 +675,10 @@
                     "ident": "lasttransmit_previous_3",
                     "name": "lasttransmit previous 3",
                     "type": "integer",
-                    "profile": "~UnixTimestampTime",
+                    "presentation": {
+                        "PRESENTATION": "DATETIME",
+                        "TEMPLATE": "TIME"
+                    },
                     "position": 23,
                     "field": "lasttransmit"
                 }
@@ -262,7 +694,77 @@
                     "ident": "winddirection_previous_4",
                     "name": "winddirection previous 4",
                     "type": "float",
-                    "profile": "TFA.WindDirection",
+                    "presentation": {
+                        "PRESENTATION": "ENUMERATION",
+                        "ICON": "compass",
+                        "DISPLAY": 0,
+                        "OPTIONS": [
+                            {
+                                "Value": 0.0,
+                                "Caption": "N"
+                            },
+                            {
+                                "Value": 22.5,
+                                "Caption": "NNE"
+                            },
+                            {
+                                "Value": 45.0,
+                                "Caption": "NE"
+                            },
+                            {
+                                "Value": 67.5,
+                                "Caption": "ENE"
+                            },
+                            {
+                                "Value": 90.0,
+                                "Caption": "E"
+                            },
+                            {
+                                "Value": 112.5,
+                                "Caption": "ESE"
+                            },
+                            {
+                                "Value": 135.0,
+                                "Caption": "SE"
+                            },
+                            {
+                                "Value": 157.5,
+                                "Caption": "SSE"
+                            },
+                            {
+                                "Value": 180.0,
+                                "Caption": "S"
+                            },
+                            {
+                                "Value": 202.5,
+                                "Caption": "SSW"
+                            },
+                            {
+                                "Value": 225.0,
+                                "Caption": "SW"
+                            },
+                            {
+                                "Value": 247.5,
+                                "Caption": "WSW"
+                            },
+                            {
+                                "Value": 270.0,
+                                "Caption": "W"
+                            },
+                            {
+                                "Value": 292.5,
+                                "Caption": "WNW"
+                            },
+                            {
+                                "Value": 315.0,
+                                "Caption": "NW"
+                            },
+                            {
+                                "Value": 337.5,
+                                "Caption": "NNW"
+                            }
+                        ]
+                    },
                     "position": 24,
                     "field": "winddirection"
                 },
@@ -270,7 +772,12 @@
                     "ident": "windspeed_previous_4",
                     "name": "windspeed previous 4",
                     "type": "float",
-                    "profile": "TFA.WindSpeed",
+                    "presentation": {
+                        "PRESENTATION": "VALUE",
+                        "SUFFIX": " m/s",
+                        "DIGITS": 1,
+                        "ICON": "wind"
+                    },
                     "position": 25,
                     "field": "windspeed"
                 },
@@ -278,7 +785,12 @@
                     "ident": "gustspeed_previous_4",
                     "name": "gustspeed previous 4",
                     "type": "float",
-                    "profile": "TFA.WindSpeed",
+                    "presentation": {
+                        "PRESENTATION": "VALUE",
+                        "SUFFIX": " m/s",
+                        "DIGITS": 1,
+                        "ICON": "wind"
+                    },
                     "position": 26,
                     "field": "gustspeed"
                 }
