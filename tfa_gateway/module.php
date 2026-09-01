@@ -215,21 +215,28 @@ class TFAGATEWAY_V2 extends IPSModule
 
             $this->SetBuffer('DataBuffer' . $ClientIP . $ClientPort, $data);
             $this->SetBuffer('DataBufferIDENTIFY' . $ClientIP . $ClientPort, $gatwayid . ':' . $mac . ':C0');
-            $this->HTTP_Response_OK($ClientIP, $ClientPort);
 
-            // Send REST Gateway to Cloud
+            /*
+                Reihenfolge ist wichtig: erst auswerten, dann antworten.
+
+                HTTP_Response_OK() ruft am Ende closesocket() auf. Das meldet
+                dem Server-Socket "Verbindung trennen", und dieses Ereignis
+                landet wieder in ReceiveData - wo der Puffer geleert wird.
+                Wird zuerst geantwortet, ist der Puffer weg, bevor wir ihn
+                auslesen konnten, und bei den Sensoren kommt nichts an.
+
+                Frueher lief die Auswertung ueber IPS_RunScriptText in einem
+                eigenen Thread und kam der Leerung meist zuvor - ein Rennen,
+                auf das man sich nicht verlassen sollte.
+             */
             if ($datalen == 15) {
                 $this->sendtocloud($ClientIP, $ClientPort);
             }
-            /*
-                Weitergabe an die Sensoren. Frueher lief das ueber
-                IPS_RunScriptText mit zusammengebautem Funktionsnamen, also
-                ueber den Prefix des Moduls. Schlug der Aufruf fehl, kam
-                stillschweigend nichts bei den Kindern an. Jetzt direkt.
-             */
             if ($datalen % 64 == 0) {
                 $this->splitesensordata($ClientIP, $ClientPort);
             }
+
+            $this->HTTP_Response_OK($ClientIP, $ClientPort);
         }
         //if there is too much data in the instance, delete the instance
         elseif ($datalensoll < $datalen) {
@@ -339,6 +346,10 @@ class TFAGATEWAY_V2 extends IPSModule
 
         $this->SetBuffer('DataBuffer' . $ClientIP . $ClientPort, '');
         $this->SetBuffer('DataBufferIDENTIFY' . $ClientIP . $ClientPort, '');
+
+        if ($this->ReadPropertyBoolean('var_debug_sensors')) {
+            $this->SendDebug('sensor', 'auszuwerten: ' . $datalen . ' Byte = ' . intdiv($datalen, 64) . ' Paket(e)' . "\r\n", 0);
+        }
 
         if (IPS_SemaphoreEnter('SEM' . $this->InstanceID, 10000)) {
             for ($i = 0; $i < $datalen; $i++) {
