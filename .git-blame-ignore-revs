@@ -1,0 +1,6 @@
+# Reine Formatierungslaeufe - fuer "git blame" ueberspringen.
+# Einmalig aktivieren mit:
+#   git config blame.ignoreRevsFile .git-blame-ignore-revs
+
+# Formatierungslauf nach Symcon-Stil
+6e1ca3a73b793b1b60d7e2e0214cf07b4802dd30
