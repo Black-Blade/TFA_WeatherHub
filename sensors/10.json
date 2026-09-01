@@ -1,0 +1,168 @@
+{
+    "typ": "10",
+    "article": "30.3311.02",
+    "name": "Tueren- und Fensterkontakt-Sensor",
+    "state": "getestet",
+    "guid": "{5267D1CA-7285-4963-5B8C-7A49CED14C9B}",
+    "frame": {
+        "header": 211,
+        "length": 11
+    },
+    "options": {
+        "windoffset": false
+    },
+    "groups": [
+        {
+            "name": "sensors",
+            "decoder": "dec_sensor_data",
+            "offset": 0,
+            "length": 2,
+            "variables": [
+                {
+                    "ident": "battery",
+                    "name": "battery",
+                    "type": "boolean",
+                    "profile": "TFA.Battery",
+                    "position": 0,
+                    "field": "battery"
+                },
+                {
+                    "ident": "heartbeat",
+                    "name": "heartbeat",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 1,
+                    "field": "heartbeat"
+                },
+                {
+                    "ident": "counter",
+                    "name": "counter",
+                    "type": "integer",
+                    "profile": "",
+                    "position": 2,
+                    "field": "counter"
+                },
+                {
+                    "ident": "update",
+                    "name": "update",
+                    "type": "integer",
+                    "profile": "~UnixTimestamp",
+                    "position": 3,
+                    "field": "update"
+                }
+            ]
+        },
+        {
+            "name": "doorwindows current",
+            "decoder": "dec_doorwindows",
+            "offset": 2,
+            "length": 2,
+            "variables": [
+                {
+                    "ident": "doorwindows_current",
+                    "name": "switch current",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 4,
+                    "field": "sensor"
+                },
+                {
+                    "ident": "doorwindows_incomming_current",
+                    "name": "lasttime current",
+                    "type": "integer",
+                    "profile": "~UnixTimestamp",
+                    "position": 5,
+                    "field": "time"
+                }
+            ]
+        },
+        {
+            "name": "doorwindows previous",
+            "decoder": "dec_doorwindows",
+            "offset": 4,
+            "length": 2,
+            "variables": [
+                {
+                    "ident": "doorwindows_previous",
+                    "name": "switch previous",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 6,
+                    "field": "sensor"
+                },
+                {
+                    "ident": "doorwindows_incomming_previous",
+                    "name": "lasttime previous",
+                    "type": "integer",
+                    "profile": "~UnixTimestamp",
+                    "position": 7,
+                    "field": "time"
+                }
+            ]
+        },
+        {
+            "name": "doorwindows previous 1",
+            "decoder": "dec_doorwindows",
+            "offset": 6,
+            "length": 2,
+            "variables": [
+                {
+                    "ident": "doorwindows_previous1",
+                    "name": "switch previous 1",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 8,
+                    "field": "sensor"
+                },
+                {
+                    "ident": "doorwindows_incomming_previous1",
+                    "name": "lasttime previous 1",
+                    "type": "integer",
+                    "profile": "~UnixTimestamp",
+                    "position": 9,
+                    "field": "time"
+                }
+            ]
+        },
+        {
+            "name": "doorwindows previous 2",
+            "decoder": "dec_doorwindows",
+            "offset": 8,
+            "length": 2,
+            "variables": [
+                {
+                    "ident": "doorwindows_previous2",
+                    "name": "switch previous 2",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 10,
+                    "field": "sensor"
+                },
+                {
+                    "ident": "doorwindows_incomming_previous2",
+                    "name": "lasttime previous 2",
+                    "type": "integer",
+                    "profile": "~UnixTimestamp",
+                    "position": 11,
+                    "field": "time"
+                }
+            ]
+        },
+        {
+            "name": "doorwindows previous 3",
+            "decoder": "dec_doorwindows",
+            "offset": 10,
+            "length": 1,
+            "variables": [
+                {
+                    "ident": "doorwindows_previous3",
+                    "name": "switch previous 3",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 12,
+                    "field": "sensor"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,296 @@
+{
+    "typ": "04",
+    "article": "30.3305.02",
+    "name": "Thermo-Hygro-Sender mit Wassermelder",
+    "state": "getestet",
+    "guid": "{D3DB8FD1-9D2D-069F-8450-38221B75DB25}",
+    "frame": {
+        "header": 212,
+        "length": 12
+    },
+    "options": {
+        "windoffset": false
+    },
+    "groups": [
+        {
+            "name": "sensors",
+            "decoder": "dec_sensor_data",
+            "offset": 0,
+            "length": 2,
+            "variables": [
+                {
+                    "ident": "battery",
+                    "name": "battery",
+                    "type": "boolean",
+                    "profile": "TFA.Battery",
+                    "position": 0,
+                    "field": "battery"
+                },
+                {
+                    "ident": "heartbeat",
+                    "name": "heartbeat",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 1,
+                    "field": "heartbeat"
+                },
+                {
+                    "ident": "counter",
+                    "name": "counter",
+                    "type": "integer",
+                    "profile": "",
+                    "position": 2,
+                    "field": "counter"
+                },
+                {
+                    "ident": "update",
+                    "name": "update",
+                    "type": "integer",
+                    "profile": "~UnixTimestamp",
+                    "position": 3,
+                    "field": "update"
+                }
+            ]
+        },
+        {
+            "name": "temperature current",
+            "decoder": "dec_temperature",
+            "offset": 2,
+            "length": 2,
+            "variables": [
+                {
+                    "ident": "up_05_current",
+                    "name": "up 05 current",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 4,
+                    "field": "up05"
+                },
+                {
+                    "ident": "down_05_current",
+                    "name": "down 05 current",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 5,
+                    "field": "down05"
+                },
+                {
+                    "ident": "overflow_current",
+                    "name": "overflow current",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 6,
+                    "field": "overflow"
+                },
+                {
+                    "ident": "error_current",
+                    "name": "error current",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 7,
+                    "field": "error"
+                },
+                {
+                    "ident": "temperature_current",
+                    "name": "temperature current",
+                    "type": "float",
+                    "profile": "~Temperature",
+                    "position": 8,
+                    "field": "temperature"
+                }
+            ]
+        },
+        {
+            "name": "humidity current",
+            "decoder": "dec_humidity",
+            "offset": 4,
+            "length": 2,
+            "variables": [
+                {
+                    "ident": "humidity_up_05_current",
+                    "name": "humidity up 05 current",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 9,
+                    "field": "up05"
+                },
+                {
+                    "ident": "humidity_down_05_current",
+                    "name": "humidity down 05 current",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 10,
+                    "field": "down05"
+                },
+                {
+                    "ident": "humidity_id_current",
+                    "name": "humidity id current",
+                    "type": "integer",
+                    "profile": "",
+                    "position": 11,
+                    "field": "id"
+                },
+                {
+                    "ident": "humidity_calculated_current",
+                    "name": "humidity calculated current",
+                    "type": "string",
+                    "profile": "",
+                    "position": 12,
+                    "field": "average"
+                },
+                {
+                    "ident": "humidity_current",
+                    "name": "humidity current",
+                    "type": "float",
+                    "profile": "~Humidity.F",
+                    "position": 13,
+                    "field": "humidity"
+                }
+            ]
+        },
+        {
+            "name": "wetness current",
+            "decoder": "dec_wetness",
+            "offset": 6,
+            "length": 1,
+            "variables": [
+                {
+                    "ident": "wetness_wet",
+                    "name": "wet current",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 14,
+                    "field": "wet"
+                },
+                {
+                    "ident": "wetness_dry",
+                    "name": "dry current",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 15,
+                    "field": "dry"
+                }
+            ]
+        },
+        {
+            "name": "temperature previous",
+            "decoder": "dec_temperature",
+            "offset": 7,
+            "length": 2,
+            "variables": [
+                {
+                    "ident": "up_05_previous",
+                    "name": "up 05 previous",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 16,
+                    "field": "up05"
+                },
+                {
+                    "ident": "down_05_previous",
+                    "name": "down 05 previous",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 17,
+                    "field": "down05"
+                },
+                {
+                    "ident": "overflow_previous",
+                    "name": "overflow previous",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 18,
+                    "field": "overflow"
+                },
+                {
+                    "ident": "error_previous",
+                    "name": "error previous",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 19,
+                    "field": "error"
+                },
+                {
+                    "ident": "temperature_previous",
+                    "name": "temperature previous",
+                    "type": "float",
+                    "profile": "~Temperature",
+                    "position": 20,
+                    "field": "temperature"
+                }
+            ]
+        },
+        {
+            "name": "humidity previous",
+            "decoder": "dec_humidity",
+            "offset": 9,
+            "length": 2,
+            "variables": [
+                {
+                    "ident": "humidity_up_05_previous",
+                    "name": "humidity up 05 previous",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 21,
+                    "field": "up05"
+                },
+                {
+                    "ident": "humidity_down_05_previous",
+                    "name": "humidity down 05 previous",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 22,
+                    "field": "down05"
+                },
+                {
+                    "ident": "humidity_id_previous",
+                    "name": "humidity id previous",
+                    "type": "integer",
+                    "profile": "",
+                    "position": 23,
+                    "field": "id"
+                },
+                {
+                    "ident": "humidity_calculated_previous",
+                    "name": "humidity calculated previous",
+                    "type": "string",
+                    "profile": "",
+                    "position": 24,
+                    "field": "average"
+                },
+                {
+                    "ident": "humidity_previous",
+                    "name": "humidity previous",
+                    "type": "float",
+                    "profile": "~Humidity.F",
+                    "position": 25,
+                    "field": "humidity"
+                }
+            ]
+        },
+        {
+            "name": "wetness previous",
+            "decoder": "dec_wetness",
+            "offset": 11,
+            "length": 1,
+            "variables": [
+                {
+                    "ident": "wetness_wet_previous",
+                    "name": "wet previous",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 26,
+                    "field": "wet"
+                },
+                {
+                    "ident": "wetness_dry_previous",
+                    "name": "dry previous",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 27,
+                    "field": "dry"
+                }
+            ]
+        }
+    ]
+}

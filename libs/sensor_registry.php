@@ -1,0 +1,277 @@
+<?php
+/*******************************************************************************
+	@file					sensor_registry.php
+
+	@author					Back-Blade and helhau
+	@brief					Zentrale Registry aller bekannten TFA-Sensortypen
+	@date					01.09.2026
+
+	@see					Einzige Wahrheit fuer die Zuordnung
+							Typ-ID -> Modul / Paketkopf / Paketlaenge.
+							Wird vom Gateway, vom Konfigurator und von den
+							Sensormodulen gemeinsam benutzt.
+*******************************************************************************/
+
+//set base dir
+if (!defined('__ROOT__'))  define('__ROOT__', dirname(dirname(__FILE__)));
+
+//load helper functionen
+require_once __ROOT__ . '/libs/help.php';
+
+/*
+	Jedes Paket vom Gateway ist exakt 64 Byte lang, andere Laengen werden
+	nicht angenommen. Byte 63 traegt die Pruefsumme ueber Byte 0..62.
+*/
+if (!defined('TFA_FRAME_SIZE'))     define('TFA_FRAME_SIZE',     64);
+if (!defined('TFA_FRAME_CRC_POS'))  define('TFA_FRAME_CRC_POS',  63);
+if (!defined('TFA_FRAME_ID_POS'))   define('TFA_FRAME_ID_POS',   6);
+if (!defined('TFA_FRAME_ID_LEN'))   define('TFA_FRAME_ID_LEN',   6);
+
+/*******************************************************************************
+@author					Back-Blade and helhau
+@brief					Liefert die Tabelle aller bekannten Sensortypen
+
+@return					array Typ-ID (klein, 2 Stellen hex) => Beschreibung
+
+@see					"guid"    Modul-GUID, aus der der Konfigurator die
+								  Instanz anlegen laesst. Leer = bekannt, aber
+								  (noch) kein Modul vorhanden.
+						"header"  erwarteter Paketkopf (Byte 0)
+						"length"  erwartete Nutzdatenlaenge (Byte 5 minus 12)
+						"article" TFA Artikelnummer
+						"name"    Klartextname fuer den Konfigurator
+						"state"   getestet | beta | ungetestet | kein modul
+@date					01.09.2026
+*******************************************************************************/
+function tfa_sensor_registry()
+{
+	static $registry = null;
+	if ($registry !== null) return $registry;
+
+	$registry = array();
+	$files    = glob(__ROOT__ . '/sensors/*.json');
+	if ($files === false) $files = array();
+
+	foreach ($files as $file)
+	{
+		if (substr(basename($file), 0, 1) == "_") continue;   // Vorlagen ueberspringen
+
+		$doc = json_decode(file_get_contents($file), true);
+		if (!is_array($doc) || !array_key_exists("typ", $doc)) continue;
+
+		$doc["file"] = basename($file);
+
+		$doc["typ"] = strtolower($doc["typ"]);
+		$registry[$doc["typ"]] = $doc;
+	}
+
+	ksort($registry);
+	return $registry;
+}
+
+/*******************************************************************************
+@author					Back-Blade and helhau
+@brief					Liefert den vollstaendigen Baustein eines Sensortyps
+
+@param[$typ]			Typ-ID, 2 Stellen hex
+
+@return					array mit frame/options/groups oder false
+
+@see					Die Gruppen beschreiben, welche Bytes mit welchem
+						Dekoder ausgewertet und in welche Variablen
+						geschrieben werden.
+@date					01.09.2026
+*******************************************************************************/
+function tfa_sensor_definition($typ)
+{
+	$registry = tfa_sensor_registry();
+	$typ      = strtolower($typ);
+
+	if (!array_key_exists($typ, $registry)) return false;
+
+	return $registry[$typ];
+}
+
+/*******************************************************************************
+@author					Back-Blade and helhau
+@brief					Sucht den Sensortyp zu einer Geraete-ID
+
+@param[$deviceid]		Geraete-ID, 12 Stellen hex (die ersten 2 = Typ)
+
+@return					array der Registry oder false wenn unbekannt
+
+@date					01.09.2026
+*******************************************************************************/
+function tfa_sensor_by_deviceid($deviceid)
+{
+	$typ = strtolower(substr($deviceid, 0, 2));
+	$registry = tfa_sensor_registry();
+
+	if (!array_key_exists($typ, $registry)) return false;
+	if ($registry[$typ]["guid"] == "")      return false;
+
+	return $registry[$typ];
+}
+
+/*******************************************************************************
+@author					Back-Blade and helhau
+@brief					Berechnet die Pruefsumme ueber Byte 0..62
+
+@param[$frame]			Rohpaket, 64 Byte
+
+@return					int Pruefsumme
+
+@date					01.09.2026
+*******************************************************************************/
+function tfa_frame_crc($frame)
+{
+	$cdata = byteStr2byteArray($frame);
+	$sum   = 0;
+
+	for ($i = 0; $i < TFA_FRAME_CRC_POS; $i++)
+	{
+		$sum += $cdata[$i];
+	}
+
+	return $sum & 0x7F;
+}
+
+/*******************************************************************************
+@author					Back-Blade and helhau
+@brief					Prueft Laenge und Pruefsumme eines Rohpaketes
+
+@param[$frame]			Rohpaket
+
+@return					true wenn 64 Byte lang und Pruefsumme stimmt
+
+@see					Abweichende Laengen werden nicht angenommen.
+@date					01.09.2026
+*******************************************************************************/
+function tfa_frame_is_valid($frame)
+{
+	if (strlen($frame) != TFA_FRAME_SIZE) return false;
+
+	$cdata = byteStr2byteArray($frame);
+
+	return $cdata[TFA_FRAME_CRC_POS] == tfa_frame_crc($frame);
+}
+
+/*******************************************************************************
+@author					Back-Blade and helhau
+@brief					Liest die Geraete-ID aus einem Rohpaket
+
+@param[$frame]			Rohpaket, 64 Byte
+
+@return					String 12 Stellen hex, gross, oder "" bei Laengenfehler
+
+@date					01.09.2026
+*******************************************************************************/
+function tfa_frame_deviceid($frame)
+{
+	if (strlen($frame) != TFA_FRAME_SIZE) return "";
+
+	return strtoupper(str2hexstr(substr($frame, TFA_FRAME_ID_POS, TFA_FRAME_ID_LEN)));
+}
+
+/*******************************************************************************
+@author					Back-Blade and helhau
+@brief					Zerlegt einen Uebertragungsblock in einzelne Rohpakete
+
+@param[$body]			Nutzdaten einer HTTP-Uebertragung, n * 64 Byte
+@param[&$rest]			gibt die Laenge eines unvollstaendigen Restes zurueck
+
+@return					array der 64-Byte-Pakete (unvalidiert)
+
+@see					Das Gateway puffert Pakete, wenn die IP-Verbindung nicht
+						zur Verfuegung steht, und schickt sie
+						spaeter gesammelt per HTTP. Ein Block enthaelt daher
+						beliebig viele 64-Byte-Pakete hintereinander.
+						Ein angebrochener Rest wird nicht angenommen, sondern
+						ueber $rest gemeldet.
+@date					01.09.2026
+*******************************************************************************/
+function tfa_frames_split($body, &$rest = 0)
+{
+	$len    = strlen($body);
+	$count  = intdiv($len, TFA_FRAME_SIZE);
+	$rest   = $len % TFA_FRAME_SIZE;
+	$frames = array();
+
+	for ($i = 0; $i < $count; $i++)
+	{
+		$frames[] = substr($body, $i * TFA_FRAME_SIZE, TFA_FRAME_SIZE);
+	}
+
+	return $frames;
+}
+
+/*******************************************************************************
+@author					Back-Blade and helhau
+@brief					Prueft einen Sensor-Baustein auf Vollstaendigkeit
+
+@param[$doc]			dekodierter Inhalt einer sensors/xx.json
+@param[$decoders]		Liste der bekannten Dekodernamen
+
+@return					array der Fehlermeldungen, leer wenn alles stimmt
+
+@see					Damit ein selbst gebauter Baustein nicht stumm
+						fehlschlaegt, sondern im Konfigurator mit Klartext
+						auftaucht.
+@date					01.09.2026
+*******************************************************************************/
+function tfa_sensor_validate($doc, $decoders)
+{
+	$errors = array();
+	$types  = array("boolean", "integer", "float", "string");
+
+	foreach (array("typ", "name", "frame", "groups") as $key)
+	{
+		if (!array_key_exists($key, $doc)) $errors[] = "Pflichtfeld fehlt: ".$key;
+	}
+	if (count($errors) > 0) return $errors;
+
+	if (!preg_match('/^[0-9a-f]{2}$/', strtolower($doc["typ"])))
+	{
+		$errors[] = "typ muss genau 2 Stellen hex sein, ist: ".$doc["typ"];
+	}
+
+	$header = $doc["frame"]["header"];
+	$length = $doc["frame"]["length"];
+
+	if (!is_int($header) || $header < 0 || $header > 255) $errors[] = "frame.header muss 0..255 sein";
+	if (!is_int($length) || $length < 0 || $length > 51)  $errors[] = "frame.length muss 0..51 sein";
+
+	$idents = array();
+
+	foreach ($doc["groups"] as $g)
+	{
+		$gname = array_key_exists("name", $g) ? $g["name"] : "(ohne Namen)";
+
+		if (!array_key_exists("decoder", $g) || !in_array($g["decoder"], $decoders))
+		{
+			$errors[] = "Gruppe '".$gname."': unbekannter Dekoder '".(array_key_exists("decoder",$g) ? $g["decoder"] : "")."'";
+			continue;
+		}
+
+		if ($g["offset"] + $g["length"] > $length)
+		{
+			$errors[] = "Gruppe '".$gname."': offset ".$g["offset"]." + length ".$g["length"]
+					  ." liegt hinter der Paketlaenge ".$length;
+		}
+
+		foreach ($g["variables"] as $v)
+		{
+			if (!in_array($v["type"], $types))
+			{
+				$errors[] = "Variable '".$v["ident"]."': type muss boolean|integer|float|string sein";
+			}
+			if (in_array($v["ident"], $idents))
+			{
+				$errors[] = "Variable '".$v["ident"]."': ident kommt mehrfach vor";
+			}
+			$idents[] = $v["ident"];
+		}
+	}
+
+	return $errors;
+}

@@ -1,0 +1,280 @@
+{
+    "typ": "08",
+    "article": "30.3306.02",
+    "name": "Regensensor",
+    "state": "getestet",
+    "guid": "{5E64EC21-690D-E7C5-9F90-B3561B9606C8}",
+    "frame": {
+        "header": 225,
+        "length": 25
+    },
+    "options": {
+        "windoffset": false
+    },
+    "groups": [
+        {
+            "name": "sensors",
+            "decoder": "dec_sensor_data",
+            "offset": 0,
+            "length": 2,
+            "variables": [
+                {
+                    "ident": "battery",
+                    "name": "battery",
+                    "type": "boolean",
+                    "profile": "TFA.Battery",
+                    "position": 0,
+                    "field": "battery"
+                },
+                {
+                    "ident": "heartbeat",
+                    "name": "heartbeat",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 1,
+                    "field": "heartbeat"
+                },
+                {
+                    "ident": "counter",
+                    "name": "counter",
+                    "type": "integer",
+                    "profile": "",
+                    "position": 2,
+                    "field": "counter"
+                },
+                {
+                    "ident": "update",
+                    "name": "update",
+                    "type": "integer",
+                    "profile": "~UnixTimestamp",
+                    "position": 3,
+                    "field": "update"
+                }
+            ]
+        },
+        {
+            "name": "rain counter",
+            "decoder": "dec_counter_rain",
+            "offset": 4,
+            "length": 2,
+            "variables": [
+                {
+                    "ident": "raincounter",
+                    "name": "rain counter",
+                    "type": "integer",
+                    "profile": "",
+                    "position": 4,
+                    "field": "counter"
+                },
+                {
+                    "ident": "rainfall",
+                    "name": "rainfall",
+                    "type": "float",
+                    "profile": "~Rainfall",
+                    "position": 5,
+                    "field": "rainnew"
+                }
+            ]
+        },
+        {
+            "name": "temperature",
+            "decoder": "dec_temperature_pos_rain",
+            "offset": 2,
+            "length": 2,
+            "variables": [
+                {
+                    "ident": "temp",
+                    "name": "temperature",
+                    "type": "float",
+                    "profile": "",
+                    "position": 6,
+                    "field": "temp"
+                },
+                {
+                    "ident": "overflow",
+                    "name": "overflow",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 7,
+                    "field": "overflow"
+                },
+                {
+                    "ident": "error",
+                    "name": "error",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 8,
+                    "field": "error"
+                }
+            ]
+        },
+        {
+            "name": "position",
+            "decoder": "dec_temperature_pos_rain",
+            "offset": 2,
+            "length": 2,
+            "variables": [
+                {
+                    "ident": "pos",
+                    "name": "position",
+                    "type": "string",
+                    "profile": "",
+                    "position": 9,
+                    "field": "pos"
+                },
+                {
+                    "ident": "uint",
+                    "name": "uint",
+                    "type": "integer",
+                    "profile": "",
+                    "position": 10,
+                    "field": "uint"
+                }
+            ]
+        },
+        {
+            "name": "current time",
+            "decoder": "dec_event_rain",
+            "offset": 6,
+            "length": 2,
+            "variables": [
+                {
+                    "ident": "current_time",
+                    "name": "current time",
+                    "type": "integer",
+                    "profile": "~UnixTimestamp",
+                    "position": 11,
+                    "field": "time"
+                }
+            ]
+        },
+        {
+            "name": "previous time",
+            "decoder": "dec_event_rain",
+            "offset": 8,
+            "length": 2,
+            "variables": [
+                {
+                    "ident": "previous_time",
+                    "name": "previous time",
+                    "type": "integer",
+                    "profile": "~UnixTimestamp",
+                    "position": 12,
+                    "field": "time"
+                }
+            ]
+        },
+        {
+            "name": "previous time 1",
+            "decoder": "dec_event_rain",
+            "offset": 10,
+            "length": 2,
+            "variables": [
+                {
+                    "ident": "previous_time1",
+                    "name": "previous time 1",
+                    "type": "integer",
+                    "profile": "~UnixTimestamp",
+                    "position": 13,
+                    "field": "time"
+                }
+            ]
+        },
+        {
+            "name": "previous time 2",
+            "decoder": "dec_event_rain",
+            "offset": 12,
+            "length": 2,
+            "variables": [
+                {
+                    "ident": "previous_time2",
+                    "name": "previous time 2",
+                    "type": "integer",
+                    "profile": "~UnixTimestamp",
+                    "position": 14,
+                    "field": "time"
+                }
+            ]
+        },
+        {
+            "name": "previous time 3",
+            "decoder": "dec_event_rain",
+            "offset": 14,
+            "length": 2,
+            "variables": [
+                {
+                    "ident": "previous_time3",
+                    "name": "previous time 3",
+                    "type": "integer",
+                    "profile": "~UnixTimestamp",
+                    "position": 15,
+                    "field": "time"
+                }
+            ]
+        },
+        {
+            "name": "previous time 4",
+            "decoder": "dec_event_rain",
+            "offset": 16,
+            "length": 2,
+            "variables": [
+                {
+                    "ident": "previous_time4",
+                    "name": "previous time 4",
+                    "type": "integer",
+                    "profile": "~UnixTimestamp",
+                    "position": 16,
+                    "field": "time"
+                }
+            ]
+        },
+        {
+            "name": "previous time 5",
+            "decoder": "dec_event_rain",
+            "offset": 18,
+            "length": 2,
+            "variables": [
+                {
+                    "ident": "previous_time5",
+                    "name": "previous time 5",
+                    "type": "integer",
+                    "profile": "~UnixTimestamp",
+                    "position": 17,
+                    "field": "time"
+                }
+            ]
+        },
+        {
+            "name": "previous time 6",
+            "decoder": "dec_event_rain",
+            "offset": 20,
+            "length": 2,
+            "variables": [
+                {
+                    "ident": "previous_time6",
+                    "name": "previous time 6",
+                    "type": "integer",
+                    "profile": "~UnixTimestamp",
+                    "position": 18,
+                    "field": "time"
+                }
+            ]
+        },
+        {
+            "name": "previous time 7",
+            "decoder": "dec_event_rain",
+            "offset": 22,
+            "length": 2,
+            "variables": [
+                {
+                    "ident": "previous_time7",
+                    "name": "previous time 7",
+                    "type": "integer",
+                    "profile": "~UnixTimestamp",
+                    "position": 19,
+                    "field": "time"
+                }
+            ]
+        }
+    ]
+}

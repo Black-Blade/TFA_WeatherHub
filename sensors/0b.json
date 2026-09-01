@@ -1,0 +1,288 @@
+{
+    "typ": "0b",
+    "article": "30.3307.02",
+    "name": "Windsensor",
+    "state": "getestet",
+    "guid": "{499E815E-E0B7-36C9-0CC0-FB3711827CD4}",
+    "frame": {
+        "header": 226,
+        "length": 26
+    },
+    "options": {
+        "windoffset": true
+    },
+    "groups": [
+        {
+            "name": "sensors",
+            "decoder": "dec_sensor_data_wind",
+            "offset": 0,
+            "length": 3,
+            "variables": [
+                {
+                    "ident": "battery",
+                    "name": "battery",
+                    "type": "boolean",
+                    "profile": "TFA.Battery",
+                    "position": 0,
+                    "field": "battery"
+                },
+                {
+                    "ident": "heartbeat",
+                    "name": "heartbeat",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 1,
+                    "field": "heartbeat"
+                },
+                {
+                    "ident": "counter",
+                    "name": "counter",
+                    "type": "integer",
+                    "profile": "",
+                    "position": 2,
+                    "field": "counter"
+                },
+                {
+                    "ident": "update",
+                    "name": "update",
+                    "type": "integer",
+                    "profile": "~UnixTimestamp",
+                    "position": 3,
+                    "field": "update"
+                }
+            ]
+        },
+        {
+            "name": "wind current",
+            "decoder": "dec_sensor_data_dir",
+            "offset": 3,
+            "length": 4,
+            "variables": [
+                {
+                    "ident": "winddirection",
+                    "name": "winddirection",
+                    "type": "float",
+                    "profile": "~WindDirection.Text",
+                    "position": 4,
+                    "field": "winddirection"
+                },
+                {
+                    "ident": "windspeed",
+                    "name": "windspeed",
+                    "type": "float",
+                    "profile": "~WindSpeed.ms",
+                    "position": 5,
+                    "field": "windspeed"
+                },
+                {
+                    "ident": "gustspeed",
+                    "name": "gustspeed",
+                    "type": "float",
+                    "profile": "~WindSpeed.ms",
+                    "position": 6,
+                    "field": "gustspeed"
+                },
+                {
+                    "ident": "lasttransmit",
+                    "name": "lasttransmit",
+                    "type": "integer",
+                    "profile": "~UnixTimestampTime",
+                    "position": 7,
+                    "field": "lasttransmit"
+                }
+            ]
+        },
+        {
+            "name": "wind previous",
+            "decoder": "dec_sensor_data_dir",
+            "offset": 7,
+            "length": 4,
+            "variables": [
+                {
+                    "ident": "winddirection_previous",
+                    "name": "winddirection previous",
+                    "type": "float",
+                    "profile": "~WindDirection.Text",
+                    "position": 8,
+                    "field": "winddirection"
+                },
+                {
+                    "ident": "windspeed_previous",
+                    "name": "windspeed",
+                    "type": "float",
+                    "profile": "~WindSpeed.ms",
+                    "position": 9,
+                    "field": "windspeed"
+                },
+                {
+                    "ident": "gustspeed_previous",
+                    "name": "gustspeed previous",
+                    "type": "float",
+                    "profile": "~WindSpeed.ms",
+                    "position": 10,
+                    "field": "gustspeed"
+                },
+                {
+                    "ident": "lasttransmit_previous",
+                    "name": "lasttransmit previous",
+                    "type": "integer",
+                    "profile": "~UnixTimestampTime",
+                    "position": 11,
+                    "field": "lasttransmit"
+                }
+            ]
+        },
+        {
+            "name": "wind previous 1",
+            "decoder": "dec_sensor_data_dir",
+            "offset": 11,
+            "length": 4,
+            "variables": [
+                {
+                    "ident": "winddirection_previous_1",
+                    "name": "winddirection",
+                    "type": "float",
+                    "profile": "~WindDirection.Text",
+                    "position": 12,
+                    "field": "winddirection"
+                },
+                {
+                    "ident": "windspeed_previous_1",
+                    "name": "windspeed previous 1",
+                    "type": "float",
+                    "profile": "~WindSpeed.ms",
+                    "position": 13,
+                    "field": "windspeed"
+                },
+                {
+                    "ident": "gustspeed_previous_1",
+                    "name": "gustspeed previous 1",
+                    "type": "float",
+                    "profile": "~WindSpeed.ms",
+                    "position": 14,
+                    "field": "gustspeed"
+                },
+                {
+                    "ident": "lasttransmit_previous_1",
+                    "name": "lasttransmit previous 1",
+                    "type": "integer",
+                    "profile": "~UnixTimestampTime",
+                    "position": 15,
+                    "field": "lasttransmit"
+                }
+            ]
+        },
+        {
+            "name": "wind previous 2",
+            "decoder": "dec_sensor_data_dir",
+            "offset": 15,
+            "length": 4,
+            "variables": [
+                {
+                    "ident": "winddirection_previous_2",
+                    "name": "winddirection previous 2",
+                    "type": "float",
+                    "profile": "~WindDirection.Text",
+                    "position": 16,
+                    "field": "winddirection"
+                },
+                {
+                    "ident": "windspeed_previous_2",
+                    "name": "windspeed previous 2",
+                    "type": "float",
+                    "profile": "~WindSpeed.ms",
+                    "position": 17,
+                    "field": "windspeed"
+                },
+                {
+                    "ident": "gustspeed_previous_2",
+                    "name": "gustspeed previous 2",
+                    "type": "float",
+                    "profile": "~WindSpeed.ms",
+                    "position": 18,
+                    "field": "gustspeed"
+                },
+                {
+                    "ident": "lasttransmit_previous_2",
+                    "name": "lasttransmit previous 2",
+                    "type": "integer",
+                    "profile": "~UnixTimestampTime",
+                    "position": 19,
+                    "field": "lasttransmit"
+                }
+            ]
+        },
+        {
+            "name": "wind previous 3",
+            "decoder": "dec_sensor_data_dir",
+            "offset": 19,
+            "length": 4,
+            "variables": [
+                {
+                    "ident": "winddirection_previous_3",
+                    "name": "winddirection previous 3",
+                    "type": "float",
+                    "profile": "~WindDirection.Text",
+                    "position": 20,
+                    "field": "winddirection"
+                },
+                {
+                    "ident": "windspeed_previous_3",
+                    "name": "windspeed previous 3",
+                    "type": "float",
+                    "profile": "~WindSpeed.ms",
+                    "position": 21,
+                    "field": "windspeed"
+                },
+                {
+                    "ident": "gustspeed_previous_3",
+                    "name": "gustspeed previous 3",
+                    "type": "float",
+                    "profile": "~WindSpeed.ms",
+                    "position": 22,
+                    "field": "gustspeed"
+                },
+                {
+                    "ident": "lasttransmit_previous_3",
+                    "name": "lasttransmit previous 3",
+                    "type": "integer",
+                    "profile": "~UnixTimestampTime",
+                    "position": 23,
+                    "field": "lasttransmit"
+                }
+            ]
+        },
+        {
+            "name": "wind previous 4",
+            "decoder": "dec_sensor_data_dir",
+            "offset": 23,
+            "length": 3,
+            "variables": [
+                {
+                    "ident": "winddirection_previous_4",
+                    "name": "winddirection previous 4",
+                    "type": "float",
+                    "profile": "~WindDirection.Text",
+                    "position": 24,
+                    "field": "winddirection"
+                },
+                {
+                    "ident": "windspeed_previous_4",
+                    "name": "windspeed previous 4",
+                    "type": "float",
+                    "profile": "~WindSpeed.ms",
+                    "position": 25,
+                    "field": "windspeed"
+                },
+                {
+                    "ident": "gustspeed_previous_4",
+                    "name": "gustspeed previous 4",
+                    "type": "float",
+                    "profile": "~WindSpeed.ms",
+                    "position": 26,
+                    "field": "gustspeed"
+                }
+            ]
+        }
+    ]
+}

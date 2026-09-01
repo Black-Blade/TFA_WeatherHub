@@ -1,0 +1,56 @@
+{
+    "typ": "ff",
+    "article": "30.0000.00",
+    "name": "Name des Sensors wie ihn TFA nennt",
+    "state": "ungetestet",
+    "guid": "",
+    "frame": {
+        "header": 0,
+        "length": 0
+    },
+    "options": {
+        "windoffset": false
+    },
+    "groups": [
+        {
+            "name": "sensors",
+            "decoder": "dec_sensor_data",
+            "offset": 0,
+            "length": 2,
+            "variables": [
+                {
+                    "ident": "battery",
+                    "name": "battery",
+                    "type": "boolean",
+                    "profile": "TFA.Battery",
+                    "position": 0,
+                    "field": "battery"
+                },
+                {
+                    "ident": "heartbeat",
+                    "name": "heartbeat",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 1,
+                    "field": "heartbeat"
+                }
+            ]
+        },
+        {
+            "name": "temperature",
+            "decoder": "dec_temperature",
+            "offset": 2,
+            "length": 2,
+            "variables": [
+                {
+                    "ident": "temperature",
+                    "name": "temperature",
+                    "type": "float",
+                    "profile": "~Temperature",
+                    "position": 2,
+                    "field": "temperature"
+                }
+            ]
+        }
+    ]
+}

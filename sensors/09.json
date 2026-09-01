@@ -1,0 +1,15 @@
+{
+    "typ": "09",
+    "article": "30.3302.02",
+    "name": "Thermo-Hygro-Sender mit Profi-Temperatur-Kabelfuehler",
+    "state": "kein modul",
+    "guid": "",
+    "frame": {
+        "header": 0,
+        "length": 0
+    },
+    "options": {
+        "windoffset": false
+    },
+    "groups": []
+}

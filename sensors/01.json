@@ -1,0 +1,248 @@
+{
+    "typ": "01",
+    "article": "30.3313.02",
+    "name": "Profi-Temperatur-Sender mit wasserfestem Kabelfuehler",
+    "state": "getestet",
+    "guid": "{4FDFB930-02E1-B42A-995D-59E84CE93F73}",
+    "frame": {
+        "header": 210,
+        "length": 10
+    },
+    "options": {
+        "windoffset": false
+    },
+    "groups": [
+        {
+            "name": "sensors",
+            "decoder": "dec_sensor_data",
+            "offset": 0,
+            "length": 2,
+            "variables": [
+                {
+                    "ident": "battery",
+                    "name": "battery",
+                    "type": "boolean",
+                    "profile": "TFA.Battery",
+                    "position": 0,
+                    "field": "battery"
+                },
+                {
+                    "ident": "heartbeat",
+                    "name": "heartbeat",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 1,
+                    "field": "heartbeat"
+                },
+                {
+                    "ident": "counter",
+                    "name": "counter",
+                    "type": "integer",
+                    "profile": "",
+                    "position": 2,
+                    "field": "counter"
+                },
+                {
+                    "ident": "update",
+                    "name": "update",
+                    "type": "integer",
+                    "profile": "~UnixTimestamp",
+                    "position": 3,
+                    "field": "update"
+                }
+            ]
+        },
+        {
+            "name": "temperature current",
+            "decoder": "dec_temperature",
+            "offset": 2,
+            "length": 2,
+            "variables": [
+                {
+                    "ident": "up_05_current",
+                    "name": "up 05 current",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 4,
+                    "field": "up05"
+                },
+                {
+                    "ident": "down_05_current",
+                    "name": "down 05 current",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 5,
+                    "field": "down05"
+                },
+                {
+                    "ident": "overflow_current",
+                    "name": "overflow current",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 6,
+                    "field": "overflow"
+                },
+                {
+                    "ident": "error_current",
+                    "name": "error current",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 7,
+                    "field": "error"
+                },
+                {
+                    "ident": "temperature_current",
+                    "name": "temperature current",
+                    "type": "float",
+                    "profile": "~Temperature",
+                    "position": 7,
+                    "field": "temperature"
+                }
+            ]
+        },
+        {
+            "name": "temperature current cabel",
+            "decoder": "dec_temperature",
+            "offset": 4,
+            "length": 2,
+            "variables": [
+                {
+                    "ident": "up_05_current_cabel",
+                    "name": "up 05 current cabel",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 8,
+                    "field": "up05"
+                },
+                {
+                    "ident": "down_05_current_cabel",
+                    "name": "down 05 current cabel",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 9,
+                    "field": "down05"
+                },
+                {
+                    "ident": "overflow_current_cabel",
+                    "name": "overflow current cabel",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 10,
+                    "field": "overflow"
+                },
+                {
+                    "ident": "error_current_cabel",
+                    "name": "error current cabel",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 11,
+                    "field": "error"
+                },
+                {
+                    "ident": "temperature_current_cabel",
+                    "name": "temperature current cabel",
+                    "type": "float",
+                    "profile": "~Temperature",
+                    "position": 12,
+                    "field": "temperature"
+                }
+            ]
+        },
+        {
+            "name": "temperature previous",
+            "decoder": "dec_temperature",
+            "offset": 6,
+            "length": 2,
+            "variables": [
+                {
+                    "ident": "up_05_previous",
+                    "name": "up 05 previous",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 13,
+                    "field": "up05"
+                },
+                {
+                    "ident": "down_05_previous",
+                    "name": "down 05 previous",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 14,
+                    "field": "down05"
+                },
+                {
+                    "ident": "overflow_previous",
+                    "name": "overflow previous",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 15,
+                    "field": "overflow"
+                },
+                {
+                    "ident": "error_previous",
+                    "name": "error previous",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 16,
+                    "field": "error"
+                },
+                {
+                    "ident": "temperature_previous",
+                    "name": "temperature previous",
+                    "type": "float",
+                    "profile": "~Temperature",
+                    "position": 17,
+                    "field": "temperature"
+                }
+            ]
+        },
+        {
+            "name": "temperature previous cabel",
+            "decoder": "dec_temperature",
+            "offset": 8,
+            "length": 2,
+            "variables": [
+                {
+                    "ident": "up_05_previous_cabel",
+                    "name": "up 05 previous cabel",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 18,
+                    "field": "up05"
+                },
+                {
+                    "ident": "down_05_previous_cabel",
+                    "name": "down 05 previous cabel",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 19,
+                    "field": "down05"
+                },
+                {
+                    "ident": "overflow_previous_cabel",
+                    "name": "overflow previous cabel",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 20,
+                    "field": "overflow"
+                },
+                {
+                    "ident": "error_previous_cabel",
+                    "name": "error previous cabel",
+                    "type": "boolean",
+                    "profile": "",
+                    "position": 21,
+                    "field": "error"
+                },
+                {
+                    "ident": "temperature_previous_cabel",
+                    "name": "temperature previous cabel",
+                    "type": "float",
+                    "profile": "~Temperature",
+                    "position": 22,
+                    "field": "temperature"
+                }
+            ]
+        }
+    ]
+}
