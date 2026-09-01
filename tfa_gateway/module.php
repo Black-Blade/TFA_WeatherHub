@@ -110,7 +110,7 @@ class TFAGATEWAY_V2 extends IPSModule
         }
         if ($Type == 2) { // Verbing gelöscht
             $this->SetBuffer('DataBuffer' . $ClientIP . $ClientPort, '');
-            IPS_RunScriptText($this->name . '_closesocket(' . $this->InstanceID . ',"' . $ClientIP . '",' . $ClientPort . ');');
+            $this->closesocket($ClientIP, $ClientPort);
             return;
         }
 
@@ -134,12 +134,12 @@ class TFAGATEWAY_V2 extends IPSModule
             // FIREWAHL DARF DER CLIENT DATEN ÜBERMITTELEN
             if ($this->ReadPropertyBoolean('var_firewall') == true) {
                 if ($this->ReadPropertyString('var_firewall_whitelist') == '') {
-                    IPS_RunScriptText($this->name . '_closesocket(' . $this->InstanceID . ',"' . $ClientIP . '",' . $ClientPort . ');');
+                    $this->closesocket($ClientIP, $ClientPort);
                     return;
                 }
                 $pos_start = strpos($this->ReadPropertyString('var_firewall_whitelist'), $ClientIP);
                 if ($pos_start === false) {
-                    IPS_RunScriptText($this->name . '_closesocket(' . $this->InstanceID . ',"' . $ClientIP . '",' . $ClientPort . ');');
+                    $this->closesocket($ClientIP, $ClientPort);
                     return;
                 }
             }
@@ -151,14 +151,14 @@ class TFAGATEWAY_V2 extends IPSModule
             // suche nach HOST
             $pos_start = strpos($request, 'Host: www.data199.com');
             if ($pos_start === false) {
-                IPS_RunScriptText($this->name . '_closesocket(' . $this->InstanceID . ',"' . $ClientIP . '",' . $ClientPort . ');');
+                $this->closesocket($ClientIP, $ClientPort);
                 return;
             }
 
             // suche Put
             $pos_start = strpos($request, 'PUT http://www.data199.com/gateway/put HTTP/1.1');
             if ($pos_start === false) {
-                IPS_RunScriptText($this->name . '_closesocket(' . $this->InstanceID . ',"' . $ClientIP . '",' . $ClientPort . ');');
+                $this->closesocket($ClientIP, $ClientPort);
                 return;
             }
 
@@ -167,7 +167,7 @@ class TFAGATEWAY_V2 extends IPSModule
         //suche mac im HEDER
         $pos_start = strpos($request, 'HTTP_IDENTIFY:');
         if ($pos_start === false) {
-            IPS_RunScriptText($this->name . '_closesocket(' . $this->InstanceID . ',"' . $ClientIP . '",' . $ClientPort . ');');
+            $this->closesocket($ClientIP, $ClientPort);
             return;
         }
         $pos_start1 = $pos_start + 24;
@@ -188,7 +188,7 @@ class TFAGATEWAY_V2 extends IPSModule
         // suche im Heder "Content-Length"
         $pos_start = strpos($request, 'Content-Length:');
         if ($pos_start === false) {
-            IPS_RunScriptText($this->name . '_closesocket(' . $this->InstanceID . ',"' . $ClientIP . '",' . $ClientPort . ');');
+            $this->closesocket($ClientIP, $ClientPort);
             return;
         }
         $pos_start += 16; //"Content-Length: "
@@ -219,11 +219,16 @@ class TFAGATEWAY_V2 extends IPSModule
 
             // Send REST Gateway to Cloud
             if ($datalen == 15) {
-                IPS_RunScriptText($this->name . '_sendtocloud(' . $this->InstanceID . ',"' . $ClientIP . '",' . $ClientPort . ');');
+                $this->sendtocloud($ClientIP, $ClientPort);
             }
-            // Übergabe der Daten an anderen Thrad
+            /*
+                Weitergabe an die Sensoren. Frueher lief das ueber
+                IPS_RunScriptText mit zusammengebautem Funktionsnamen, also
+                ueber den Prefix des Moduls. Schlug der Aufruf fehl, kam
+                stillschweigend nichts bei den Kindern an. Jetzt direkt.
+             */
             if ($datalen % 64 == 0) {
-                IPS_RunScriptText($this->name . '_splitesensordata(' . $this->InstanceID . ',"' . $ClientIP . '",' . $ClientPort . ');');
+                $this->splitesensordata($ClientIP, $ClientPort);
             }
         }
         //if there is too much data in the instance, delete the instance
@@ -283,7 +288,7 @@ class TFAGATEWAY_V2 extends IPSModule
             $this->SendDebug('http response', bytearry2hexstring($dataresponse) . "\r\n", 0);
         }
 
-        IPS_RunScriptText($this->name . '_closesocket(' . $this->InstanceID . ',"' . $ClientIP . '",' . $ClientPort . ');');
+        $this->closesocket($ClientIP, $ClientPort);
 
         return;
 
@@ -499,7 +504,10 @@ class TFAGATEWAY_V2 extends IPSModule
         $crc = substr($data, 63, 1);
         $data = substr($data, 12, $packagelength);
 
-        if (!$sensor_crc) return;
+        if (!$sensor_crc) {
+            $this->SendDebug('sensor', 'Pruefsumme falsch, Paket verworfen: ' . str2hexstr($sdata) . "\r\n", 0);
+            return;
+        }
 
         if ($this->ReadPropertyBoolean('var_debug_sensors') == true) {
             $this->SendDebug('sensor', 'CRC OK:' . $sensor_crc . "\r\n", 0);
@@ -528,6 +536,10 @@ class TFAGATEWAY_V2 extends IPSModule
 
         ]);
         $this->SendDataToChildren($json);
+
+        if ($this->ReadPropertyBoolean('var_debug_sensors')) {
+            $this->SendDebug('sensor', 'an die Kindmodule gesendet: ' . $deviceid . "\r\n", 0);
+        }
 
     }
 
