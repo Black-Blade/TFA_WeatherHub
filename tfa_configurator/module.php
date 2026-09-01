@@ -68,7 +68,12 @@ class TFACONFIGURATOR_V2 extends IPSModule
             Leerer Filter: der Konfigurator will ausdruecklich jedes Paket
             sehen, auch von Sensoren, fuer die es noch keine Instanz gibt.
          */
-        $this->SetReceiveDataFilter('');
+        /*
+            '.*' statt eines leeren Filters: ein leerer String laesst sich als
+            "Filter aus" oder als "nichts passt" auslegen. '.*' trifft jeden
+            JSON-String und ist damit eindeutig.
+         */
+        $this->SetReceiveDataFilter('.*');
 
         if (IPS_GetKernelRunlevel() != KR_READY) return;
 
@@ -92,6 +97,8 @@ class TFACONFIGURATOR_V2 extends IPSModule
      */
     public function ReceiveData($JSONString)
     {
+        $this->SendDebug('empfang', 'ReceiveData aufgerufen, ' . strlen($JSONString) . ' Zeichen' . "\r\n", 0);
+
         $dataarray = json_decode($JSONString);
 
         if ($dataarray->DataID != self::DATA_FROM) return;

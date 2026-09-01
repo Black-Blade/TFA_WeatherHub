@@ -217,26 +217,30 @@ class TFAGATEWAY_V2 extends IPSModule
             $this->SetBuffer('DataBufferIDENTIFY' . $ClientIP . $ClientPort, $gatwayid . ':' . $mac . ':C0');
 
             /*
-                Reihenfolge ist wichtig: erst auswerten, dann antworten.
+                Erst eine Kopie ziehen, dann antworten, dann auswerten.
 
                 HTTP_Response_OK() ruft am Ende closesocket() auf. Das meldet
                 dem Server-Socket "Verbindung trennen", und dieses Ereignis
                 landet wieder in ReceiveData - wo der Puffer geleert wird.
-                Wird zuerst geantwortet, ist der Puffer weg, bevor wir ihn
-                auslesen konnten, und bei den Sensoren kommt nichts an.
+                Wer nach dem Antworten noch aus dem Puffer liest, findet ihn
+                leer, und bei den Sensoren kommt nichts an.
 
-                Frueher lief die Auswertung ueber IPS_RunScriptText in einem
-                eigenen Thread und kam der Leerung meist zuvor - ein Rennen,
-                auf das man sich nicht verlassen sollte.
+                Mit der Kopie kann sofort geantwortet werden. Das Gateway
+                wartet dann nicht, bis alle Pakete ausgewertet sind - genau
+                das hat v1 durch den eigenen Thread erreicht.
              */
+            $sensordaten = $data;
+            $identify = $gatwayid . ':' . $mac . ':C0';
+
             if ($datalen == 15) {
                 $this->sendtocloud($ClientIP, $ClientPort);
             }
-            if ($datalen % 64 == 0) {
-                $this->splitesensordata($ClientIP, $ClientPort);
-            }
 
             $this->HTTP_Response_OK($ClientIP, $ClientPort);
+
+            if ($datalen % 64 == 0) {
+                $this->processframes($sensordaten, $identify);
+            }
         }
         //if there is too much data in the instance, delete the instance
         elseif ($datalensoll < $datalen) {
@@ -331,35 +335,13 @@ class TFAGATEWAY_V2 extends IPSModule
      */
     public function splitesensordata(string $ClientIP, int $ClientPort)
     {
-        $dataset = 10;
         $data = $this->GetBuffer('DataBuffer' . $ClientIP . $ClientPort);
         $id = $this->GetBuffer('DataBufferIDENTIFY' . $ClientIP . $ClientPort);
-
-        $datalen = strlen($data);
-        $maxdataset = $dataset * 64;
-        if ($datalen > $maxdataset) {
-            $this->LogMessage('Buffer overflow > ' . (string) ($dataset) . ' DATASET', KL_WARNING);
-            $this->LogMessage('Buffer sets       ' . (string) ($datalen / 64) . ' DATASET', KL_WARNING);
-            $data = substr($data, $datalen - $maxdataset, $maxdataset);
-            $datalen = strlen($data);
-        }
 
         $this->SetBuffer('DataBuffer' . $ClientIP . $ClientPort, '');
         $this->SetBuffer('DataBufferIDENTIFY' . $ClientIP . $ClientPort, '');
 
-        if ($this->ReadPropertyBoolean('var_debug_sensors')) {
-            $this->SendDebug('sensor', 'auszuwerten: ' . $datalen . ' Byte = ' . intdiv($datalen, 64) . ' Paket(e)' . "\r\n", 0);
-        }
-
-        if (IPS_SemaphoreEnter('SEM' . $this->InstanceID, 10000)) {
-            for ($i = 0; $i < $datalen; $i++) {
-                $this->senddatatosensor(substr($data, $i, 64), $id);
-                $i += 63;
-            }
-
-            IPS_SemaphoreLeave('SEM' . $this->InstanceID);
-
-        }
+        $this->processframes($data, $id);
     }
     /*
     @author					Back-Blade and helhau
@@ -484,6 +466,45 @@ class TFAGATEWAY_V2 extends IPSModule
         $data = bytearray2String($data);
         $this->senddatatosensor($data, 'testcode');
 
+    }
+
+    /*
+    @author					Back-Blade and helhau
+    @brief					Wertet einen Block aus 64-Byte-Paketen aus
+
+    @param[$data]			Nutzdaten, n * 64 Byte
+    @param[$id]				HTTP_IDENTIFY des Gateways
+
+    @see					Arbeitet auf einer uebergebenen Kopie statt auf dem
+                            Puffer. So kann ReceiveData sofort antworten und
+                            erst danach auswerten, ohne dass das Schliessen der
+                            Verbindung den Puffer wegraeumt.
+    @date					01.09.2026
+     */
+    private function processframes(string $data, string $id)
+    {
+        $dataset = 10;
+        $datalen = strlen($data);
+        $maxdataset = $dataset * 64;
+
+        if ($datalen > $maxdataset) {
+            $this->LogMessage('Buffer overflow > ' . (string) ($dataset) . ' DATASET', KL_WARNING);
+            $this->LogMessage('Buffer sets       ' . (string) ($datalen / 64) . ' DATASET', KL_WARNING);
+            $data = substr($data, $datalen - $maxdataset, $maxdataset);
+            $datalen = strlen($data);
+        }
+
+        if ($this->ReadPropertyBoolean('var_debug_sensors')) {
+            $this->SendDebug('sensor', 'auszuwerten: ' . $datalen . ' Byte = ' . intdiv($datalen, 64) . ' Paket(e)' . "\r\n", 0);
+        }
+
+        if (IPS_SemaphoreEnter('SEM' . $this->InstanceID, 10000)) {
+            for ($i = 0; $i < $datalen; $i += 64) {
+                $this->senddatatosensor(substr($data, $i, 64), $id);
+            }
+
+            IPS_SemaphoreLeave('SEM' . $this->InstanceID);
+        }
     }
     /*
     @author					Back-Blade and helhau

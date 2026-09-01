@@ -67,7 +67,12 @@ class TFALOGGER_V2 extends IPSModule
             Auf eine bestimmte ID wird erst beim Eintragen gefiltert, damit
             die Einstellung ohne Neustart der Verbindung wirkt.
          */
-        $this->SetReceiveDataFilter('');
+        /*
+            '.*' statt eines leeren Filters: ein leerer String laesst sich als
+            "Filter aus" oder als "nichts passt" auslegen. '.*' trifft jeden
+            JSON-String und ist damit eindeutig.
+         */
+        $this->SetReceiveDataFilter('.*');
 
         if (IPS_GetKernelRunlevel() != KR_READY) return;
 
@@ -91,6 +96,8 @@ class TFALOGGER_V2 extends IPSModule
      */
     public function ReceiveData($JSONString)
     {
+        $this->SendDebug('empfang', 'ReceiveData aufgerufen, ' . strlen($JSONString) . ' Zeichen' . "\r\n", 0);
+
         if (!$this->ReadPropertyBoolean('var_active')) return;
 
         $dataarray = json_decode($JSONString);
