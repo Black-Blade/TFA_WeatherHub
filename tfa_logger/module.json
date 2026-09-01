@@ -1,6 +1,6 @@
 {
     "id": "{E2082BA9-F516-42AF-9BDE-0CE72106A4D2}",
-    "name": "TFALOGGER",
+    "name": "TFALOGGER_V2",
     "type": 3,
     "vendor": "TFA WeatherHub",
     "aliases": [],
@@ -11,6 +11,6 @@
     "implemented": [
         "{99C7FBD6-D83A-4E3C-B395-CB508547A2FC}"
     ],
-    "prefix": "TFALOGGER",
+    "prefix": "TFALOGGER_V2",
     "url": "https://github.com/Black-Blade/TFA_WeatherHub/tree/master/tfa_logger"
 }

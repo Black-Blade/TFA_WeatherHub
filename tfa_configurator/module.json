@@ -1,6 +1,6 @@
 {
     "id": "{7FF896C5-BA6A-404A-9C12-BB7A7F0B3B0E}",
-    "name": "TFACONFIGURATOR",
+    "name": "TFACONFIGURATOR_V2",
     "type": 4,
     "vendor": "TFA WeatherHub",
     "aliases": [],
@@ -11,6 +11,6 @@
     "implemented": [
         "{99C7FBD6-D83A-4E3C-B395-CB508547A2FC}"
     ],
-    "prefix": "TFACONFIGURATOR",
+    "prefix": "TFACONFIGURATOR_V2",
     "url": "https://github.com/Black-Blade/TFA_WeatherHub/tree/master/tfa_configurator"
 }

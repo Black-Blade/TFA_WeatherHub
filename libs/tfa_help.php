@@ -9,14 +9,14 @@ if (!defined('__ROOT__'))  define('__ROOT__', dirname(dirname(__FILE__)));
 require_once __ROOT__ . '/libs/help.php';
 
 /**
-@author					Back-Blade and helhau
-@brief					decodiert sensordaten
-
-@return					Array
-
-@date    				23.03.2020
-@version				0.0.1 Doxygen style eingebaut und erstellen dieser File
-*/
+ * @author					Back-Blade and helhau
+ * @brief					decodiert sensordaten
+ *
+ * @return					Array
+ *
+ * @date    				23.03.2020
+ * @version				0.0.1 Doxygen style eingebaut und erstellen dieser File
+ */
 function dec_sensor_data($data, $timestamp)
 {
     $data = substr($data, 0, 2);
@@ -33,14 +33,14 @@ function dec_sensor_data($data, $timestamp)
 }
 
 /**
-@author					Back-Blade and helhau
-@brief					decodiert sensordaten
-
-@return					Array
-
-@date    				23.03.2020
-@version				0.0.1 Doxygen style eingebaut und erstellen dieser File
-*/
+ * @author					Back-Blade and helhau
+ * @brief					decodiert sensordaten
+ *
+ * @return					Array
+ *
+ * @date    				23.03.2020
+ * @version				0.0.1 Doxygen style eingebaut und erstellen dieser File
+ */
 function dec_sensor_data_wind($data, $timestamp)
 {
     $data = substr($data, 0, 3);
@@ -56,14 +56,14 @@ function dec_sensor_data_wind($data, $timestamp)
     return $array;
 }
 /**
-@author					Back-Blade and helhau
-@brief					decodiert sensordaten
-
-@return					Array
-
-@date    				23.03.2020
-@version				0.0.1 Doxygen style eingebaut und erstellen dieser File
-*/
+ * @author					Back-Blade and helhau
+ * @brief					decodiert sensordaten
+ *
+ * @return					Array
+ *
+ * @date    				23.03.2020
+ * @version				0.0.1 Doxygen style eingebaut und erstellen dieser File
+ */
 function dec_sensor_data_dir($data, $offset)
 {
     $datalen = strlen($data);
@@ -97,14 +97,14 @@ function dec_sensor_data_dir($data, $offset)
 
 }
 /**
-@author					Back-Blade and helhau
-@brief					decodiert
-
-@return					Array	temperature
-
-@date    				23.03.2020
-@version				0.0.1 Doxygen style eingebaut und erstellen dieser File
-*/
+ * @author					Back-Blade and helhau
+ * @brief					decodiert
+ *
+ * @return					Array	temperature
+ *
+ * @date    				23.03.2020
+ * @version				0.0.1 Doxygen style eingebaut und erstellen dieser File
+ */
 function dec_temperature($data)
 {
     $tempf = 0.0;
@@ -127,14 +127,14 @@ function dec_temperature($data)
 }
 
 /**
-@author					Back-Blade and helhau
-@brief					decodiert humidity
-
-@return					Array
-
-@date    				23.03.2020
-@version				0.0.1 Doxygen style eingebaut und erstellen dieser File
-*/
+ * @author					Back-Blade and helhau
+ * @brief					decodiert humidity
+ *
+ * @return					Array
+ *
+ * @date    				23.03.2020
+ * @version				0.0.1 Doxygen style eingebaut und erstellen dieser File
+ */
 function dec_humidity($data)
 {
     $data = substr($data, 0, 2);
@@ -153,13 +153,13 @@ function dec_humidity($data)
 }
 
 /**
-@author					Back-Blade and helhau
-@brief					decodiert humidity_decimalplace
-@return					Array
-
-@date    				23.03.2020
-@version				0.0.1 Doxygen style eingebaut und erstellen dieser File
-*/
+ * @author					Back-Blade and helhau
+ * @brief					decodiert humidity_decimalplace
+ * @return					Array
+ *
+ * @date    				23.03.2020
+ * @version				0.0.1 Doxygen style eingebaut und erstellen dieser File
+ */
 function dec_humidity_decimalplace($data)
 {
     $data = substr($data, 0, 2);
@@ -181,13 +181,13 @@ function dec_humidity_decimalplace($data)
 }
 
 /**
-@author					Back-Blade and helhau
-@brief					decodiert AirQuality
-@return					Array
-
-@date    				23.03.2020
-@version				0.0.1 Doxygen style eingebaut und erstellen dieser File
-*/
+ * @author					Back-Blade and helhau
+ * @brief					decodiert AirQuality
+ * @return					Array
+ *
+ * @date    				23.03.2020
+ * @version				0.0.1 Doxygen style eingebaut und erstellen dieser File
+ */
 function dec_airQuality($data)
 {
     $data = substr($data, 0, 2);
@@ -208,13 +208,13 @@ function dec_airQuality($data)
 }
 
 /**
-@author					Back-Blade and helhau
-@brief					decodiert Wetness
-@return					Array
-
-@date    				23.03.2020
-@version				0.0.1 Doxygen style eingebaut und erstellen dieser File
-*/
+ * @author					Back-Blade and helhau
+ * @brief					decodiert Wetness
+ * @return					Array
+ *
+ * @date    				23.03.2020
+ * @version				0.0.1 Doxygen style eingebaut und erstellen dieser File
+ */
 function dec_wetness($data)
 {
     $data = substr($data, 0, 1);
@@ -270,14 +270,14 @@ function dec_doorwindows($data, $timestamp)
     return $array;
 }
 /**
-@author					Back-Blade and helhau
-@brief					decodiert
-
-@return					Array	temperature
-
-@date    				23.03.2020
-@version				0.0.1 Doxygen style eingebaut und erstellen dieser File
-*/
+ * @author					Back-Blade and helhau
+ * @brief					decodiert
+ *
+ * @return					Array	temperature
+ *
+ * @date    				23.03.2020
+ * @version				0.0.1 Doxygen style eingebaut und erstellen dieser File
+ */
 function dec_temperature_pos_rain($data)
 {
     $data = substr($data, 0, 2);
@@ -308,14 +308,14 @@ function dec_temperature_pos_rain($data)
 }
 
 /**
-@author					Back-Blade and helhau
-@brief					decodiert
-
-@return					Array	temperature
-
-@date    				23.03.2020
-@version				0.0.1 Doxygen style eingebaut und erstellen dieser File
-*/
+ * @author					Back-Blade and helhau
+ * @brief					decodiert
+ *
+ * @return					Array	temperature
+ *
+ * @date    				23.03.2020
+ * @version				0.0.1 Doxygen style eingebaut und erstellen dieser File
+ */
 function dec_counter_rain($data, $oldcounter, $oldrain)
 {
     $tempf = 0.0;

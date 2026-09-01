@@ -19,9 +19,9 @@ if (!defined('__ROOT__'))  define('__ROOT__', dirname(dirname(__FILE__)));
 //load helper functionen
 require_once __ROOT__ . '/libs/help.php';
 
-class TFASENSORHTTPGATEWAY extends IPSModule
+class TFASENSORHTTPGATEWAY_V2 extends IPSModule
 {
-    private $name = 'TFASENSORHTTPGATEWAY';
+    private $name = 'TFASENSORHTTPGATEWAY_V2';
 
     /*
     @author					Back-Blade and helhau
@@ -232,8 +232,8 @@ class TFASENSORHTTPGATEWAY extends IPSModule
 
             $key = strtolower($key);
             $value = $this->explode_td($stuecke[$i + 1]);
-            if ($key == 'last_contact') $value = substr($value,0,-2);
-            $array = array_merge($array,  [$key=>$value]);
+            if ($key == 'last_contact') $value = substr($value, 0, -2);
+            $array = array_merge($array, [$key=>$value]);
         }
 
         // time to array

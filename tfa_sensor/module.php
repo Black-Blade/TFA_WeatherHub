@@ -22,7 +22,7 @@ require_once __ROOT__ . '/libs/sensor_decode.php';
 require_once __ROOT__ . '/libs/profiles.php';
 require_once __ROOT__ . '/libs/frame_tools.php';
 
-class TFASENSOR extends IPSModule
+class TFASENSOR_V2 extends IPSModule
 {
     public const GATEWAY = '{EADE1EC1-66C7-4E18-89FF-8AD98F499DB2}';
     public const DATA_FROM = '{99C7FBD6-D83A-4E3C-B395-CB508547A2FC}';
@@ -32,7 +32,7 @@ class TFASENSOR extends IPSModule
     public const STATUS_NO_TYPE = 201;
     public const STATUS_NO_ID = 202;
     public const STATUS_NO_BLOCK = 203;
-    private $name = 'TFASENSOR';
+    private $name = 'TFASENSOR_V2';
 
     /*
     @author					ips and Back-Blade and helhau

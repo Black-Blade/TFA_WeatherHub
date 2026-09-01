@@ -21,9 +21,9 @@ if (!defined('__ROOT__'))  define('__ROOT__', dirname(dirname(__FILE__)));
 require_once __ROOT__ . '/libs/sensor_registry.php';
 require_once __ROOT__ . '/libs/frame_tools.php';
 
-class TFASENSORBUILDER extends IPSModule
+class TFASENSORBUILDER_V2 extends IPSModule
 {
-    private $name = 'TFASENSORBUILDER';
+    private $name = 'TFASENSORBUILDER_V2';
 
     /*
     @author					ips and Back-Blade and helhau

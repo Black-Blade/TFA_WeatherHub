@@ -19,15 +19,15 @@ if (!defined('__ROOT__'))  define('__ROOT__', dirname(dirname(__FILE__)));
 //load helper functionen
 require_once __ROOT__ . '/libs/help.php';
 
-class TFAGATEWAY extends IPSModule
+class TFAGATEWAY_V2 extends IPSModule
 {
-    private $name = 'TFAGATEWAY';
+    private $name = 'TFAGATEWAY_V2';
 
     /*
     @author					Back-Blade and helhau
     @brief					construct the class
     @date    				13.10.2019
-           */
+     */
     public function __construct($InstanceID)
     {
         parent::__construct($InstanceID);
@@ -86,7 +86,7 @@ class TFAGATEWAY extends IPSModule
     @author					ips and Back-Blade and helhau
     @brief					Daten von  übergeordnete Instanz
     @date    				18.03.2020
-         */
+     */
 
     public function ReceiveData($JSONString)
     {
@@ -587,13 +587,13 @@ class TFAGATEWAY extends IPSModule
         if ($this->ReadPropertyBoolean('var_debug_reset') == true) {
             $this->SendDebug('reset', 'UDP CMD       :' . $cmd, 0);
             $this->SendDebug('reset', 'UDP MAC       :' . $mac, 0);
-            $this->SendDebug('reset','UDO IP        :' . $ip,0);
-            $this->SendDebug('reset','UDO SEND DATA :' . $response,0);
+            $this->SendDebug('reset', 'UDO IP        :' . $ip, 0);
+            $this->SendDebug('reset', 'UDO SEND DATA :' . $response, 0);
         }
         $sock = socket_create(AF_INET, SOCK_DGRAM, SOL_UDP);
         socket_set_option($sock, SOL_SOCKET, SO_BROADCAST, 1);
         socket_set_option($sock, SOL_SOCKET, SO_RCVTIMEO, ['sec'=>1, 'usec'=>0]);
-        socket_sendto($sock, $response, strlen($response), 0, $ip,8003);
+        socket_sendto($sock, $response, strlen($response), 0, $ip, 8003);
         socket_close($sock);
 
     }

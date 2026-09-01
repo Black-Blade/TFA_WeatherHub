@@ -75,7 +75,7 @@ Wichtig zu wissen: Wenn das Gateway euren IPS-Server gerade nicht erreicht, spei
 
 Im Store installiert ihr die Bibliothek (Suche nach TFA). Danach legt ihr **eine** Gateway-Instanz an:
 
-Rechte Maustaste auf „Splitter Instanzen", dann Objekt hinzufügen – Instanz, im Suchfilter „TFA" eingeben und **TFAGATEWAY** auswählen. Dabei wird automatisch eine Schnittstelle (Server Socket) angelegt, die ihr aktiviert und in die ihr die oben gewählte Portadresse eintragt, z.B. 3778. Nachträglich ändern könnt ihr das über den Button „Schnittstelle Konfigurieren/Ändern".
+Rechte Maustaste auf „Splitter Instanzen", dann Objekt hinzufügen – Instanz, im Suchfilter „TFA" eingeben und **TFAGATEWAY_V2** auswählen. Dabei wird automatisch eine Schnittstelle (Server Socket) angelegt, die ihr aktiviert und in die ihr die oben gewählte Portadresse eintragt, z.B. 3778. Nachträglich ändern könnt ihr das über den Button „Schnittstelle Konfigurieren/Ändern".
 
 In der Gatewaykonfiguration gibt es außerdem:
 
@@ -88,7 +88,7 @@ In der Gatewaykonfiguration gibt es außerdem:
 
 Das ist der bequeme Weg und ersetzt das Anlegen von Hand.
 
-Legt eine Instanz **TFACONFIGURATOR** an (Objekt hinzufügen – Instanz, Suchfilter „TFA"). Sie hängt sich automatisch an euer Gateway. Ab jetzt sammelt sie jeden Sensor, von dem ein Paket hereinkommt.
+Legt eine Instanz **TFACONFIGURATOR_V2** an (Objekt hinzufügen – Instanz, Suchfilter „TFA"). Sie hängt sich automatisch an euer Gateway. Ab jetzt sammelt sie jeden Sensor, von dem ein Paket hereinkommt.
 
 Wartet ein paar Minuten, oder nehmt bei einem Sensor kurz die Batterien heraus und wieder hinein — dann sendet er sofort. Öffnet die Konfiguration des Konfigurators, und ihr seht eine Liste:
 
@@ -134,7 +134,7 @@ Das könnt ihr zusätzlich installieren. Es ruft die Weboberfläche eures Gatewa
 
 Jeder Sensortyp wird durch **eine Datei** im Ordner `sensors/` beschrieben: welche Bytes mit welcher Rechenvorschrift ausgewertet werden und in welche Variablen das Ergebnis wandert. Mehr braucht es nicht — kein PHP, keine neue Modulkennung.
 
-Legt dazu eine Instanz **TFASENSORBUILDER** an. Darin:
+Legt dazu eine Instanz **TFASENSORBUILDER_V2** an. Darin:
 
 - **Aus Paket vorbelegen** – ihr fügt ein Paket eures Sensors als Hex-Text ein, Typ, Paketkopf und Länge werden automatisch übernommen.
 - **Vorhandenen Baustein laden** – nehmt einen ähnlichen Sensor als Ausgangspunkt.
@@ -149,7 +149,7 @@ Das genaue Format, alle verfügbaren Rechenvorschriften und was sie liefern, ste
 
 ## 10. Wenn ein Sensor nicht erkannt wird
 
-1. Legt eine Instanz **TFALOGGER** an. Sie schneidet alles mit, was vom Gateway kommt.
+1. Legt eine Instanz **TFALOGGER_V2** an. Sie schneidet alles mit, was vom Gateway kommt.
 2. Optional „nur unbekannte Sensoren" anhaken, dann bleibt der Mitschnitt übersichtlich.
 3. Ein paar Messungen abwarten oder am Sensor kurz die Batterien wechseln.
 4. Auf „Als Text herauskopieren" klicken und uns den Text schicken — zusammen mit der genauen TFA-Bezeichnung und Artikelnummer eures Sensors.
@@ -160,14 +160,16 @@ Habt ihr den Code von jemand anderem bekommen und gar keinen Sensor? Der Konfigu
 
 ## 11. Module und GUIDs
 
-|Modul                 |Art          |GUID                                  |
-|:---------------------|:------------|:-------------------------------------|
-|TFAGATEWAY            |Splitter     |{EADE1EC1-66C7-4E18-89FF-8AD98F499DB2}|
-|TFASENSOR             |Gerät        |{904322F3-ED27-4EDE-B235-393AFDF1FD5E}|
-|TFACONFIGURATOR       |Konfigurator |{7FF896C5-BA6A-404A-9C12-BB7A7F0B3B0E}|
-|TFASENSORBUILDER      |Gerät        |{0845C706-40CC-4E8D-B589-35A8267906D1}|
-|TFALOGGER             |Gerät        |{E2082BA9-F516-42AF-9BDE-0CE72106A4D2}|
-|TFASENSORHTTPGATEWAY  |Gerät        |{18AB6B98-6E85-401B-967F-14D1AE70B13B}|
+Der Namenszusatz `_V2` sorgt dafür, dass sich die Modulnamen und die davon abgeleiteten PHP-Funktionen nicht mit Version 1 überschneiden. Ein Aufruf lautet also z.B. `TFAGATEWAY_V2_testdata($id)`.
+
+|Modul                    |Art          |GUID                                  |
+|:------------------------|:------------|:-------------------------------------|
+|TFAGATEWAY_V2            |Splitter     |{EADE1EC1-66C7-4E18-89FF-8AD98F499DB2}|
+|TFASENSOR_V2             |Gerät        |{904322F3-ED27-4EDE-B235-393AFDF1FD5E}|
+|TFACONFIGURATOR_V2       |Konfigurator |{7FF896C5-BA6A-404A-9C12-BB7A7F0B3B0E}|
+|TFASENSORBUILDER_V2      |Gerät        |{0845C706-40CC-4E8D-B589-35A8267906D1}|
+|TFALOGGER_V2             |Gerät        |{E2082BA9-F516-42AF-9BDE-0CE72106A4D2}|
+|TFASENSORHTTPGATEWAY_V2  |Gerät        |{18AB6B98-6E85-401B-967F-14D1AE70B13B}|
 
 Datenaustausch zwischen den Instanzen:
 

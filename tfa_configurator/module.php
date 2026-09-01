@@ -21,14 +21,14 @@ if (!defined('__ROOT__'))  define('__ROOT__', dirname(dirname(__FILE__)));
 require_once __ROOT__ . '/libs/configurator_help.php';
 require_once __ROOT__ . '/libs/frame_tools.php';
 
-class TFACONFIGURATOR extends IPSModule
+class TFACONFIGURATOR_V2 extends IPSModule
 {
     public const GATEWAY = '{EADE1EC1-66C7-4E18-89FF-8AD98F499DB2}';
     public const DATA_FROM = '{99C7FBD6-D83A-4E3C-B395-CB508547A2FC}';
 
     public const STATUS_OK = 102;
     public const STATUS_NO_GATEWAY = 104;
-    private $name = 'TFACONFIGURATOR';
+    private $name = 'TFACONFIGURATOR_V2';
 
     /*
     @author					ips and Back-Blade and helhau
