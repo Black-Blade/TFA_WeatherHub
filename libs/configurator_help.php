@@ -121,10 +121,6 @@ function tfa_configurator_rows($devices, $instances, $translate = null)
 			{
 				$row["state"] = $t("does not match the building block");
 			}
-			else if ($def["guid"] == "")
-			{
-				$row["state"] = $t("no module available");
-			}
 			else if (array_key_exists($deviceid, $instances))
 			{
 				$row["instanceID"] = $instances[$deviceid];
@@ -135,10 +131,28 @@ function tfa_configurator_rows($devices, $instances, $translate = null)
 					Die Sensormodule erwarten die ID ohne die ersten beiden
 					Stellen, also 10 Zeichen.
 				*/
-				$row["create"] = array(
-					"moduleID"      => $def["guid"],
-					"configuration" => array("var_sensor_id" => substr($deviceid, 2)),
-				);
+				if ($def["guid"] != "")
+				{
+					$row["create"] = array(
+						"moduleID"      => $def["guid"],
+						"configuration" => array("var_sensor_id" => substr($deviceid, 2)),
+					);
+				}
+				else
+				{
+					/*
+						Der Baustein nennt kein eigenes Modul - dann uebernimmt
+						das generische Sensormodul, dem der Typ mitgegeben wird.
+						So sind auch selbst gebaute Sensoren anlegbar.
+					*/
+					$row["create"] = array(
+						"moduleID"      => TFA_GENERIC_SENSOR,
+						"configuration" => array(
+							"var_typ"       => $typ,
+							"var_sensor_id" => substr($deviceid, 2),
+						),
+					);
+				}
 			}
 		}
 

@@ -61,9 +61,9 @@ class TFASENSORBUILDER extends IPSModule
 	public function GetConfigurationForm()
 	{
 		$decoders = array();
-		foreach (tfa_decoders() as $d => $bytes)
+		foreach (tfa_decoders() as $d => $info)
 		{
-			$decoders[] = array("caption" => $d." (".$bytes." Byte)", "value" => $d);
+			$decoders[] = array("caption" => $d." (".$info["bytes"]." Byte)", "value" => $d);
 		}
 
 		$vartypes = array();

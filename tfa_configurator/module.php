@@ -286,6 +286,21 @@ class TFACONFIGURATOR extends IPSModule
 			}
 		}
 
+		/*
+			Das generische Modul traegt seinen Typ als Eigenschaft, die
+			Geraete-ID setzt sich daher aus var_typ und var_sensor_id
+			zusammen.
+		*/
+		foreach (IPS_GetInstanceListByModuleID(TFA_GENERIC_SENSOR) as $id)
+		{
+			$typ      = IPS_GetProperty($id, "var_typ");
+			$sensorid = IPS_GetProperty($id, "var_sensor_id");
+
+			if ($typ == "" || $sensorid == "") continue;
+
+			$found[strtoupper($typ.$sensorid)] = $id;
+		}
+
 		return $found;
 	}
 

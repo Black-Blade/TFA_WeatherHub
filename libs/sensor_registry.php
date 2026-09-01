@@ -27,6 +27,13 @@ if (!defined('TFA_FRAME_CRC_POS'))  define('TFA_FRAME_CRC_POS',  63);
 if (!defined('TFA_FRAME_ID_POS'))   define('TFA_FRAME_ID_POS',   6);
 if (!defined('TFA_FRAME_ID_LEN'))   define('TFA_FRAME_ID_LEN',   6);
 
+/*
+	Das generische Sensormodul. Es kann jeden Baustein bedienen und wird
+	ueberall dort angelegt, wo ein Baustein keine eigene Modul-GUID nennt -
+	also insbesondere bei selbst gebauten Sensoren.
+*/
+if (!defined('TFA_GENERIC_SENSOR')) define('TFA_GENERIC_SENSOR', '{904322F3-ED27-4EDE-B235-393AFDF1FD5E}');
+
 /*******************************************************************************
 @author					Back-Blade and helhau
 @brief					Liefert die Tabelle aller bekannten Sensortypen
@@ -337,19 +344,29 @@ function tfa_sensor_validate($doc, $decoders = null)
 *******************************************************************************/
 function tfa_decoders()
 {
+	/*
+		bytes = wie viele Bytes der Dekoder liest
+		args  = welche zusaetzlichen Angaben er braucht
+				none      nur die Bytes
+				time      der Zeitstempel des Paketes
+				timechain wie time, gibt aber eine neue Zeit zurueck, die
+						  die naechste Gruppe desselben Dekoders weiterreicht
+				offset    der eingestellte Offset fuer die Windrichtung
+				rain      die zuletzt gespeicherten Regenwerte
+	*/
 	return array(
-		"dec_sensor_data"           => 2,
-		"dec_sensor_data_wind"      => 2,
-		"dec_sensor_data_dir"       => 2,
-		"dec_temperature"           => 2,
-		"dec_humidity"              => 2,
-		"dec_humidity_decimalplace" => 2,
-		"dec_airQuality"            => 2,
-		"dec_wetness"               => 1,
-		"dec_doorwindows"           => 1,
-		"dec_temperature_pos_rain"  => 2,
-		"dec_counter_rain"          => 2,
-		"dec_event_rain"            => 2,
+		"dec_sensor_data"           => array("bytes" => 2, "args" => "time"),
+		"dec_sensor_data_wind"      => array("bytes" => 2, "args" => "time"),
+		"dec_sensor_data_dir"       => array("bytes" => 2, "args" => "offset"),
+		"dec_temperature"           => array("bytes" => 2, "args" => "none"),
+		"dec_humidity"              => array("bytes" => 2, "args" => "none"),
+		"dec_humidity_decimalplace" => array("bytes" => 2, "args" => "none"),
+		"dec_airQuality"            => array("bytes" => 2, "args" => "none"),
+		"dec_wetness"               => array("bytes" => 1, "args" => "none"),
+		"dec_doorwindows"           => array("bytes" => 1, "args" => "timechain"),
+		"dec_temperature_pos_rain"  => array("bytes" => 2, "args" => "none"),
+		"dec_counter_rain"          => array("bytes" => 2, "args" => "rain"),
+		"dec_event_rain"            => array("bytes" => 2, "args" => "timechain"),
 	);
 }
 
