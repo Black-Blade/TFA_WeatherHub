@@ -1,0 +1,13 @@
+name: Check Style
+
+on: [push, pull_request]
+
+jobs:
+
+  style:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout module
+      uses: actions/checkout@master
+    - name: Check style
+      uses: symcon/action-style@v3
