@@ -67,11 +67,31 @@ Ab Symcon 8 bestimmt nicht mehr ein zentrales Profil die Anzeige, sondern eine *
 
 | Kurzwort | wofür | wichtige Schlüssel |
 |---|---|---|
-| `VALUE` | Messwerte | `SUFFIX`, `DIGITS`, `ICON`, `MIN`, `MAX`, `USAGE_TYPE` (1 = Temperatur) |
-| `ENUMERATION` | feste Zustände, etwa Batterie oder Himmelsrichtung | `OPTIONS` mit `Value`, `Caption`, `Color`; `DISPLAY` (0 Text, 1 Icon, 2 beides) |
+| `VALUE` | alles, was nur angezeigt wird | `SUFFIX`, `DIGITS`, `ICON`, `MIN`, `MAX`, `USAGE_TYPE` (1 = Temperatur), dazu `OPTIONS` bei Boolean und `INTERVALS` bei Zahlen |
 | `DATETIME` | Zeitstempel | `TEMPLATE`: `DATE`, `TIME` oder `DATE_TIME` |
+| `ENUMERATION` | **nur für schaltbare Variablen** | für unsere reinen Anzeigen nicht verwendbar |
 
-`Caption` wird über die `locale.json` übersetzt, `Color` ist eine RGB-Zahl (`0x28A745` = grün).
+**Wichtig:** Die Aufzählung steht nur Variablen mit einer Variablenaktion zur Verfügung. Unsere Sensorwerte sind reine Anzeigen, deshalb wird auch für Zustände die Wertanzeige benutzt — die Konsole meldet sonst „Ungültiges Formular".
+
+Bei **Boolean** übernehmen `OPTIONS` die Rolle der Zuordnungen:
+
+```json
+"OPTIONS": [
+    {"Value": true,  "Caption": "battery ok",  "IconActive": true, "IconValue": "battery-full",  "ColorActive": true, "ColorValue": 2664261},
+    {"Value": false, "Caption": "battery low", "IconActive": true, "IconValue": "battery-empty", "ColorActive": true, "ColorValue": 14431557}
+]
+```
+
+Bei **Zahlen** leisten `INTERVALS` dasselbe — so wird aus der Gradzahl der Windrichtung eine Himmelsrichtung:
+
+```json
+"INTERVALS_ACTIVE": true,
+"INTERVALS": [
+    {"IntervalMinValue": -11.25, "IntervalMaxValue": 11.24, "ConstantActive": true, "ConstantValue": "N"}
+]
+```
+
+`Caption` und `ConstantValue` werden über die `locale.json` übersetzt. Farben sind RGB-Zahlen — beachte, dass die Wertanzeige `ColorActive`/`ColorValue` verlangt, nicht `Color`.
 
 `field` muss eines der Felder sein, die der gewählte Dekoder zurückgibt.
 

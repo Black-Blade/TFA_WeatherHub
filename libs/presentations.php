@@ -104,10 +104,37 @@ function tfa_build_presentation($spec, $module)
                 $o['Caption'] = $module->Translate($o['Caption']);
             }
 
+            /*
+                Symcons Formular fuer die Aufzaehlung greift ungeprueft auf
+                IconActive und IconValue zu. Fehlen sie, meldet die Konsole
+                "Ungueltiges Formular". Deshalb hier auffuellen, damit
+                Bausteine nicht daran denken muessen.
+             */
+            if (!array_key_exists('IconActive', $o)) $o['IconActive'] = false;
+            if (!array_key_exists('IconValue', $o))  $o['IconValue'] = '';
+
             $optionen[] = $o;
         }
 
         $p['OPTIONS'] = json_encode($optionen);
+    }
+
+    if (array_key_exists('INTERVALS', $p) && is_array($p['INTERVALS'])) {
+        $intervalle = [];
+
+        foreach ($p['INTERVALS'] as $iv) {
+            /*
+                Auch der feste Text eines Intervalls wird uebersetzt - so
+                steht bei der Windrichtung im Deutschen NNO statt NNE.
+             */
+            if (array_key_exists('ConstantValue', $iv)) {
+                $iv['ConstantValue'] = $module->Translate($iv['ConstantValue']);
+            }
+
+            $intervalle[] = $iv;
+        }
+
+        $p['INTERVALS'] = json_encode($intervalle);
     }
 
     return $p;

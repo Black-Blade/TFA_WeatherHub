@@ -23,19 +23,23 @@
                     "name": "battery",
                     "type": "boolean",
                     "presentation": {
-                        "PRESENTATION": "ENUMERATION",
-                        "ICON": "battery-full",
-                        "DISPLAY": 0,
+                        "PRESENTATION": "VALUE",
                         "OPTIONS": [
                             {
                                 "Value": true,
                                 "Caption": "battery ok",
-                                "Color": 2664261
+                                "IconActive": true,
+                                "IconValue": "battery-full",
+                                "ColorActive": true,
+                                "ColorValue": 2664261
                             },
                             {
                                 "Value": false,
                                 "Caption": "battery low",
-                                "Color": 14431557
+                                "IconActive": true,
+                                "IconValue": "battery-empty",
+                                "ColorActive": true,
+                                "ColorValue": 14431557
                             }
                         ]
                     },

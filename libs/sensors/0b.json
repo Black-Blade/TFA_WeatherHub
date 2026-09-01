@@ -23,19 +23,23 @@
                     "name": "battery",
                     "type": "boolean",
                     "presentation": {
-                        "PRESENTATION": "ENUMERATION",
-                        "ICON": "battery-full",
-                        "DISPLAY": 0,
+                        "PRESENTATION": "VALUE",
                         "OPTIONS": [
                             {
                                 "Value": true,
                                 "Caption": "battery ok",
-                                "Color": 2664261
+                                "IconActive": true,
+                                "IconValue": "battery-full",
+                                "ColorActive": true,
+                                "ColorValue": 2664261
                             },
                             {
                                 "Value": false,
                                 "Caption": "battery low",
-                                "Color": 14431557
+                                "IconActive": true,
+                                "IconValue": "battery-empty",
+                                "ColorActive": true,
+                                "ColorValue": 14431557
                             }
                         ]
                     },
@@ -80,73 +84,113 @@
                     "name": "winddirection",
                     "type": "float",
                     "presentation": {
-                        "PRESENTATION": "ENUMERATION",
+                        "PRESENTATION": "VALUE",
+                        "SUFFIX": " °",
+                        "DIGITS": 1,
                         "ICON": "compass",
-                        "DISPLAY": 0,
-                        "OPTIONS": [
+                        "INTERVALS_ACTIVE": true,
+                        "INTERVALS": [
                             {
-                                "Value": 0.0,
-                                "Caption": "N"
+                                "IntervalMinValue": -11.25,
+                                "IntervalMaxValue": 11.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "N"
                             },
                             {
-                                "Value": 22.5,
-                                "Caption": "NNE"
+                                "IntervalMinValue": 11.25,
+                                "IntervalMaxValue": 33.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "NNE"
                             },
                             {
-                                "Value": 45.0,
-                                "Caption": "NE"
+                                "IntervalMinValue": 33.75,
+                                "IntervalMaxValue": 56.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "NE"
                             },
                             {
-                                "Value": 67.5,
-                                "Caption": "ENE"
+                                "IntervalMinValue": 56.25,
+                                "IntervalMaxValue": 78.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "ENE"
                             },
                             {
-                                "Value": 90.0,
-                                "Caption": "E"
+                                "IntervalMinValue": 78.75,
+                                "IntervalMaxValue": 101.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "E"
                             },
                             {
-                                "Value": 112.5,
-                                "Caption": "ESE"
+                                "IntervalMinValue": 101.25,
+                                "IntervalMaxValue": 123.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "ESE"
                             },
                             {
-                                "Value": 135.0,
-                                "Caption": "SE"
+                                "IntervalMinValue": 123.75,
+                                "IntervalMaxValue": 146.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "SE"
                             },
                             {
-                                "Value": 157.5,
-                                "Caption": "SSE"
+                                "IntervalMinValue": 146.25,
+                                "IntervalMaxValue": 168.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "SSE"
                             },
                             {
-                                "Value": 180.0,
-                                "Caption": "S"
+                                "IntervalMinValue": 168.75,
+                                "IntervalMaxValue": 191.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "S"
                             },
                             {
-                                "Value": 202.5,
-                                "Caption": "SSW"
+                                "IntervalMinValue": 191.25,
+                                "IntervalMaxValue": 213.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "SSW"
                             },
                             {
-                                "Value": 225.0,
-                                "Caption": "SW"
+                                "IntervalMinValue": 213.75,
+                                "IntervalMaxValue": 236.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "SW"
                             },
                             {
-                                "Value": 247.5,
-                                "Caption": "WSW"
+                                "IntervalMinValue": 236.25,
+                                "IntervalMaxValue": 258.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "WSW"
                             },
                             {
-                                "Value": 270.0,
-                                "Caption": "W"
+                                "IntervalMinValue": 258.75,
+                                "IntervalMaxValue": 281.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "W"
                             },
                             {
-                                "Value": 292.5,
-                                "Caption": "WNW"
+                                "IntervalMinValue": 281.25,
+                                "IntervalMaxValue": 303.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "WNW"
                             },
                             {
-                                "Value": 315.0,
-                                "Caption": "NW"
+                                "IntervalMinValue": 303.75,
+                                "IntervalMaxValue": 326.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "NW"
                             },
                             {
-                                "Value": 337.5,
-                                "Caption": "NNW"
+                                "IntervalMinValue": 326.25,
+                                "IntervalMaxValue": 348.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "NNW"
+                            },
+                            {
+                                "IntervalMinValue": 348.76,
+                                "IntervalMaxValue": 360,
+                                "ConstantActive": true,
+                                "ConstantValue": "N"
                             }
                         ]
                     },
@@ -203,73 +247,113 @@
                     "name": "winddirection previous",
                     "type": "float",
                     "presentation": {
-                        "PRESENTATION": "ENUMERATION",
+                        "PRESENTATION": "VALUE",
+                        "SUFFIX": " °",
+                        "DIGITS": 1,
                         "ICON": "compass",
-                        "DISPLAY": 0,
-                        "OPTIONS": [
+                        "INTERVALS_ACTIVE": true,
+                        "INTERVALS": [
                             {
-                                "Value": 0.0,
-                                "Caption": "N"
+                                "IntervalMinValue": -11.25,
+                                "IntervalMaxValue": 11.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "N"
                             },
                             {
-                                "Value": 22.5,
-                                "Caption": "NNE"
+                                "IntervalMinValue": 11.25,
+                                "IntervalMaxValue": 33.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "NNE"
                             },
                             {
-                                "Value": 45.0,
-                                "Caption": "NE"
+                                "IntervalMinValue": 33.75,
+                                "IntervalMaxValue": 56.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "NE"
                             },
                             {
-                                "Value": 67.5,
-                                "Caption": "ENE"
+                                "IntervalMinValue": 56.25,
+                                "IntervalMaxValue": 78.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "ENE"
                             },
                             {
-                                "Value": 90.0,
-                                "Caption": "E"
+                                "IntervalMinValue": 78.75,
+                                "IntervalMaxValue": 101.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "E"
                             },
                             {
-                                "Value": 112.5,
-                                "Caption": "ESE"
+                                "IntervalMinValue": 101.25,
+                                "IntervalMaxValue": 123.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "ESE"
                             },
                             {
-                                "Value": 135.0,
-                                "Caption": "SE"
+                                "IntervalMinValue": 123.75,
+                                "IntervalMaxValue": 146.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "SE"
                             },
                             {
-                                "Value": 157.5,
-                                "Caption": "SSE"
+                                "IntervalMinValue": 146.25,
+                                "IntervalMaxValue": 168.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "SSE"
                             },
                             {
-                                "Value": 180.0,
-                                "Caption": "S"
+                                "IntervalMinValue": 168.75,
+                                "IntervalMaxValue": 191.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "S"
                             },
                             {
-                                "Value": 202.5,
-                                "Caption": "SSW"
+                                "IntervalMinValue": 191.25,
+                                "IntervalMaxValue": 213.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "SSW"
                             },
                             {
-                                "Value": 225.0,
-                                "Caption": "SW"
+                                "IntervalMinValue": 213.75,
+                                "IntervalMaxValue": 236.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "SW"
                             },
                             {
-                                "Value": 247.5,
-                                "Caption": "WSW"
+                                "IntervalMinValue": 236.25,
+                                "IntervalMaxValue": 258.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "WSW"
                             },
                             {
-                                "Value": 270.0,
-                                "Caption": "W"
+                                "IntervalMinValue": 258.75,
+                                "IntervalMaxValue": 281.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "W"
                             },
                             {
-                                "Value": 292.5,
-                                "Caption": "WNW"
+                                "IntervalMinValue": 281.25,
+                                "IntervalMaxValue": 303.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "WNW"
                             },
                             {
-                                "Value": 315.0,
-                                "Caption": "NW"
+                                "IntervalMinValue": 303.75,
+                                "IntervalMaxValue": 326.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "NW"
                             },
                             {
-                                "Value": 337.5,
-                                "Caption": "NNW"
+                                "IntervalMinValue": 326.25,
+                                "IntervalMaxValue": 348.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "NNW"
+                            },
+                            {
+                                "IntervalMinValue": 348.76,
+                                "IntervalMaxValue": 360,
+                                "ConstantActive": true,
+                                "ConstantValue": "N"
                             }
                         ]
                     },
@@ -326,73 +410,113 @@
                     "name": "winddirection",
                     "type": "float",
                     "presentation": {
-                        "PRESENTATION": "ENUMERATION",
+                        "PRESENTATION": "VALUE",
+                        "SUFFIX": " °",
+                        "DIGITS": 1,
                         "ICON": "compass",
-                        "DISPLAY": 0,
-                        "OPTIONS": [
+                        "INTERVALS_ACTIVE": true,
+                        "INTERVALS": [
                             {
-                                "Value": 0.0,
-                                "Caption": "N"
+                                "IntervalMinValue": -11.25,
+                                "IntervalMaxValue": 11.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "N"
                             },
                             {
-                                "Value": 22.5,
-                                "Caption": "NNE"
+                                "IntervalMinValue": 11.25,
+                                "IntervalMaxValue": 33.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "NNE"
                             },
                             {
-                                "Value": 45.0,
-                                "Caption": "NE"
+                                "IntervalMinValue": 33.75,
+                                "IntervalMaxValue": 56.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "NE"
                             },
                             {
-                                "Value": 67.5,
-                                "Caption": "ENE"
+                                "IntervalMinValue": 56.25,
+                                "IntervalMaxValue": 78.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "ENE"
                             },
                             {
-                                "Value": 90.0,
-                                "Caption": "E"
+                                "IntervalMinValue": 78.75,
+                                "IntervalMaxValue": 101.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "E"
                             },
                             {
-                                "Value": 112.5,
-                                "Caption": "ESE"
+                                "IntervalMinValue": 101.25,
+                                "IntervalMaxValue": 123.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "ESE"
                             },
                             {
-                                "Value": 135.0,
-                                "Caption": "SE"
+                                "IntervalMinValue": 123.75,
+                                "IntervalMaxValue": 146.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "SE"
                             },
                             {
-                                "Value": 157.5,
-                                "Caption": "SSE"
+                                "IntervalMinValue": 146.25,
+                                "IntervalMaxValue": 168.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "SSE"
                             },
                             {
-                                "Value": 180.0,
-                                "Caption": "S"
+                                "IntervalMinValue": 168.75,
+                                "IntervalMaxValue": 191.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "S"
                             },
                             {
-                                "Value": 202.5,
-                                "Caption": "SSW"
+                                "IntervalMinValue": 191.25,
+                                "IntervalMaxValue": 213.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "SSW"
                             },
                             {
-                                "Value": 225.0,
-                                "Caption": "SW"
+                                "IntervalMinValue": 213.75,
+                                "IntervalMaxValue": 236.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "SW"
                             },
                             {
-                                "Value": 247.5,
-                                "Caption": "WSW"
+                                "IntervalMinValue": 236.25,
+                                "IntervalMaxValue": 258.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "WSW"
                             },
                             {
-                                "Value": 270.0,
-                                "Caption": "W"
+                                "IntervalMinValue": 258.75,
+                                "IntervalMaxValue": 281.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "W"
                             },
                             {
-                                "Value": 292.5,
-                                "Caption": "WNW"
+                                "IntervalMinValue": 281.25,
+                                "IntervalMaxValue": 303.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "WNW"
                             },
                             {
-                                "Value": 315.0,
-                                "Caption": "NW"
+                                "IntervalMinValue": 303.75,
+                                "IntervalMaxValue": 326.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "NW"
                             },
                             {
-                                "Value": 337.5,
-                                "Caption": "NNW"
+                                "IntervalMinValue": 326.25,
+                                "IntervalMaxValue": 348.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "NNW"
+                            },
+                            {
+                                "IntervalMinValue": 348.76,
+                                "IntervalMaxValue": 360,
+                                "ConstantActive": true,
+                                "ConstantValue": "N"
                             }
                         ]
                     },
@@ -449,73 +573,113 @@
                     "name": "winddirection previous 2",
                     "type": "float",
                     "presentation": {
-                        "PRESENTATION": "ENUMERATION",
+                        "PRESENTATION": "VALUE",
+                        "SUFFIX": " °",
+                        "DIGITS": 1,
                         "ICON": "compass",
-                        "DISPLAY": 0,
-                        "OPTIONS": [
+                        "INTERVALS_ACTIVE": true,
+                        "INTERVALS": [
                             {
-                                "Value": 0.0,
-                                "Caption": "N"
+                                "IntervalMinValue": -11.25,
+                                "IntervalMaxValue": 11.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "N"
                             },
                             {
-                                "Value": 22.5,
-                                "Caption": "NNE"
+                                "IntervalMinValue": 11.25,
+                                "IntervalMaxValue": 33.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "NNE"
                             },
                             {
-                                "Value": 45.0,
-                                "Caption": "NE"
+                                "IntervalMinValue": 33.75,
+                                "IntervalMaxValue": 56.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "NE"
                             },
                             {
-                                "Value": 67.5,
-                                "Caption": "ENE"
+                                "IntervalMinValue": 56.25,
+                                "IntervalMaxValue": 78.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "ENE"
                             },
                             {
-                                "Value": 90.0,
-                                "Caption": "E"
+                                "IntervalMinValue": 78.75,
+                                "IntervalMaxValue": 101.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "E"
                             },
                             {
-                                "Value": 112.5,
-                                "Caption": "ESE"
+                                "IntervalMinValue": 101.25,
+                                "IntervalMaxValue": 123.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "ESE"
                             },
                             {
-                                "Value": 135.0,
-                                "Caption": "SE"
+                                "IntervalMinValue": 123.75,
+                                "IntervalMaxValue": 146.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "SE"
                             },
                             {
-                                "Value": 157.5,
-                                "Caption": "SSE"
+                                "IntervalMinValue": 146.25,
+                                "IntervalMaxValue": 168.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "SSE"
                             },
                             {
-                                "Value": 180.0,
-                                "Caption": "S"
+                                "IntervalMinValue": 168.75,
+                                "IntervalMaxValue": 191.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "S"
                             },
                             {
-                                "Value": 202.5,
-                                "Caption": "SSW"
+                                "IntervalMinValue": 191.25,
+                                "IntervalMaxValue": 213.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "SSW"
                             },
                             {
-                                "Value": 225.0,
-                                "Caption": "SW"
+                                "IntervalMinValue": 213.75,
+                                "IntervalMaxValue": 236.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "SW"
                             },
                             {
-                                "Value": 247.5,
-                                "Caption": "WSW"
+                                "IntervalMinValue": 236.25,
+                                "IntervalMaxValue": 258.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "WSW"
                             },
                             {
-                                "Value": 270.0,
-                                "Caption": "W"
+                                "IntervalMinValue": 258.75,
+                                "IntervalMaxValue": 281.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "W"
                             },
                             {
-                                "Value": 292.5,
-                                "Caption": "WNW"
+                                "IntervalMinValue": 281.25,
+                                "IntervalMaxValue": 303.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "WNW"
                             },
                             {
-                                "Value": 315.0,
-                                "Caption": "NW"
+                                "IntervalMinValue": 303.75,
+                                "IntervalMaxValue": 326.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "NW"
                             },
                             {
-                                "Value": 337.5,
-                                "Caption": "NNW"
+                                "IntervalMinValue": 326.25,
+                                "IntervalMaxValue": 348.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "NNW"
+                            },
+                            {
+                                "IntervalMinValue": 348.76,
+                                "IntervalMaxValue": 360,
+                                "ConstantActive": true,
+                                "ConstantValue": "N"
                             }
                         ]
                     },
@@ -572,73 +736,113 @@
                     "name": "winddirection previous 3",
                     "type": "float",
                     "presentation": {
-                        "PRESENTATION": "ENUMERATION",
+                        "PRESENTATION": "VALUE",
+                        "SUFFIX": " °",
+                        "DIGITS": 1,
                         "ICON": "compass",
-                        "DISPLAY": 0,
-                        "OPTIONS": [
+                        "INTERVALS_ACTIVE": true,
+                        "INTERVALS": [
                             {
-                                "Value": 0.0,
-                                "Caption": "N"
+                                "IntervalMinValue": -11.25,
+                                "IntervalMaxValue": 11.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "N"
                             },
                             {
-                                "Value": 22.5,
-                                "Caption": "NNE"
+                                "IntervalMinValue": 11.25,
+                                "IntervalMaxValue": 33.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "NNE"
                             },
                             {
-                                "Value": 45.0,
-                                "Caption": "NE"
+                                "IntervalMinValue": 33.75,
+                                "IntervalMaxValue": 56.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "NE"
                             },
                             {
-                                "Value": 67.5,
-                                "Caption": "ENE"
+                                "IntervalMinValue": 56.25,
+                                "IntervalMaxValue": 78.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "ENE"
                             },
                             {
-                                "Value": 90.0,
-                                "Caption": "E"
+                                "IntervalMinValue": 78.75,
+                                "IntervalMaxValue": 101.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "E"
                             },
                             {
-                                "Value": 112.5,
-                                "Caption": "ESE"
+                                "IntervalMinValue": 101.25,
+                                "IntervalMaxValue": 123.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "ESE"
                             },
                             {
-                                "Value": 135.0,
-                                "Caption": "SE"
+                                "IntervalMinValue": 123.75,
+                                "IntervalMaxValue": 146.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "SE"
                             },
                             {
-                                "Value": 157.5,
-                                "Caption": "SSE"
+                                "IntervalMinValue": 146.25,
+                                "IntervalMaxValue": 168.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "SSE"
                             },
                             {
-                                "Value": 180.0,
-                                "Caption": "S"
+                                "IntervalMinValue": 168.75,
+                                "IntervalMaxValue": 191.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "S"
                             },
                             {
-                                "Value": 202.5,
-                                "Caption": "SSW"
+                                "IntervalMinValue": 191.25,
+                                "IntervalMaxValue": 213.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "SSW"
                             },
                             {
-                                "Value": 225.0,
-                                "Caption": "SW"
+                                "IntervalMinValue": 213.75,
+                                "IntervalMaxValue": 236.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "SW"
                             },
                             {
-                                "Value": 247.5,
-                                "Caption": "WSW"
+                                "IntervalMinValue": 236.25,
+                                "IntervalMaxValue": 258.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "WSW"
                             },
                             {
-                                "Value": 270.0,
-                                "Caption": "W"
+                                "IntervalMinValue": 258.75,
+                                "IntervalMaxValue": 281.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "W"
                             },
                             {
-                                "Value": 292.5,
-                                "Caption": "WNW"
+                                "IntervalMinValue": 281.25,
+                                "IntervalMaxValue": 303.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "WNW"
                             },
                             {
-                                "Value": 315.0,
-                                "Caption": "NW"
+                                "IntervalMinValue": 303.75,
+                                "IntervalMaxValue": 326.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "NW"
                             },
                             {
-                                "Value": 337.5,
-                                "Caption": "NNW"
+                                "IntervalMinValue": 326.25,
+                                "IntervalMaxValue": 348.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "NNW"
+                            },
+                            {
+                                "IntervalMinValue": 348.76,
+                                "IntervalMaxValue": 360,
+                                "ConstantActive": true,
+                                "ConstantValue": "N"
                             }
                         ]
                     },
@@ -695,73 +899,113 @@
                     "name": "winddirection previous 4",
                     "type": "float",
                     "presentation": {
-                        "PRESENTATION": "ENUMERATION",
+                        "PRESENTATION": "VALUE",
+                        "SUFFIX": " °",
+                        "DIGITS": 1,
                         "ICON": "compass",
-                        "DISPLAY": 0,
-                        "OPTIONS": [
+                        "INTERVALS_ACTIVE": true,
+                        "INTERVALS": [
                             {
-                                "Value": 0.0,
-                                "Caption": "N"
+                                "IntervalMinValue": -11.25,
+                                "IntervalMaxValue": 11.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "N"
                             },
                             {
-                                "Value": 22.5,
-                                "Caption": "NNE"
+                                "IntervalMinValue": 11.25,
+                                "IntervalMaxValue": 33.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "NNE"
                             },
                             {
-                                "Value": 45.0,
-                                "Caption": "NE"
+                                "IntervalMinValue": 33.75,
+                                "IntervalMaxValue": 56.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "NE"
                             },
                             {
-                                "Value": 67.5,
-                                "Caption": "ENE"
+                                "IntervalMinValue": 56.25,
+                                "IntervalMaxValue": 78.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "ENE"
                             },
                             {
-                                "Value": 90.0,
-                                "Caption": "E"
+                                "IntervalMinValue": 78.75,
+                                "IntervalMaxValue": 101.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "E"
                             },
                             {
-                                "Value": 112.5,
-                                "Caption": "ESE"
+                                "IntervalMinValue": 101.25,
+                                "IntervalMaxValue": 123.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "ESE"
                             },
                             {
-                                "Value": 135.0,
-                                "Caption": "SE"
+                                "IntervalMinValue": 123.75,
+                                "IntervalMaxValue": 146.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "SE"
                             },
                             {
-                                "Value": 157.5,
-                                "Caption": "SSE"
+                                "IntervalMinValue": 146.25,
+                                "IntervalMaxValue": 168.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "SSE"
                             },
                             {
-                                "Value": 180.0,
-                                "Caption": "S"
+                                "IntervalMinValue": 168.75,
+                                "IntervalMaxValue": 191.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "S"
                             },
                             {
-                                "Value": 202.5,
-                                "Caption": "SSW"
+                                "IntervalMinValue": 191.25,
+                                "IntervalMaxValue": 213.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "SSW"
                             },
                             {
-                                "Value": 225.0,
-                                "Caption": "SW"
+                                "IntervalMinValue": 213.75,
+                                "IntervalMaxValue": 236.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "SW"
                             },
                             {
-                                "Value": 247.5,
-                                "Caption": "WSW"
+                                "IntervalMinValue": 236.25,
+                                "IntervalMaxValue": 258.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "WSW"
                             },
                             {
-                                "Value": 270.0,
-                                "Caption": "W"
+                                "IntervalMinValue": 258.75,
+                                "IntervalMaxValue": 281.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "W"
                             },
                             {
-                                "Value": 292.5,
-                                "Caption": "WNW"
+                                "IntervalMinValue": 281.25,
+                                "IntervalMaxValue": 303.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "WNW"
                             },
                             {
-                                "Value": 315.0,
-                                "Caption": "NW"
+                                "IntervalMinValue": 303.75,
+                                "IntervalMaxValue": 326.24,
+                                "ConstantActive": true,
+                                "ConstantValue": "NW"
                             },
                             {
-                                "Value": 337.5,
-                                "Caption": "NNW"
+                                "IntervalMinValue": 326.25,
+                                "IntervalMaxValue": 348.74,
+                                "ConstantActive": true,
+                                "ConstantValue": "NNW"
+                            },
+                            {
+                                "IntervalMinValue": 348.76,
+                                "IntervalMaxValue": 360,
+                                "ConstantActive": true,
+                                "ConstantValue": "N"
                             }
                         ]
                     },
