@@ -94,7 +94,7 @@
                     "ident": "temperature_current",
                     "name": "temperature current",
                     "type": "float",
-                    "profile": "~Temperature",
+                    "profile": "TFA.Temperature",
                     "position": 8,
                     "field": "temperature"
                 }
@@ -142,7 +142,7 @@
                     "ident": "pool_temperature_current",
                     "name": "pool temperature current",
                     "type": "float",
-                    "profile": "~Temperature",
+                    "profile": "TFA.Temperature",
                     "position": 9,
                     "field": "temperature"
                 }
@@ -190,7 +190,7 @@
                     "ident": "humidity_current",
                     "name": "humidity current",
                     "type": "float",
-                    "profile": "~Humidity.F",
+                    "profile": "TFA.Humidity",
                     "position": 14,
                     "field": "humidity"
                 }
@@ -238,7 +238,7 @@
                     "ident": "temperature_previous",
                     "name": "temperature previous",
                     "type": "float",
-                    "profile": "~Temperature",
+                    "profile": "TFA.Temperature",
                     "position": 19,
                     "field": "temperature"
                 }
@@ -286,7 +286,7 @@
                     "ident": "pool_temperature_previous",
                     "name": "pool temperature previous",
                     "type": "float",
-                    "profile": "~Temperature",
+                    "profile": "TFA.Temperature",
                     "position": 24,
                     "field": "temperature"
                 }
@@ -334,7 +334,7 @@
                     "ident": "humidity_previous",
                     "name": "humidity previous",
                     "type": "float",
-                    "profile": "~Humidity.F",
+                    "profile": "TFA.Humidity",
                     "position": 29,
                     "field": "humidity"
                 }

@@ -46,7 +46,7 @@
                     "ident": "temperature",
                     "name": "temperature",
                     "type": "float",
-                    "profile": "~Temperature",
+                    "profile": "TFA.Temperature",
                     "position": 2,
                     "field": "temperature"
                 }

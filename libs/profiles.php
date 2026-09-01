@@ -32,6 +32,60 @@ if (!defined('TFA_COLOR_WARN')) define('TFA_COLOR_WARN', 0xDC3545);   // rot
 
 /*
 @author					Back-Blade and helhau
+@brief					Die eigenen Messwertprofile
+
+@return					array Profilname => Beschreibung
+
+@see					typ     2 = Float
+                        suffix  Einheit hinter dem Wert
+                        digits  Nachkommastellen
+                        max 0   heisst "keine obere Grenze"
+@date					01.09.2026
+ */
+function tfa_value_profiles()
+{
+    return [
+        'TFA.Temperature' => [
+            'typ' => 2, 'icon' => 'Temperature', 'suffix' => ' °C',
+            'min' => -50, 'max' => 80, 'digits' => 1,
+        ],
+        'TFA.Humidity' => [
+            'typ' => 2, 'icon' => 'Drops', 'suffix' => ' %',
+            'min' => 0, 'max' => 100, 'digits' => 1,
+        ],
+        'TFA.Rainfall' => [
+            'typ' => 2, 'icon' => 'Rainfall', 'suffix' => ' mm',
+            'min' => 0, 'max' => 0, 'digits' => 1,
+        ],
+        'TFA.WindSpeed' => [
+            'typ' => 2, 'icon' => 'WindSpeed', 'suffix' => ' m/s',
+            'min' => 0, 'max' => 0, 'digits' => 1,
+        ],
+        'TFA.WindDirection' => [
+            'typ' => 2, 'icon' => 'WindDirection', 'suffix' => ' °',
+            'min' => 0, 'max' => 360, 'digits' => 1,
+        ],
+    ];
+}
+
+/*
+@author					Back-Blade and helhau
+@brief					Die sechzehn Himmelsrichtungen
+
+@see					In 22,5-Grad-Schritten. Die Kuerzel sind englisch
+                        und werden ueber die locale.json uebersetzt.
+@date					01.09.2026
+ */
+function tfa_wind_directions()
+{
+    return [
+        'N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE',
+        'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW',
+    ];
+}
+
+/*
+@author					Back-Blade and helhau
 @brief					Legt die eigenen Profile an, falls sie fehlen
 
 @param[$module]			die aufrufende Instanz, fuer Translate und Debug
@@ -73,5 +127,30 @@ function tfa_create_profiles($module)
         '',
         TFA_COLOR_WARN
     );
+
+    foreach (tfa_value_profiles() as $name => $p) {
+        if (!IPS_VariableProfileExists($name)) {
+            IPS_CreateVariableProfile($name, $p['typ']);
+        }
+
+        IPS_SetVariableProfileIcon($name, $p['icon']);
+        IPS_SetVariableProfileText($name, '', $p['suffix']);
+        IPS_SetVariableProfileValues($name, $p['min'], $p['max'], 0);
+        IPS_SetVariableProfileDigits($name, $p['digits']);
+    }
+
+    /*
+        Windrichtung zusaetzlich als Himmelsrichtung. Ohne Zuordnungen
+        stuende dort nur die Gradzahl.
+     */
+    foreach (tfa_wind_directions() as $i => $kuerzel) {
+        IPS_SetVariableProfileAssociation(
+            'TFA.WindDirection',
+            $i * 22.5,
+            $module->Translate($kuerzel),
+            '',
+            -1
+        );
+    }
 }
 

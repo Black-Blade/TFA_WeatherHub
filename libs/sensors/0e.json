@@ -94,7 +94,7 @@
                     "ident": "temperature_current",
                     "name": "temperature current",
                     "type": "float",
-                    "profile": "~Temperature",
+                    "profile": "TFA.Temperature",
                     "position": 7,
                     "field": "temperature"
                 }
@@ -110,7 +110,7 @@
                     "ident": "humidity_current",
                     "name": "humidity current",
                     "type": "float",
-                    "profile": "~Humidity.F",
+                    "profile": "TFA.Humidity",
                     "position": 8,
                     "field": "humidity"
                 }
@@ -158,7 +158,7 @@
                     "ident": "temperature_previous",
                     "name": "temperature previous",
                     "type": "float",
-                    "profile": "~Temperature",
+                    "profile": "TFA.Temperature",
                     "position": 13,
                     "field": "temperature"
                 }
@@ -174,7 +174,7 @@
                     "ident": "humidity_previous",
                     "name": "humidity previous",
                     "type": "float",
-                    "profile": "~Humidity.F",
+                    "profile": "TFA.Humidity",
                     "position": 14,
                     "field": "humidity"
                 }
@@ -222,7 +222,7 @@
                     "ident": "temperature_previous1",
                     "name": "temperature previous 1",
                     "type": "float",
-                    "profile": "~Temperature",
+                    "profile": "TFA.Temperature",
                     "position": 19,
                     "field": "temperature"
                 }
@@ -238,7 +238,7 @@
                     "ident": "humidity_previous1",
                     "name": "humidity previous 1",
                     "type": "float",
-                    "profile": "~Humidity.F",
+                    "profile": "TFA.Humidity",
                     "position": 20,
                     "field": "humidity"
                 }

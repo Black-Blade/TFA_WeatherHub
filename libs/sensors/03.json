@@ -94,7 +94,7 @@
                     "ident": "temperature_current",
                     "name": "temperature current",
                     "type": "float",
-                    "profile": "~Temperature",
+                    "profile": "TFA.Temperature",
                     "position": 7,
                     "field": "temperature"
                 }
@@ -142,7 +142,7 @@
                     "ident": "humidity_current",
                     "name": "humidity current",
                     "type": "float",
-                    "profile": "~Humidity.F",
+                    "profile": "TFA.Humidity",
                     "position": 12,
                     "field": "humidity"
                 }
@@ -190,7 +190,7 @@
                     "ident": "temperature_previous",
                     "name": "temperature previous",
                     "type": "float",
-                    "profile": "~Temperature",
+                    "profile": "TFA.Temperature",
                     "position": 17,
                     "field": "temperature"
                 }
@@ -238,7 +238,7 @@
                     "ident": "humidity_previous",
                     "name": "humidity previous",
                     "type": "float",
-                    "profile": "~Humidity.F",
+                    "profile": "TFA.Humidity",
                     "position": 22,
                     "field": "humidity"
                 }

@@ -94,7 +94,7 @@
                     "ident": "temperature_current",
                     "name": "temperature current",
                     "type": "float",
-                    "profile": "~Temperature",
+                    "profile": "TFA.Temperature",
                     "position": 7,
                     "field": "temperature"
                 }
@@ -142,7 +142,7 @@
                     "ident": "temperature_current_cabel",
                     "name": "temperature current cabel",
                     "type": "float",
-                    "profile": "~Temperature",
+                    "profile": "TFA.Temperature",
                     "position": 12,
                     "field": "temperature"
                 }
@@ -190,7 +190,7 @@
                     "ident": "temperature_previous",
                     "name": "temperature previous",
                     "type": "float",
-                    "profile": "~Temperature",
+                    "profile": "TFA.Temperature",
                     "position": 17,
                     "field": "temperature"
                 }
@@ -238,7 +238,7 @@
                     "ident": "temperature_previous_cabel",
                     "name": "temperature previous cabel",
                     "type": "float",
-                    "profile": "~Temperature",
+                    "profile": "TFA.Temperature",
                     "position": 22,
                     "field": "temperature"
                 }

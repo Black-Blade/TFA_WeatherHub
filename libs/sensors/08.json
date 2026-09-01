@@ -70,7 +70,7 @@
                     "ident": "rainfall",
                     "name": "rainfall",
                     "type": "float",
-                    "profile": "~Rainfall",
+                    "profile": "TFA.Rainfall",
                     "position": 5,
                     "field": "rainnew"
                 }
