@@ -50,7 +50,7 @@ Mit diesem Modul könnt ihr relativ günstig diverse Wetterinformationen in euer
 |06  |30.3310.02             |Thermo-Hygro-Sender mit Poolsensor                        |ungetestet |34|
 |07  |MA 10410               |Wetterstation MA10410                                     |beta       |44|
 |08  |30.3306.02             |Regensensor                                               |getestet   |20|
-|09  |30.3302.02             |Thermo-Hygro-Sender mit Profi-Temperatur-Kabelfühler      |kein Baustein|—|
+|09  |30.3302.02             |Profi Thermo-Hygro-Sender mit Kabelfühler                 |ungetestet |34|
 |0B  |30.3307.02             |Windsensor                                                |getestet   |27|
 |0E  |30.3312.02             |Profi Thermo-Hygro-Sender WEATHERHUB                      |ungetestet |22|
 |10  |30.3311.02             |Türen- und Fensterkontakt-Sensor                          |getestet   |13|
@@ -58,7 +58,7 @@ Mit diesem Modul könnt ihr relativ günstig diverse Wetterinformationen in euer
 
 „Werte" ist die Anzahl der Variablen, die dieser Sensor liefern kann. Ihr wählt selbst aus, welche davon angelegt werden.
 
-Für **ID 09** liegt uns noch keine Beschreibung vor. Der Sensor wird im Konfigurator angezeigt, lässt sich aber nicht anlegen. Wenn ihr so einen habt: siehe [Abschnitt 10](#10-wenn-ein-sensor-nicht-erkannt-wird), wir bauen ihn dann gerne ein.
+**ID 09** ist aus der Protokollbeschreibung des [Referenzprojekts](#12-geholfen-hat-uns-folgendes-projekt) gebaut und noch **an keinem echten Gerät geprüft**. Wenn ihr so einen Sensor habt: probiert ihn aus und meldet euch, ob die Werte stimmen.
 
 - Übersicht von TFA: https://www.tfa-dostmann.de/media/pdf/weatherhub-erweiterungen.pdf
 - Weitere Infos zum TFA WeatherHub System: https://www.tfa-dostmann.de/themenwelten/smarthome/

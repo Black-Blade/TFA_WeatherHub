@@ -1,15 +1,375 @@
 {
     "typ": "09",
     "article": "30.3302.02",
-    "name": "Thermo-Hygro-Sender mit Profi-Temperatur-Kabelfuehler",
-    "state": "kein modul",
+    "name": "Profi Thermo-Hygro-Sender mit Kabelfuehler",
+    "state": "ungetestet",
     "guid": "",
     "frame": {
-        "header": 0,
-        "length": 0
+        "header": 214,
+        "length": 14
     },
     "options": {
         "windoffset": false
     },
-    "groups": []
+    "groups": [
+        {
+            "name": "sensors",
+            "decoder": "dec_sensor_data",
+            "offset": 0,
+            "length": 2,
+            "variables": [
+                {
+                    "ident": "battery",
+                    "name": "battery",
+                    "type": "boolean",
+                    "presentation": {
+                        "PRESENTATION": "VALUE",
+                        "OPTIONS": [
+                            {
+                                "Value": true,
+                                "Caption": "battery ok",
+                                "IconActive": true,
+                                "IconValue": "battery-full",
+                                "ColorActive": true,
+                                "ColorValue": 2664261
+                            },
+                            {
+                                "Value": false,
+                                "Caption": "battery low",
+                                "IconActive": true,
+                                "IconValue": "battery-empty",
+                                "ColorActive": true,
+                                "ColorValue": 14431557
+                            }
+                        ]
+                    },
+                    "position": 0,
+                    "field": "batteryok"
+                },
+                {
+                    "ident": "heartbeat",
+                    "name": "heartbeat",
+                    "type": "boolean",
+                    "position": 1,
+                    "field": "heartbeat"
+                },
+                {
+                    "ident": "counter",
+                    "name": "counter",
+                    "type": "integer",
+                    "position": 2,
+                    "field": "counter"
+                },
+                {
+                    "ident": "update",
+                    "name": "update",
+                    "type": "integer",
+                    "presentation": {
+                        "PRESENTATION": "DATETIME",
+                        "TEMPLATE": "DATE_TIME"
+                    },
+                    "position": 3,
+                    "field": "update"
+                }
+            ]
+        },
+        {
+            "name": "temperature current",
+            "decoder": "dec_temperature",
+            "offset": 2,
+            "length": 2,
+            "variables": [
+                {
+                    "ident": "up_05_current",
+                    "name": "up 05 current",
+                    "type": "boolean",
+                    "position": 4,
+                    "field": "up05"
+                },
+                {
+                    "ident": "down_05_current",
+                    "name": "down 05 current",
+                    "type": "boolean",
+                    "position": 5,
+                    "field": "down05"
+                },
+                {
+                    "ident": "overflow_current",
+                    "name": "overflow current",
+                    "type": "boolean",
+                    "position": 6,
+                    "field": "overflow"
+                },
+                {
+                    "ident": "error_current",
+                    "name": "error current",
+                    "type": "boolean",
+                    "position": 7,
+                    "field": "error"
+                },
+                {
+                    "ident": "temperature_current",
+                    "name": "temperature current",
+                    "type": "float",
+                    "presentation": {
+                        "PRESENTATION": "VALUE",
+                        "SUFFIX": " °C",
+                        "DIGITS": 1,
+                        "USAGE_TYPE": 1,
+                        "ICON": "temperature-half"
+                    },
+                    "position": 8,
+                    "field": "temperature"
+                }
+            ]
+        },
+        {
+            "name": "temperature current cabel",
+            "decoder": "dec_temperature",
+            "offset": 4,
+            "length": 2,
+            "variables": [
+                {
+                    "ident": "up_05_current_cabel",
+                    "name": "up 05 current cabel",
+                    "type": "boolean",
+                    "position": 9,
+                    "field": "up05"
+                },
+                {
+                    "ident": "down_05_current_cabel",
+                    "name": "down 05 current cabel",
+                    "type": "boolean",
+                    "position": 10,
+                    "field": "down05"
+                },
+                {
+                    "ident": "overflow_current_cabel",
+                    "name": "overflow current cabel",
+                    "type": "boolean",
+                    "position": 11,
+                    "field": "overflow"
+                },
+                {
+                    "ident": "error_current_cabel",
+                    "name": "error current cabel",
+                    "type": "boolean",
+                    "position": 12,
+                    "field": "error"
+                },
+                {
+                    "ident": "temperature_current_cabel",
+                    "name": "temperature current cabel",
+                    "type": "float",
+                    "presentation": {
+                        "PRESENTATION": "VALUE",
+                        "SUFFIX": " °C",
+                        "DIGITS": 1,
+                        "USAGE_TYPE": 1,
+                        "ICON": "temperature-half"
+                    },
+                    "position": 13,
+                    "field": "temperature"
+                }
+            ]
+        },
+        {
+            "name": "humidity current",
+            "decoder": "dec_humidity",
+            "offset": 6,
+            "length": 2,
+            "variables": [
+                {
+                    "ident": "humidity_up_05_current",
+                    "name": "humidity up 05 current",
+                    "type": "boolean",
+                    "position": 14,
+                    "field": "up05"
+                },
+                {
+                    "ident": "humidity_down_05_current",
+                    "name": "humidity down 05 current",
+                    "type": "boolean",
+                    "position": 15,
+                    "field": "down05"
+                },
+                {
+                    "ident": "humidity_id_current",
+                    "name": "humidity id current",
+                    "type": "integer",
+                    "position": 16,
+                    "field": "id"
+                },
+                {
+                    "ident": "humidity_calculated_current",
+                    "name": "humidity calculated current",
+                    "type": "string",
+                    "position": 17,
+                    "field": "average"
+                },
+                {
+                    "ident": "humidity_current",
+                    "name": "humidity current",
+                    "type": "float",
+                    "presentation": {
+                        "PRESENTATION": "VALUE",
+                        "SUFFIX": " %",
+                        "DIGITS": 1,
+                        "ICON": "droplet"
+                    },
+                    "position": 18,
+                    "field": "humidity"
+                }
+            ]
+        },
+        {
+            "name": "temperature previous",
+            "decoder": "dec_temperature",
+            "offset": 8,
+            "length": 2,
+            "variables": [
+                {
+                    "ident": "up_05_previous",
+                    "name": "up 05 previous",
+                    "type": "boolean",
+                    "position": 19,
+                    "field": "up05"
+                },
+                {
+                    "ident": "down_05_previous",
+                    "name": "down 05 previous",
+                    "type": "boolean",
+                    "position": 20,
+                    "field": "down05"
+                },
+                {
+                    "ident": "overflow_previous",
+                    "name": "overflow previous",
+                    "type": "boolean",
+                    "position": 21,
+                    "field": "overflow"
+                },
+                {
+                    "ident": "error_previous",
+                    "name": "error previous",
+                    "type": "boolean",
+                    "position": 22,
+                    "field": "error"
+                },
+                {
+                    "ident": "temperature_previous",
+                    "name": "temperature previous",
+                    "type": "float",
+                    "presentation": {
+                        "PRESENTATION": "VALUE",
+                        "SUFFIX": " °C",
+                        "DIGITS": 1,
+                        "USAGE_TYPE": 1,
+                        "ICON": "temperature-half"
+                    },
+                    "position": 23,
+                    "field": "temperature"
+                }
+            ]
+        },
+        {
+            "name": "temperature previous cabel",
+            "decoder": "dec_temperature",
+            "offset": 10,
+            "length": 2,
+            "variables": [
+                {
+                    "ident": "up_05_previous_cabel",
+                    "name": "up 05 previous cabel",
+                    "type": "boolean",
+                    "position": 24,
+                    "field": "up05"
+                },
+                {
+                    "ident": "down_05_previous_cabel",
+                    "name": "down 05 previous cabel",
+                    "type": "boolean",
+                    "position": 25,
+                    "field": "down05"
+                },
+                {
+                    "ident": "overflow_previous_cabel",
+                    "name": "overflow previous cabel",
+                    "type": "boolean",
+                    "position": 26,
+                    "field": "overflow"
+                },
+                {
+                    "ident": "error_previous_cabel",
+                    "name": "error previous cabel",
+                    "type": "boolean",
+                    "position": 27,
+                    "field": "error"
+                },
+                {
+                    "ident": "temperature_previous_cabel",
+                    "name": "temperature previous cabel",
+                    "type": "float",
+                    "presentation": {
+                        "PRESENTATION": "VALUE",
+                        "SUFFIX": " °C",
+                        "DIGITS": 1,
+                        "USAGE_TYPE": 1,
+                        "ICON": "temperature-half"
+                    },
+                    "position": 28,
+                    "field": "temperature"
+                }
+            ]
+        },
+        {
+            "name": "humidity previous",
+            "decoder": "dec_humidity",
+            "offset": 12,
+            "length": 2,
+            "variables": [
+                {
+                    "ident": "humidity_up_05_previous",
+                    "name": "humidity up 05 previous",
+                    "type": "boolean",
+                    "position": 29,
+                    "field": "up05"
+                },
+                {
+                    "ident": "humidity_down_05_previous",
+                    "name": "humidity down 05 previous",
+                    "type": "boolean",
+                    "position": 30,
+                    "field": "down05"
+                },
+                {
+                    "ident": "humidity_id_previous",
+                    "name": "humidity id previous",
+                    "type": "integer",
+                    "position": 31,
+                    "field": "id"
+                },
+                {
+                    "ident": "humidity_calculated_previous",
+                    "name": "humidity calculated previous",
+                    "type": "string",
+                    "position": 32,
+                    "field": "average"
+                },
+                {
+                    "ident": "humidity_previous",
+                    "name": "humidity previous",
+                    "type": "float",
+                    "presentation": {
+                        "PRESENTATION": "VALUE",
+                        "SUFFIX": " %",
+                        "DIGITS": 1,
+                        "ICON": "droplet"
+                    },
+                    "position": 33,
+                    "field": "humidity"
+                }
+            ]
+        }
+    ]
 }
